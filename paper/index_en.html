@@ -9,7 +9,7 @@
       	var urlhash = window.location.hash;
       	if (!urlhash.match("fromapp")) {
       	if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios|iPad)/i))) {
-      		window.location = "/mobile.html";
+      		window.location = "/mobile_en.html";
       		}
      	}
     } catch (err) {}
@@ -181,44 +181,44 @@ underline {
 	  <td style="height:68px">
 	  </td>
 	</table>
-	<h4>>> <a href="../index.html">返回主页</a></h4>
+	<h4>>> <a href="../index_en.html">Back to Homepage</a></h4>
 </div>
 <br>
 <div class="content">
-	<h2>全部论文列表</h2><br><br>
+	<h2>Full Publication List</h2><br><br>
 	<script type="text/javascript">
 		var paper_arxiv_html = "";
 		for (var key in paper){
 			if (paper.hasOwnProperty(key)) {  
 				if (paper[key].pub.name === "arXiv"){
-					paper_arxiv_html += pub(paper[key], "Yes");
+					paper_arxiv_html += pub(paper[key]);
 				}
 			}
 		}
 		if (paper_arxiv_html !== ""){
-			paper_arxiv_html = `<table><td style="width:5px"></td><td valign="middle"><div><h3>预印论文</h3></div></td></table><br>` + paper_arxiv_html;
+			paper_arxiv_html = `<table><td style="width:5px"></td><td valign="middle"><div><h3>Preprint Papers</h3></div></td></table><br>` + paper_arxiv_html;
 		}
 		var paper_jur_html = "";
 		for (var key in paper){
 			if (paper.hasOwnProperty(key)) {  
 				if (paper[key].type === "journal"){
-					paper_jur_html += pub(paper[key], "Yes");
+					paper_jur_html += pub(paper[key]);
 				}
 			}
 		}
 		if (paper_jur_html !== ""){
-			paper_jur_html = `<table><td style="width:5px"></td><td valign="middle"><div><h3>期刊论文</h3></div></td></table><br>` + paper_jur_html;
+			paper_jur_html = `<table><td style="width:5px"></td><td valign="middle"><div><h3>Journal Papers</h3></div></td></table><br>` + paper_jur_html;
 		}
 		var paper_conf_html = "";
 		for (var key in paper){
 			if (paper.hasOwnProperty(key)) {  
 				if (paper[key].type === "conference"){
-					paper_conf_html += pub(paper[key], "Yes");
+					paper_conf_html += pub(paper[key]);
 				}
 			}
 		}
 		if (paper_conf_html !== ""){
-			paper_conf_html = `<table><td style="width:5px"></td><td valign="middle"><div><h3>会议论文</h3></div></td></table><br>` + paper_conf_html;
+			paper_conf_html = `<table><td style="width:5px"></td><td valign="middle"><div><h3>Conference Papers</h3></div></td></table><br>` + paper_conf_html;
 		}
 		var paper_html = paper_arxiv_html + paper_jur_html + paper_conf_html;
 	</script>
@@ -226,15 +226,15 @@ underline {
 </div><br>
 
 <script type="text/javascript">
-	var last_update_html = `<font size=3 style="color: #3B3B3B">—&nbsp;&nbsp; 最近更新：${last_update.year}年${last_update.month_zh}月 &nbsp;&nbsp;—</font>`;
-	var copyright_html = `<font size=2 style="color: #BBBBBB">版权所有 &copy ${last_update.year} ${me.name_zh}</font>`;
+	var last_update_html = `<font size=3 style="color: #3B3B3B">—&nbsp;&nbsp; Last updated: ${last_update.month}, ${last_update.year} &nbsp;&nbsp;—</font>`;
+	var copyright_html = `<font size=2 style="color: #BBBBBB">Copyright &copy ${last_update.year} ${me.name}. All Rights Reserved.</font>`;	
 </script>
 
 <center id="last_update"></center><br>
 <center id="copyright"></center><br>
 
 <script>  
-	document.getElementById("title").textContent = title_zh;
+	document.getElementById("title").textContent = title;
 	document.getElementById("paper").innerHTML = paper_html;
 	document.getElementById("icon").innerHTML = icon_html;
 	document.getElementById("last_update").innerHTML = last_update_html;

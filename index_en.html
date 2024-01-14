@@ -9,7 +9,7 @@
       var urlhash = window.location.hash;
       if (!urlhash.match("fromapp")) {
       if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios|iPad)/i))) {
-      window.location = "/mobile.html";
+      window.location = "/mobile_en.html";
       }
       }
       } catch (err) {}
@@ -181,7 +181,7 @@ underline {
 	  	<td style="height:68px">
 	 	</td>
 	</table>
-	<h2>目录</h2>
+	<h2>Index</h2>
 	<table>
 	  	<td style="height:15px">
 	  	</td>
@@ -192,15 +192,15 @@ underline {
 		  	</td>
 		  	<td valign="middle">
 		    	<h4>
-					<a href="#home" style="color: #3B3B3B">主页</a><br><br>
-					<a href="#about-me" style="color: #3B3B3B">关于我</a><br><br>
-					<a href="#publications" style="color: #3B3B3B">论文</a><br><br>
-					<a href="#education" style="color: #3B3B3B">教育经历</a><br><br>
-					<a href="#honors" style="color: #3B3B3B">荣誉</a><br><br>
-					<a href="#activities" style="color: #3B3B3B">活动</a><br><br>
-					<a href="#misc" style="color: #3B3B3B">其他方面</a><br><br>
-					<a href="#contact" style="color: #3B3B3B">联系方式</a><br><br>
-					<a href="index_en.html" style="color: #3B3B3B">[English]</a>
+					<a href="#home" style="color: #3B3B3B">Home</a><br><br>
+					<a href="#about-me" style="color: #3B3B3B">About Me</a><br><br>
+					<a href="#publications" style="color: #3B3B3B">Publications</a><br><br>
+					<a href="#education" style="color: #3B3B3B">Education</a><br><br>
+					<a href="#honors" style="color: #3B3B3B">Honors</a><br><br>
+					<a href="#activities" style="color: #3B3B3B">Activities</a><br><br>
+					<a href="#misc" style="color: #3B3B3B">Misc Facts</a><br><br>
+					<a href="#contact" style="color: #3B3B3B">Contact</a><br><br>
+					<a href="index.html" style="color: #3B3B3B">[中文版]</a>
 				</h4>
 		  	</td>
 		</table>
@@ -228,11 +228,11 @@ underline {
 	</table>
 
 	<a name="about-me"></a><br><br><br>
-	<h2>关于我</h2><br>
+	<h2>About Me</h2><br>
 	<div id="about"></div>
 
 	<br><br><br>
-	<h2>新闻</h2><br>
+	<h2>News</h2><br>
 	&nbsp&nbsp&nbsp&nbsp<font style="color: #DD0000" id="break_news"></font>
 	<ul id="news"></ul>
 	<table>
@@ -241,7 +241,7 @@ underline {
 	</table>
 
   	<a name="publications"></a><br><br><br>
-  	<h2>精选论文</h2><br>
+  	<h2>Selected Publications</h2><br>
   	<table>
 	  	<td style="height:10px">
 	  	</td>
@@ -251,33 +251,33 @@ underline {
 	  	<td style="width:30px">
 	  	</td>
 	  	<td>
-	  		<h4>>> <a href="paper/index.html">全部论文列表</a></h4>
+	  		<h4>>> <a href="paper/index_en.html">Full Publication List</a></h4>
 	  	</td>
 	</table>
 
 
 	<a name="education"></a><br><br><br>
-	<h2>教育经历</h2><br>
+	<h2>Education</h2><br>
 	<div id="edu"></div>
 	
 
     <a name="honors"></a><br><br><br>
-    <h2>荣誉</h2><br>
+    <h2>Honors</h2><br>
     <ul id="hornor"></ul>
 
 
     <a name="activities"></a><br><br><br>
-    <h2>学术活动</h2><br>
+    <h2>Professional Activities</h2><br>
     <div id="activity"></div>
    
   	
 	<a name="misc"></a><br><br><br>
-	<h2>其他方面</h2><br>
+	<h2>Miscellaneous Facts</h2><br>
 	<div id="m"></div>
 
 
 	<a name="contact"></a><br><br><br>
-	<h2>联系方式</h2><br>
+	<h2>Contact</h2><br>
 	<div id="ct"></div>
 
 </div>
@@ -287,23 +287,23 @@ underline {
 <center id="copyright"></center><br>
 
 <script>  
-	document.getElementById("title").textContent = title_zh;
+	document.getElementById("title").textContent = title;
 	document.getElementById("img").innerHTML = img_html;
 	document.getElementById("icon").innerHTML = icon_html;
-	document.getElementById("name").textContent = me.name_zh;
-	document.getElementById("job").textContent = me.job_zh;
-	document.getElementById("institute").textContent = me.institute_zh;
-	document.getElementById("my_link").innerHTML = my_link_html_zh;
-	document.getElementById("about").innerHTML = about_html_zh;
-	document.getElementById("news").innerHTML = news_html_zh;
-	document.getElementById("break_news").textContent = break_news_zh;
-	document.getElementById("selected_pub").innerHTML = selected_pub_html_zh;
-	document.getElementById("edu").innerHTML = education_html_zh;
-	document.getElementById("hornor").innerHTML = hornor_html_zh;
-	document.getElementById("activity").innerHTML = activity_html_zh;
-	document.getElementById("m").innerHTML = misc_html_zh;
-	document.getElementById("ct").innerHTML = contact_html_zh;
-	document.getElementById("last_update").innerHTML = last_update_html_zh;
-	document.getElementById("copyright").innerHTML = copyright_html_zh;
-	</script>
+	document.getElementById("name").textContent = me.name;
+	document.getElementById("job").textContent = me.job;
+	document.getElementById("institute").textContent = me.institute;
+	document.getElementById("my_link").innerHTML = my_link_html;
+	document.getElementById("about").innerHTML = about_html;
+	document.getElementById("news").innerHTML = news_html;
+	document.getElementById("break_news").textContent = break_news;
+	document.getElementById("selected_pub").innerHTML = selected_pub_html;
+	document.getElementById("edu").innerHTML = education_html;
+	document.getElementById("hornor").innerHTML = hornor_html;
+	document.getElementById("activity").innerHTML = activity_html;
+	document.getElementById("m").innerHTML = misc_html;
+	document.getElementById("ct").innerHTML = contact_html;
+	document.getElementById("last_update").innerHTML = last_update_html;
+	document.getElementById("copyright").innerHTML = copyright_html;
+</script>
 </body></html>
