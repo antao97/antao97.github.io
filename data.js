@@ -574,7 +574,6 @@ var last_update = {
 // index_en.html
 // Title
 var title = `${me.name}'s Homepage`;
-var icon_html = `<link rel="icon" href=${me.icon} >`;
 
 // Image
 var img_html = `<img id="myPicture" src=${me.img} style="float:center; border-radius: 15px"height="300px">`
