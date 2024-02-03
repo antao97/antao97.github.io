@@ -260,12 +260,12 @@ var paper = {
 		intro: [
 			"Existing adversarial attack algorithms are designed under a basic assumption -- the network architecture is fixed throughout the attack process.",
 			"We are the first to find that this assumption does not hold for adaptive neural networks, which adaptively deactivate unnecessary execution units based on inputs to improve computational efficiency.",
-			"We study dynamics-aware attacks on representative adaptive neural networks for 2D images and 3D point clouds.",
-			"Among these networks, 3D sparse convolution network plays an important role in large 3D point cloud processing tasks."
+			"We study dynamics-aware adversarial attacks on representative adaptive neural networks for 2D images and 3D point clouds.",
+			"Among these networks, 3D sparse convolution network plays an important role in large 3D point cloud processing tasks, and our method shows its great fragility under adversarial attacks."
 		],
 		intro_zh: [
 			"目前的对抗攻击方法默认网络在攻击前后网络结构不会发生变化，但是此假设并不适用于自适应神经网络，自适应神经网络会根据不同的输入数据自适应地关闭一些不重要的运算单元，导致当下的攻击扰动对攻击后的新网络结构可能无效。",
-			"我们第一个发现了自适应神经网络在对抗攻击中的攻击滞后问题，对二维图像和三维点云上代表性的自适应神经网络进行了研究，其中三维稀疏卷积网络在大型三维点云处理中占据了重要地位。"
+			"我们第一个发现了自适应神经网络在对抗攻击中的攻击滞后问题，对二维图像和三维点云上代表性的自适应神经网络进行了研究，其中三维稀疏卷积网络在大型三维点云处理中占据了重要地位，而我们的方法揭露了三维稀疏卷积网络面对对抗攻击的高脆弱性。"
 		]
   	},
 	seggroup: {
