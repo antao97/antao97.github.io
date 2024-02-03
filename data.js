@@ -101,7 +101,7 @@ var institute = {
 		link_zh: "https://www.tsinghua.edu.cn",
 		img: "image/tsinghua.png",
 		nation: "China",
-		nation: "中国"
+		nation_zh: "中国"
 	},
 	seu: {
 		name: "Southeast University",
@@ -226,6 +226,10 @@ var conference = {
 		name: "Pacific Rim International Conference on Artificial Intelligence",
 		short_name: "PRICAI",
 	},
+	acm_mm: {
+		name: "ACM Multimedia",
+		short_name: "ACM MM",
+	},
 };
 
 // 我的文章信息
@@ -254,11 +258,14 @@ var paper = {
 		}
 		],
 		intro: [
-			"Most existing adversarial attack algorithms are designed under a basic assumption -- the network architecture is fixed throughout the attack process. ",
-			"However, this assumption does not hold for many recently proposed adaptive neural networks, which adaptively deactivate unnecessary execution units based on inputs to improve computational efficiency. "
+			"Existing adversarial attack algorithms are designed under a basic assumption -- the network architecture is fixed throughout the attack process.",
+			"We are the first to find that this assumption does not hold for adaptive neural networks, which adaptively deactivate unnecessary execution units based on inputs to improve computational efficiency.",
+			"We study dynamics-aware attacks on representative adaptive neural networks for 2D images and 3D point clouds.",
+			"Among these networks, 3D sparse convolution network plays an important role in large 3D point cloud processing tasks."
 		],
 		intro_zh: [
-			"我们探索了自适应神经网络的动态感知对抗攻击问题。目前大多数网络方法默认网络在攻击前后网络结构不会发生变化，但是此假设并不适用于很多近期提出的自适应神经网络，这些自适应神经网络会根据不同的输入数据自适应地关闭一些不重要的运算单元。"
+			"我们第一个发现了自适应神经网络的动态感知对抗攻击问题。目前的攻击方法默认网络在攻击前后网络结构不会发生变化，但是此假设并不适用于很多近期提出的自适应神经网络，这些自适应神经网络会根据不同的输入数据自适应地关闭一些不重要的运算单元，导致目前的攻击方法在新的网络结构中变得无效。",
+			"我们对代表性的自适应神经网络在二维图像和三维点云上进行了动态感知对抗攻击的研究，其中三维稀疏卷积网络在三维点云处理中占据了重要地位。"
 		]
   	},
 	seggroup: {
@@ -295,10 +302,13 @@ var paper = {
 			},
 		],
 		intro: [
-			"By fully taking the advantages of locations, we design a weakly supervised point cloud segmentation algorithm that only requires clicking on one point per instance to indicate its location for annotation. "
+			"By fully taking the advantages of locations, we design a weakly supervised point cloud segmentation algorithm that only requires clicking on one point per instance to indicate its location for annotation.",
+			"Based on the over-segmentation technique, we further extend the labeling information into segments to enlarge the labeled point number.",
+			"Our seg-level supervised method achieves competitive performance with fully-supervised methods and surpasses other weakly-supervised methods."
 		],
 		intro_zh: [
-			"在点云实例分割中，为了充分利用实例位置信息的优势，本文设计了一个弱监督点云分割算法，仅需要对每个实例中一个点进行标注以指示其位置。"
+			"在点云实例分割中，为了充分利用实例位置信息的优势，本文设计了一个弱监督点云分割算法，仅需要对每个实例中一个点进行标注以指示其位置，并将对点的标注信息扩展至其所属过分割块以增大标注量。",
+			"我们过分割块级标签监督的方法取得了与全监督方法相比拟的性能，同时超越了其他弱监督方法。"
 		]
 	},
 	le: {
@@ -409,7 +419,7 @@ var news = [
 	{
 		date: "2022.07.01",
 		content: `Our ${href(paper.seggroup, paper.seggroup.short_name)} is accepted by TIP!`,
-		content_zh: `我们的${href(paper.seggroup, paper.seggroup.short_name)} 被TIP接收了！`
+		content_zh: `我们的${href(paper.seggroup, paper.seggroup.short_name)}被TIP接收了！`
 	},
 	{
 		date: "2021.12.20",
@@ -505,19 +515,19 @@ var activity = {
 			},
 			{
 				name: conference.eccv,
-				year: ["2022"]
+				year: ["2022", "2024"]
+			},
+			{
+				name: conference.acm_mm,
+				year: ["2024"]
 			},
 			{
 				name: conference.icme,
 				year: ["2021", "2022", "2023", "2024"]
 			},
 			{
-				name: conference.threedv,
-				year: ["2022"]
-			},
-			{
 				name: conference.icip,
-				year: ["2022", "2023"]
+				year: ["2022", "2023", "2024"]
 			},
 			{
 				name: conference.fg,
@@ -563,8 +573,8 @@ var contact = [
 
 // 版权
 var last_update = {
-	month: "Jan",
-	month_zh: "1",
+	month: "Feb",
+	month_zh: "2",
 	year: "2024",
 };
 
@@ -621,7 +631,7 @@ for (var i = 0; i < selected_pub.length; i++) {
 	}
 	selected_pub_html += `</font><br>`;
 	selected_pub_html += `<table><td style="height:10px"></td></table>`;
-	selected_pub_html += `<font size=3>${selected_pub[i].intro.join("")}</font>`;
+	selected_pub_html += `<font size=3>${selected_pub[i].intro.join(" ")}</font>`;
 	selected_pub_html += `</div></td></tr></tbody></table>`;
 	selected_pub_html += `<table><td style="height:35px"></td></table>`;
 } 
@@ -635,7 +645,7 @@ for (var i = 0; i < about.length; i++) {
 // News
 var news_html = "";
 for (var i = 0; i < news.length; i++) {  
-	news_html += `<p><li><b>[${news[i].date}]</b> ${news[i].content}</li></p>`;
+	news_html += `<p><li>[${news[i].date}] ${news[i].content}</li></p>`;
 } 
 
 // Education
@@ -774,7 +784,7 @@ for (var i = 0; i < about_zh.length; i++) {
 // 新闻
 var news_html_zh = "";
 for (var i = 0; i < news.length; i++) {  
-	news_html_zh += `<p><li><b>[${news[i].date}]</b> ${news[i].content_zh}</li></p>`;
+	news_html_zh += `<p><li>[${news[i].date}] ${news[i].content_zh}</li></p>`;
 } 
 
 // 教育信息
@@ -863,7 +873,7 @@ var img_html_m = `<img id="myPicture" src=${me.img} style="float:center; border-
 // News
 var news_html_m = "";
 for (var i = 0; i < news.length; i++) {  
-	news_html_m += `<p><b>[${news[i].date}]</b> ${news[i].content}</p>`;
+	news_html_m += `<p>[${news[i].date}] ${news[i].content}</p>`;
 }
 
 // Selected Publications
@@ -975,7 +985,7 @@ var copyright_html_m = `<font size=6 style="color: #BBBBBB">Copyright &copy ${la
 // 新闻
 var news_html_m_zh = "";
 for (var i = 0; i < news.length; i++) {  
-	news_html_m_zh += `<p><b>[${news[i].date}]</b> ${news[i].content_zh}</p>`;
+	news_html_m_zh += `<p>[${news[i].date}] ${news[i].content_zh}</p>`;
 }
 
 // 精选论文
