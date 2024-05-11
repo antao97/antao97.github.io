@@ -573,8 +573,8 @@ var contact = [
 
 // 版权
 var last_update = {
-	month: "Feb",
-	month_zh: "2",
+	month: "May",
+	month_zh: "5",
 	year: "2024",
 };
 
