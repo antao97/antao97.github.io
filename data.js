@@ -56,13 +56,13 @@ var me = {
 	name: "An Tao", 
 	name_zh: "陶安", 
 	img: "image/An_Tao.jpg",
-	job: "Ph.D. Student",
-	job_zh: "博士研究生",
-	institute: "Tsinghua University",
-	institute_zh: "清华大学",
-	email: "ta19@mails.tsinghua.edu.cn",
-	address: "Room 624, Central Main building, Tsinghua University, Beijing",
-	address_zh: "清华大学中央主楼624",
+	job: "Postdoctoral Research Fellow",
+	job_zh: "博士后研究员",
+	institute: "Nanyang Technological University",
+	institute_zh: "新加坡南洋理工大学",
+	email: "an.tao@ntu.edu.sg",
+	address: "Centre for Advanced Robotics Technology Innovation (CARTIN), Singapore 639798",
+	address_zh: "新加坡南洋理工大学CARTIN实验室，邮编：639798",
 	is_me: "Yes",
 	icon: "image/icon.jpg"
 };
@@ -116,6 +116,28 @@ var institute = {
 		name: "School of Information Science and Engineering",
 		name_zh: "信息科学与工程学院",
 		link: "http://radio.seu.edu.cn",
+	},
+	cartin: {
+		name: "Centre for Advanced Robotics Technology Innovation",
+		short_name: "CARTIN",
+		name_zh: "先进机器人技术创新中心",
+		link: "https://www.ntu.edu.sg/cartin",
+	},
+	ntu_eee: {
+		name: "School of Electrical and Electronic Engineering",
+		short_name: "School of EEE",
+		name_zh: "电气与电子工程学院",
+		link: "https://www.ntu.edu.sg/eee",
+	},
+	ntu: {
+		name: "Nanyang Technological University",
+		short_name: "NTU",
+		name_zh: "南洋理工大学",
+		img: "image/ntu.webp",
+		link: "https://www.ntu.edu.sg/",
+		link_zh: "https://www.ntu.edu.sg/main/cn",
+		nation: "Singapore",
+		nation_zh: "新加坡",
 	}
 };
 
@@ -170,6 +192,16 @@ var person = {
 		name_zh: "彭成伦",
 		link: "http://palm.seu.edu.cn/members.html"
 	},
+	tan_yap_peng: {
+		name: "Tan Yap Peng",
+		name_zh: "Tan Yap Peng",
+		link: "https://personal.ntu.edu.sg/eyptan/"
+	},
+	ziwei_wang: {
+		name: "Ziwei Wang",
+		name_zh: "王子为",
+		link: "https://ziweiwangthu.github.io/"
+	}
 };
 
 // 使用到的期刊和会议信息
@@ -383,29 +415,38 @@ var selected_pub = [
 // 个人介绍
 var about = [
 	[
-		`I am a fifth year Ph.D. candidate in ${href(institute.ivg)} of the ${href(institute.auto)} at ${href(institute.tsinghua)},`,
-		`advised by Prof. ${href(person.jie_zhou)}, Prof. ${href(person.jiwen_lu)}, and Prof. ${href(person.yueqi_duan)}.`,
-		`Prior to joining Tsinghua, I got my B.Eng. from ${href(institute.seu)}.`
+		`I'm currently working as a postdoctoral research fellow in the ${href(institute.cartin)} (CARTIN) lab in ${href(institute.ntu)} (NTU),`,
+		`supervised by Prof. ${href(person.tan_yap_peng)} and Prof. ${href(person.ziwei_wang)}.`,
+		`Before joining NTU, I got my Ph.D. degree from ${href(institute.tsinghua)} and B.Eng. degree from ${href(institute.seu)}.`,
 	],
 	[
-		`My research focuses on 3D computer vision, mainly 3D scene understanding.`
+		`My current research focuses on robotics, especially in robot manipulation policy learning.`,
+		`During my Ph.D. career, I did researches on 3D point clouds.`
 	]
 ];
 var about_zh = [
 	[
-		`我是一名${href_zh(institute.tsinghua)}${href_zh(institute.auto)}${href_zh(institute.ivg)}的五年级博士生，`,
-		`指导老师是${href_zh(person.jie_zhou)}教授、${href_zh(person.jiwen_lu)}副教授和${href_zh(person.yueqi_duan)}助理教授。`,
-		`在此之前，我本科就读于${href_zh(institute.seu)}的${href_zh(institute.radio)}。`
+		`我目前在新加坡${href_zh(institute.ntu)}的${href_zh(institute.cartin)}从事博士后工作，`,
+		`研究导师是${href_zh(person.tan_yap_peng)}教授和${href_zh(person.ziwei_wang)}助理教授。`,
+		`在此之前，我在${href_zh(institute.tsinghua)}${href_zh(institute.auto)}取得博士学位，`,
+		`导师是${href_zh(person.jie_zhou)}教授、${href_zh(person.jiwen_lu)}副教授和${href_zh(person.yueqi_duan)}助理教授。`,
+		`我本科就读于${href_zh(institute.seu)}的${href_zh(institute.radio)}。`
 	],
 	[
-		`我的研究专注于三维计算机视觉，尤其是三维场景理解。`
+		`我目前的研究专注于机器人领域，特别是机器人操控策略学习。`,
+		`我博士期间开展了三维点云方面的研究。`
 	]
 ];
 
 // 新闻
-var break_news = "I'm looking for a postdoctoral position. If you are interested in my researches, feel free to contact me!"
-var break_news_zh = "我正在寻找博士后职位，如果您对我的研究感兴趣请随时与我联系！"
+var break_news = "I'm looking for a relevant postdoctoral position. If you are interested in my researches, feel free to contact me!"
+var break_news_zh = "我正在寻找相关博士后职位，如果您对我的研究感兴趣请随时与我联系！"
 var news = [
+	{
+		date: "2024.10.07",
+		content: `I join the ${href(institute.cartin, institute.cartin.short_name)} lab in ${href(institute.ntu, institute.ntu.short_name)} as a postdoctoral research fellow!`,
+		content_zh: `我加入新加坡${href_zh(institute.ntu)}的${href_zh(institute.cartin)}成为了一名博士后研究员！`
+	},
 	{
 		date: "2024.01.04",
 		content: `Our ${href(paper.lgm, paper.lgm.short_name)} is accepted by TCSVT!`,
@@ -438,8 +479,20 @@ var news = [
 	}
 ];
 
-// 教育信息
-var education = [
+// 经历
+var experience = [
+	{
+		institute: institute.ntu,
+		department: institute.ntu_eee,
+		job: "Postdoctoral Research Fellow",
+		job_zh: "博士后研究员",
+		time: {
+			start: {
+				year: "2024",
+				month: "10",
+			},
+		}
+  },
 	{
 		institute: institute.tsinghua,
 		department: institute.auto,
@@ -450,6 +503,10 @@ var education = [
 				year: "2019",
 				month: "8",
 			},
+			end: {
+				year: "2024",
+				month: "6",
+			}
 		}
   },
 	{
@@ -648,19 +705,19 @@ for (var i = 0; i < news.length; i++) {
 	news_html += `<p><li>[${news[i].date}] ${news[i].content}</li></p>`;
 } 
 
-// Education
-var education_html = "";
-for (var i = 0; i < education.length; i++) {  
-	education_html += `<table><tbody><tr><td style="width:20px"></td>`;
-	education_html += `<td style="width:110px; height:110px" valign="middle"><a href=${education[i].institute.link}><img src=${education[i].institute.img} height="100px"></a></td>`;
-	education_html += `<td style="width:30px"></td>`;
-	education_html += `<td valign="middle"><div>${education[i].job}, ${education[i].department.name}, ${education[i].institute.name}, ${education[i].institute.nation}.<br>`;
-	if (typeof education[i].time.end === "undefined") {
-		education_html += `${education[i].time.start.year}.${education[i].time.start.month} - Present`;
+// Experience
+var experience_html = "";
+for (var i = 0; i < experience.length; i++) {  
+	experience_html += `<table><tbody><tr><td style="width:20px"></td>`;
+	// experience_html += `<td style="width:110px; height:110px"; horizontal-align: middle;"><a href=${experience[i].institute.link}><img src=${experience[i].institute.img} height="100px"></a></td>`;
+	// experience_html += `<td style="width:30px"></td>`;
+	experience_html += `<td horizontal-align: middle;"><div>${experience[i].job}<br>${experience[i].department.name}, ${experience[i].institute.name}, ${experience[i].institute.nation}.<br>`;
+	if (typeof experience[i].time.end === "undefined") {
+		experience_html += `${experience[i].time.start.year}.${experience[i].time.start.month} - Present`;
 	}else{
-		education_html += `${education[i].time.start.year}.${education[i].time.start.month} - ${education[i].time.end.year}.${education[i].time.end.month}`;
+		experience_html += `${experience[i].time.start.year}.${experience[i].time.start.month} - ${experience[i].time.end.year}.${experience[i].time.end.month}`;
 	}
-	education_html += `</div></td></tr></tbody></table><br>`;
+	experience_html += `</div></td></tr></tbody></table><br>`;
 } 
 
 // Hornors
@@ -787,19 +844,19 @@ for (var i = 0; i < news.length; i++) {
 	news_html_zh += `<p><li>[${news[i].date}] ${news[i].content_zh}</li></p>`;
 } 
 
-// 教育信息
-var education_html_zh = "";
-for (var i = 0; i < education.length; i++) {  
-	education_html_zh += `<table><tbody><tr><td style="width:20px"></td>`;
-	education_html_zh += `<td style="width:110px; height:110px" valign="middle"><a href=${education[i].institute.link}><img src=${education[i].institute.img} height="100px"></a></td>`;
-	education_html_zh += `<td style="width:30px"></td>`;
-	education_html_zh += `<td valign="middle"><div>${education[i].job_zh}，${education[i].department.name_zh}，${education[i].institute.name_zh}<br>`;
-	if (typeof education[i].time.end === "undefined") {
-		education_html_zh += `${education[i].time.start.year}年${education[i].time.start.month}月 - 现在`;
+// 经历
+var experience_html_zh = "";
+for (var i = 0; i < experience.length; i++) {  
+	experience_html_zh += `<table><tbody><tr><td style="width:20px"></td>`;
+	// experience_html_zh += `<td style="width:110px; height:110px" valign="middle"><a href=${experience[i].institute.link}><img src=${experience[i].institute.img} height="100px"></a></td>`;
+	// experience_html_zh += `<td style="width:30px"></td>`;
+	experience_html_zh += `<td valign="middle"><div>${experience[i].job_zh}，${experience[i].department.name_zh}，${experience[i].institute.name_zh}<br>`;
+	if (typeof experience[i].time.end === "undefined") {
+		experience_html_zh += `${experience[i].time.start.year}年${experience[i].time.start.month}月 - 现在`;
 	}else{
-		education_html_zh += `${education[i].time.start.year}年${education[i].time.start.month}月 - ${education[i].time.end.year}年${education[i].time.end.month}月`;
+		experience_html_zh += `${experience[i].time.start.year}年${experience[i].time.start.month}月 - ${experience[i].time.end.year}年${experience[i].time.end.month}月`;
 	}
-	education_html_zh += `</div></td></tr></tbody></table><br>`;
+	experience_html_zh += `</div></td></tr></tbody></table><br>`;
 } 
 
 // 荣誉
@@ -902,30 +959,30 @@ for (var i = 0; i < selected_pub.length; i++) {
 	selected_pub_html_m += `<br><br>`;
 } 
 
-// Education
-var education_icon_html_m = "";
-education_icon_html_m += `<table><tbody><tr><td style="width:30px"></td>`;
-for (var i = 0; i < education.length; i++) {  
-	education_icon_html_m += `<td style="width:200px; height:200px" valign="middle">`;
-	education_icon_html_m += `<a href=${education[i].institute.link}><img src=${education[i].institute.img} height="200px"></a>`;
-	education_icon_html_m += `</td>`;
-	if (i < (education.length-1)) {
-		education_icon_html_m += `<td style="width:50px"></td>`;
-	}
-}
-education_icon_html_m += `</tr></tbody></table><br>`;
+// Experience
+var experience_icon_html_m = "";
+experience_icon_html_m += `<table><tbody><tr><td style="width:30px"></td>`;
+// for (var i = 0; i < experience.length; i++) {
+// 	// experience_icon_html_m += `<td style="width:200px; height:200px" valign="middle">`;
+// 	// experience_icon_html_m += `<a href=${experience[i].institute.link}><img src=${experience[i].institute.img} height="200px"></a>`;
+// 	// experience_icon_html_m += `</td>`;
+// 	if (i < (experience.length-1)) {
+// 		experience_icon_html_m += `<td style="width:50px"></td>`;
+// 	}
+// }
+// experience_icon_html_m += `</tr></tbody></table><br>`;
 
-var education_html_m = "";
-education_html_m += `<table><tbody><tr><td style="width:30px"></td>`;
-for (var i = 0; i < education.length; i++) {  
-	education_html_m += `${education[i].job}<br>${education[i].department.name}<br>${education[i].institute.name}, ${education[i].institute.nation}.<br>`;
-	if (typeof education[i].time.end === "undefined") {
-		education_html_m += `${education[i].time.start.year}.${education[i].time.start.month} - Present<br>`;
+var experience_html_m = "";
+experience_html_m += `<table><tbody><tr><td style="width:30px"></td>`;
+for (var i = 0; i < experience.length; i++) {  
+	experience_html_m += `${experience[i].job}<br>${experience[i].department.name}<br>${experience[i].institute.name}, ${experience[i].institute.nation}.<br>`;
+	if (typeof experience[i].time.end === "undefined") {
+		experience_html_m += `${experience[i].time.start.year}.${experience[i].time.start.month} - Present<br>`;
 	}else{
-		education_html_m += `${education[i].time.start.year}.${education[i].time.start.month} - ${education[i].time.end.year}.${education[i].time.end.month}`;
+		experience_html_m += `${experience[i].time.start.year}.${experience[i].time.start.month} - ${experience[i].time.end.year}.${experience[i].time.end.month}`;
 	}
-	if (i < (education.length-1)) {
-		education_html_m += `<table><td style="height:40px"></td></table>`;
+	if (i < (experience.length-1)) {
+		experience_html_m += `<table><td style="height:40px"></td></table>`;
 	}
 }
 
@@ -1014,30 +1071,30 @@ for (var i = 0; i < selected_pub.length; i++) {
 	selected_pub_html_m_zh += `<br><br>`;
 } 
 
-// 教育经历
-var education_icon_html_m_zh = "";
-education_icon_html_m_zh += `<table><tbody><tr><td style="width:30px"></td>`;
-for (var i = 0; i < education.length; i++) {  
-	education_icon_html_m_zh += `<td style="width:200px; height:200px" valign="middle">`;
-	education_icon_html_m_zh += `<a href=${education[i].institute.link_zh}><img src=${education[i].institute.img} height="200px"></a>`;
-	education_icon_html_m_zh += `</td>`;
-	if (i < (education.length-1)) {
-		education_icon_html_m_zh += `<td style="width:50px"></td>`;
-	}
-}
-education_icon_html_m_zh += `</tr></tbody></table><br>`;
+// 经历
+var experience_icon_html_m_zh = "";
+experience_icon_html_m_zh += `<table><tbody><tr><td style="width:30px"></td>`;
+// for (var i = 0; i < experience.length; i++) {
+// 	// experience_icon_html_m_zh += `<td style="width:200px; height:200px" valign="middle">`;
+// 	// experience_icon_html_m_zh += `<a href=${experience[i].institute.link_zh}><img src=${experience[i].institute.img} height="200px"></a>`;
+// 	// experience_icon_html_m_zh += `</td>`;
+// 	// if (i < (experience.length-1)) {
+// 	// 	experience_icon_html_m_zh += `<td style="width:50px"></td>`;
+// 	// }
+// }
+// experience_icon_html_m_zh += `</tr></tbody></table><br>`;
 
-var education_html_m_zh = "";
-education_html_m_zh += `<table><tbody><tr><td style="width:30px"></td>`;
-for (var i = 0; i < education.length; i++) {  
-	education_html_m_zh += `${education[i].job_zh}<br>${education[i].department.name_zh}，${education[i].institute.name_zh}<br>`;
-	if (typeof education[i].time.end === "undefined") {
-		education_html_m_zh += `${education[i].time.start.year}年${education[i].time.start.month}月 - 现在<br>`;
+var experience_html_m_zh = "";
+experience_html_m_zh += `<table><tbody><tr><td style="width:30px"></td>`;
+for (var i = 0; i < experience.length; i++) {  
+	experience_html_m_zh += `${experience[i].job_zh}<br>${experience[i].department.name_zh}，${experience[i].institute.name_zh}<br>`;
+	if (typeof experience[i].time.end === "undefined") {
+		experience_html_m_zh += `${experience[i].time.start.year}年${experience[i].time.start.month}月 - 现在<br>`;
 	}else{
-		education_html_m_zh += `${education[i].time.start.year}年${education[i].time.start.month}月 - ${education[i].time.end.year}年${education[i].time.end.month}月`;
+		experience_html_m_zh += `${experience[i].time.start.year}年${experience[i].time.start.month}月 - ${experience[i].time.end.year}年${experience[i].time.end.month}月`;
 	}
-	if (i < (education.length-1)) {
-		education_html_m_zh += `<table><td style="height:40px"></td></table>`;
+	if (i < (experience.length-1)) {
+		experience_html_m_zh += `<table><td style="height:40px"></td></table>`;
 	}
 }
 
