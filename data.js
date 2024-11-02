@@ -630,8 +630,8 @@ var contact = [
 
 // 版权
 var last_update = {
-	month: "May",
-	month_zh: "5",
+	month: "Nov",
+	month_zh: "11",
 	year: "2024",
 };
 
