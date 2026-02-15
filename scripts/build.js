@@ -51,7 +51,8 @@ for (const [id, p] of Object.entries(paper)) {
     ...p,
     author: authors,
     pub: pubRef,
-    type: p.pub_type // map pub_type to type
+    type: p.pub_type, // map pub_type to type
+    author_display_in_chinese: p.author_display_in_chinese !== undefined ? p.author_display_in_chinese : true
   };
   delete paperProcessed[id].author_ids;
   delete paperProcessed[id].pub_type;
@@ -116,10 +117,20 @@ lines.push(`function pub(paper, zh) {
   str += \`<table><td style="width:15px"></td><td valign="middle"><div>\`;
   str += \`<b>\${paper.name}</b><br>\`;
   for (var i = 0; i < paper.author.length; i++) {
-    if (paper.author[i].is_me === "Yes") {
-      str += \`<u>\${paper.author[i].name}</u>\`;
-    }else{
-      str += \`\${href(paper.author[i])}\`;
+    var author = paper.author[i];
+    var displayChinese = zh === "Yes" && paper.author_display_in_chinese !== false;
+    if (author.is_me === "Yes") {
+      if (displayChinese) {
+        str += \`<u>\${author.name_zh}</u>\`;
+      } else {
+        str += \`<u>\${author.name}</u>\`;
+      }
+    } else {
+      if (displayChinese) {
+        str += \`\${href_zh(author)}\`;
+      } else {
+        str += \`\${href(author)}\`;
+      }
     }
     if (i != (paper.author.length-1)){
       str += ", ";
@@ -127,9 +138,13 @@ lines.push(`function pub(paper, zh) {
   }
   str += \`<br>\`;
   if (paper.pub.name === "arXiv"){
-    str += \`<i>\${paper.pub.name}, \${selected_pub[i].year}</i><br>\`;
+    str += \`<i>\${paper.pub.name}, \${paper.year}</i><br>\`;
   }else{
-    str += \`<i>\${paper.pub.name} (<b>\${paper.pub.short_name}</b>), \${paper.year}</i><br>\`;
+    if (paper.pub.short_name) {
+      str += \`<i>\${paper.pub.name} (<b>\${paper.pub.short_name}</b>), \${paper.year}</i><br>\`;
+    } else {
+      str += \`<i>\${paper.pub.name}, \${paper.year}</i><br>\`;
+    }
   }
   for (var i = 0; i < paper.extra_link.length; i++) {
     if (zh === "Yes") {
@@ -183,6 +198,10 @@ for (const [id, p] of Object.entries(paperProcessed)) {
   if (p.intro) {
     paperCode += `\t\tintro: ${JSON.stringify(p.intro, null, '\t')},\n`;
     paperCode += `\t\tintro_zh: ${JSON.stringify(p.intro_zh, null, '\t')},\n`;
+  }
+  // Add author_display_in_chinese field
+  if (p.author_display_in_chinese !== undefined) {
+    paperCode += `\t\tauthor_display_in_chinese: ${p.author_display_in_chinese},\n`;
   }
   // Remove trailing comma
   paperCode = paperCode.replace(/,\n$/, '\n');

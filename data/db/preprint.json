@@ -2,5 +2,9 @@
   "arxiv": {
     "name": "arXiv",
     "name_zh": "预印"
+  },
+  "github": {
+    "name": "GitHub",
+    "name_zh": "GitHub项目"
   }
 }

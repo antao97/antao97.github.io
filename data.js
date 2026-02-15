@@ -23,10 +23,20 @@ function pub(paper, zh) {
   str += `<table><td style="width:15px"></td><td valign="middle"><div>`;
   str += `<b>${paper.name}</b><br>`;
   for (var i = 0; i < paper.author.length; i++) {
-    if (paper.author[i].is_me === "Yes") {
-      str += `<u>${paper.author[i].name}</u>`;
-    }else{
-      str += `${href(paper.author[i])}`;
+    var author = paper.author[i];
+    var displayChinese = zh === "Yes" && paper.author_display_in_chinese !== false;
+    if (author.is_me === "Yes") {
+      if (displayChinese) {
+        str += `<u>${author.name_zh}</u>`;
+      } else {
+        str += `<u>${author.name}</u>`;
+      }
+    } else {
+      if (displayChinese) {
+        str += `${href_zh(author)}`;
+      } else {
+        str += `${href(author)}`;
+      }
     }
     if (i != (paper.author.length-1)){
       str += ", ";
@@ -34,9 +44,13 @@ function pub(paper, zh) {
   }
   str += `<br>`;
   if (paper.pub.name === "arXiv"){
-    str += `<i>${paper.pub.name}, ${selected_pub[i].year}</i><br>`;
+    str += `<i>${paper.pub.name}, ${paper.year}</i><br>`;
   }else{
-    str += `<i>${paper.pub.name} (<b>${paper.pub.short_name}</b>), ${paper.year}</i><br>`;
+    if (paper.pub.short_name) {
+      str += `<i>${paper.pub.name} (<b>${paper.pub.short_name}</b>), ${paper.year}</i><br>`;
+    } else {
+      str += `<i>${paper.pub.name}, ${paper.year}</i><br>`;
+    }
   }
   for (var i = 0; i < paper.extra_link.length; i++) {
     if (zh === "Yes") {
@@ -227,6 +241,10 @@ var preprint = {
 	"arxiv": {
 		"name": "arXiv",
 		"name_zh": "预印"
+	},
+	"github": {
+		"name": "GitHub",
+		"name_zh": "GitHub项目"
 	}
 };
 
@@ -317,7 +335,8 @@ var paper = {
 		intro_zh: [
 	"目前的对抗攻击方法默认网络在攻击前后网络结构不会发生变化，但是此假设并不适用于自适应神经网络，自适应神经网络会根据不同的输入数据自适应地关闭一些不重要的运算单元，导致当下的攻击扰动对攻击后的新网络结构可能无效。",
 	"我们第一个发现了自适应神经网络在对抗攻击中的攻击滞后问题，对二维图像和三维点云上代表性的自适应神经网络进行了研究，其中三维稀疏卷积网络在大型三维点云处理中占据了重要地位，而我们的方法揭露了三维稀疏卷积网络面对对抗攻击的高脆弱性。"
-]
+],
+		author_display_in_chinese: true
 	},
 	seggroup: {
 		short_name: "SegGroup",
@@ -358,7 +377,8 @@ var paper = {
 		intro_zh: [
 	"在点云实例分割中，为了充分利用实例位置信息的优势，本文设计了一个弱监督点云分割算法，仅需要对每个实例中一个点进行标注以指示其位置，并将对点的标注信息扩展至其所属过分割块以增大标注量。",
 	"我们过分割块级标签监督的方法取得了与全监督方法相比拟的性能，同时超越了其他弱监督方法。"
-]
+],
+		author_display_in_chinese: true
 	},
 	le: {
 		name: "Label Enhancement for Label Distribution Learning",
@@ -378,7 +398,8 @@ var paper = {
 		"name_zh": "幻灯片",
 		"link": "../slides/IJCAI18_Label Enhancement for Label Distribution Learning.pdf"
 	}
-]
+],
+		author_display_in_chinese: true
 	},
 	lemlp: {
 		name: "Label Embedding Based on Multi-Scale Locality Preservation",
@@ -398,7 +419,8 @@ var paper = {
 		"name_zh": "幻灯片",
 		"link": "../slides/IJCAI18_Label Embedding Based on Multi-Scale Locality Preservation.pdf"
 	}
-]
+],
+		author_display_in_chinese: true
 	},
 	my_le: {
 		name: "Labeling Information Enhancement for Multi-label Learning with Low-Rank Subspace",
@@ -413,13 +435,54 @@ var paper = {
 		"name_zh": "论文",
 		"link": "https://link.springer.com/chapter/10.1007/978-3-319-97304-3_51"
 	}
-]
+],
+		author_display_in_chinese: true
+	},
+	shcmthesis: {
+		short_name: "SHCM Thesis Template",
+		name: "ShcmThesis: Shanghai Conservatory of Music LaTeX Thesis Template",
+		link: "https://github.com/antao97/shcmthesis",
+		img: "image/shcmthesis.png",
+		author: [me],
+		pub: preprint.github,
+		type: "preprint",
+		year: 2024,
+		extra_link: [
+	{
+		"name": "GitHub",
+		"name_zh": "GitHub仓库",
+		"link": "https://github.com/antao97/shcmthesis"
+	},
+	{
+		"name": "Overleaf",
+		"name_zh": "Overleaf模板",
+		"link": "https://www.overleaf.com/latex/templates/shcmthesis-shang-hai-yin-le-xue-yuan-xue-wei-lun-wen-latex-mo-ban/nmwwrrnkyyxx"
+	},
+	{
+		"name": "Zhihu",
+		"name_zh": "知乎文档",
+		"link": "https://zhuanlan.zhihu.com/p/14553247725"
+	}
+],
+		intro: [
+	"ShcmThesis is a LaTeX thesis template specifically designed for Shanghai Conservatory of Music (SHCM).",
+	"This template supports bachelor's, master's, and doctoral theses, providing a standardized format for academic writing at SHCM.",
+	"Based on the Tsinghua University thesis template (ThuThesis), it has been adapted to meet SHCM's specific formatting requirements and guidelines.",
+	"The template simplifies the thesis writing process, ensuring compliance with institutional standards while maintaining the flexibility and quality of LaTeX typesetting."
+],
+		intro_zh: [
+	"ShcmThesis是专门为上海音乐学院设计的LaTeX学位论文模板。",
+	"该模板支持本科综合论文训练、硕士论文和博士论文，为上海音乐学院的学术写作提供标准化格式。",
+	"基于清华大学学位论文模板（ThuThesis）开发，根据上海音乐学院的格式要求和规范进行了适配修改。",
+	"模板简化了论文写作过程，在保持LaTeX排版灵活性和质量的同时，确保符合学院的标准规范。"
+],
+		author_display_in_chinese: true
 	},
 };
 
 // 精选文章信息
 
-var selected_pub = [paper.lgm, paper.seggroup];
+var selected_pub = [paper.shcmthesis];
 
 // 个人介绍
 
@@ -700,7 +763,11 @@ for (var i = 0; i < selected_pub.length; i++) {
 	if (selected_pub[i].pub.name === "arXiv"){
 		selected_pub_html += `<i>${selected_pub[i].pub.name}, ${selected_pub[i].year}</i><br>`;
 	}else{
-		selected_pub_html += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>), ${selected_pub[i].year}</i><br>`;
+		if (selected_pub[i].pub.short_name) {
+			selected_pub_html += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>), ${selected_pub[i].year}</i><br>`;
+		} else {
+			selected_pub_html += `<i>${selected_pub[i].pub.name}, ${selected_pub[i].year}</i><br>`;
+		}
 	}
 	selected_pub_html += `<font size=3>`;
 	for (var j = 0; j < selected_pub[i].extra_link.length; j++) {  
@@ -825,11 +892,21 @@ for (var i = 0; i < selected_pub.length; i++) {
 		`<td valign="middle"><div>`,
 		`<b>${selected_pub[i].name}</b><br>`,
 	].join("");
-	for (var j = 0; j < selected_pub[i].author.length; j++) {  
-		if (selected_pub[i].author[j].is_me === "Yes") {  
-			selected_pub_html_zh += `<u>${selected_pub[i].author[j].name}</u>`;
-		}else{
-			selected_pub_html_zh += `${href(selected_pub[i].author[j])}`;
+	for (var j = 0; j < selected_pub[i].author.length; j++) {
+		var author = selected_pub[i].author[j];
+		var displayChinese = selected_pub[i].author_display_in_chinese !== false;
+		if (author.is_me === "Yes") {
+			if (displayChinese) {
+				selected_pub_html_zh += `<u>${author.name_zh}</u>`;
+			} else {
+				selected_pub_html_zh += `<u>${author.name}</u>`;
+			}
+		} else {
+			if (displayChinese) {
+				selected_pub_html_zh += `${href_zh(author)}`;
+			} else {
+				selected_pub_html_zh += `${href_zh(author, author.name)}`;
+			}
 		}
 		if (j != (selected_pub[i].author.length-1)){
 			selected_pub_html_zh += ", ";
@@ -839,7 +916,11 @@ for (var i = 0; i < selected_pub.length; i++) {
 	if (selected_pub[i].pub.name === "arXiv"){
 		selected_pub_html_zh += `<i>${selected_pub[i].pub.name_zh}, ${selected_pub[i].year}</i><br>`;
 	}else{
-		selected_pub_html_zh += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>), ${selected_pub[i].year}</i><br>`;
+		if (selected_pub[i].pub.short_name) {
+			selected_pub_html_zh += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>), ${selected_pub[i].year}</i><br>`;
+		} else {
+			selected_pub_html_zh += `<i>${selected_pub[i].pub.name}, ${selected_pub[i].year}</i><br>`;
+		}
 	}
 	selected_pub_html_zh += `<font size=3>`;
 	for (var j = 0; j < selected_pub[i].extra_link.length; j++) {  
@@ -971,7 +1052,11 @@ for (var i = 0; i < selected_pub.length; i++) {
 	if (selected_pub[i].pub.name === "arXiv"){
 		selected_pub_html_m += `<i>${selected_pub[i].pub.name}, ${selected_pub[i].year}</i><br>`;
 	}else{
-		selected_pub_html_m += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>), ${selected_pub[i].year}</i><br>`;
+		if (selected_pub[i].pub.short_name) {
+			selected_pub_html_m += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>), ${selected_pub[i].year}</i><br>`;
+		} else {
+			selected_pub_html_m += `<i>${selected_pub[i].pub.name}, ${selected_pub[i].year}</i><br>`;
+		}
 	}
 	for (var j = 0; j < selected_pub[i].extra_link.length; j++) {  
 		selected_pub_html_m += `[${href(selected_pub[i].extra_link[j])}] `;
@@ -1069,11 +1154,21 @@ for (var i = 0; i < news.length; i++) {
 var selected_pub_html_m_zh = "";
 for (var i = 0; i < selected_pub.length; i++) {  
 	selected_pub_html_m_zh += `<b>${selected_pub[i].name}</b><br>`;
-	for (var j = 0; j < selected_pub[i].author.length; j++) {  
-		if (selected_pub[i].author[j].is_me === "Yes") {  
-			selected_pub_html_m_zh += `<u>${selected_pub[i].author[j].name}</u>`;
-		}else{
-			selected_pub_html_m_zh += `${href(selected_pub[i].author[j])}`;
+	for (var j = 0; j < selected_pub[i].author.length; j++) {
+		var author = selected_pub[i].author[j];
+		var displayChinese = selected_pub[i].author_display_in_chinese !== false;
+		if (author.is_me === "Yes") {
+			if (displayChinese) {
+				selected_pub_html_m_zh += `<u>${author.name_zh}</u>`;
+			} else {
+				selected_pub_html_m_zh += `<u>${author.name}</u>`;
+			}
+		} else {
+			if (displayChinese) {
+				selected_pub_html_m_zh += `${href_zh(author)}`;
+			} else {
+				selected_pub_html_m_zh += `${href_zh(author, author.name)}`;
+			}
 		}
 		if (j != (selected_pub[i].author.length-1)){
 			selected_pub_html_m_zh += ", ";
@@ -1083,7 +1178,11 @@ for (var i = 0; i < selected_pub.length; i++) {
 	if (selected_pub[i].pub.name === "arXiv"){
 		selected_pub_html_m_zh += `<i>${selected_pub[i].pub.name_zh}, ${selected_pub[i].year}</i><br>`;
 	}else{
-		selected_pub_html_m_zh += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>), ${selected_pub[i].year}</i><br>`;
+		if (selected_pub[i].pub.short_name) {
+			selected_pub_html_m_zh += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>), ${selected_pub[i].year}</i><br>`;
+		} else {
+			selected_pub_html_m_zh += `<i>${selected_pub[i].pub.name}, ${selected_pub[i].year}</i><br>`;
+		}
 	}
 	for (var j = 0; j < selected_pub[i].extra_link.length; j++) {  
 		selected_pub_html_m_zh += `[${href_zh(selected_pub[i].extra_link[j])}] `;

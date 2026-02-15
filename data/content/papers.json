@@ -126,5 +126,45 @@
         "link": "https://link.springer.com/chapter/10.1007/978-3-319-97304-3_51"
       }
     ]
+  },
+  "shcmthesis": {
+    "short_name": "SHCM Thesis Template",
+    "name": "ShcmThesis: Shanghai Conservatory of Music LaTeX Thesis Template",
+    "link": "https://github.com/antao97/shcmthesis",
+    "img": "image/shcmthesis.png",
+    "author_ids": ["me"],
+    "pub_type": "preprint",
+    "pub_id": "github",
+    "year": 2024,
+    "author_display_in_chinese": true,
+    "extra_link": [
+      {
+        "name": "GitHub",
+        "name_zh": "GitHub仓库",
+        "link": "https://github.com/antao97/shcmthesis"
+      },
+      {
+        "name": "Overleaf",
+        "name_zh": "Overleaf模板",
+        "link": "https://www.overleaf.com/latex/templates/shcmthesis-shang-hai-yin-le-xue-yuan-xue-wei-lun-wen-latex-mo-ban/nmwwrrnkyyxx"
+      },
+      {
+        "name": "Zhihu",
+        "name_zh": "知乎文档",
+        "link": "https://zhuanlan.zhihu.com/p/14553247725"
+      }
+    ],
+    "intro": [
+      "ShcmThesis is a LaTeX thesis template specifically designed for Shanghai Conservatory of Music (SHCM).",
+      "This template supports bachelor's, master's, and doctoral theses, providing a standardized format for academic writing at SHCM.",
+      "Based on the Tsinghua University thesis template (ThuThesis), it has been adapted to meet SHCM's specific formatting requirements and guidelines.",
+      "The template simplifies the thesis writing process, ensuring compliance with institutional standards while maintaining the flexibility and quality of LaTeX typesetting."
+    ],
+    "intro_zh": [
+      "ShcmThesis是专门为上海音乐学院设计的LaTeX学位论文模板。",
+      "该模板支持本科综合论文训练、硕士论文和博士论文，为上海音乐学院的学术写作提供标准化格式。",
+      "基于清华大学学位论文模板（ThuThesis）开发，根据上海音乐学院的格式要求和规范进行了适配修改。",
+      "模板简化了论文写作过程，在保持LaTeX排版灵活性和质量的同时，确保符合学院的标准规范。"
+    ]
   }
 }
