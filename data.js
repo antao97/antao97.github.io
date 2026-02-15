@@ -446,7 +446,7 @@ var paper = {
 		author: [me],
 		pub: preprint.github,
 		type: "preprint",
-		year: 2024,
+		year: 2025,
 		extra_link: [
 	{
 		"name": "GitHub",
