@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Email",
+    "name_zh": "邮箱",
+    "content": "taoan2008@shcmusic.edu.cn"
+  },
+  {
+    "name": "Address",
+    "name_zh": "地址",
+    "content": "9th Floor, Lingling Road Campus, Shanghai Conservatory of Music, Xuhui District, Shanghai 200031",
+    "content_zh": "上海市徐汇区上海音乐学院零陵路校区九楼，邮编：200031"
+  }
+]

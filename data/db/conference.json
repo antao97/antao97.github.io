@@ -1,0 +1,42 @@
+{
+  "cvpr": {
+    "name": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "short_name": "CVPR"
+  },
+  "iccv": {
+    "name": "IEEE/CVF International Conference on Computer Vision",
+    "short_name": "ICCV"
+  },
+  "eccv": {
+    "name": "European Conference on Computer Vision",
+    "short_name": "ECCV"
+  },
+  "icme": {
+    "name": "IEEE International Conference on Multimedia and Expo",
+    "short_name": "ICME"
+  },
+  "threedv": {
+    "name": "IEEE International Conference on 3D Vision",
+    "short_name": "3DV"
+  },
+  "icip": {
+    "name": "IEEE International Conference on Image Processing",
+    "short_name": "ICIP"
+  },
+  "fg": {
+    "name": "IEEE International Conference on Automatic Face and Gesture Recognition",
+    "short_name": "FG"
+  },
+  "ijcai": {
+    "name": "International Joint Conference on Artificial Intelligence",
+    "short_name": "IJCAI"
+  },
+  "pricai": {
+    "name": "Pacific Rim International Conference on Artificial Intelligence",
+    "short_name": "PRICAI"
+  },
+  "acm_mm": {
+    "name": "ACM Multimedia",
+    "short_name": "ACM MM"
+  }
+}

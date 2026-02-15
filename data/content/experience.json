@@ -1,0 +1,62 @@
+[
+  {
+    "institute_id": "shcmusic",
+    "department_id": "shcmusic",
+    "job": "Postdoctoral Research Fellow",
+    "job_zh": "博士后研究员",
+    "time": {
+      "start": {
+        "year": "2025",
+        "month": "9"
+      }
+    }
+  },
+  {
+    "institute_id": "ntu",
+    "department_id": "ntu_eee",
+    "job": "Postdoctoral Research Fellow",
+    "job_zh": "博士后研究员",
+    "time": {
+      "start": {
+        "year": "2024",
+        "month": "10"
+      },
+      "end": {
+        "year": "2025",
+        "month": "8"
+      }
+    }
+  },
+  {
+    "institute_id": "tsinghua",
+    "department_id": "auto",
+    "job": "Ph.D. Degree",
+    "job_zh": "工学博士",
+    "time": {
+      "start": {
+        "year": "2019",
+        "month": "8"
+      },
+      "end": {
+        "year": "2024",
+        "month": "6"
+      }
+    }
+  },
+  {
+    "institute_id": "seu",
+    "department_id": "radio",
+    "job": "B.Eng. Degree",
+    "job_zh": "工学学士",
+    "time": {
+      "start": {
+        "year": "2015",
+        "month": "8"
+      },
+      "end": {
+        "year": "2019",
+        "month": "6"
+      }
+    }
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Outstanding Graduate of Southeast University",
+    "name_zh": "东南大学优秀本科毕业生",
+    "year": "2019"
+  },
+  {
+    "name": "Merit Student of Southeast University",
+    "name_zh": "东南大学三好学生",
+    "year": ["2016", "2017", "2018"]
+  },
+  {
+    "name": "President Scholarship of Southeast University",
+    "name_zh": "东南大学校长奖学金",
+    "year": "2016"
+  },
+  {
+    "name": "Mayor's Award of Beijing in Technical Innovation",
+    "name_zh": "北京市科技创新市长奖",
+    "year": "2015"
+  },
+  {
+    "name": "First Prize in the Awarding Program for Future Scientists",
+    "name_zh": "第十四届“明天小小科学家”奖励活动一等奖",
+    "year": "2014"
+  }
+]

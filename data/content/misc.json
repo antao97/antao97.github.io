@@ -1,0 +1,19 @@
+{
+  "en": [
+    [
+      "I admire a famous quote from ${href(person.zai_zhang)}: To set conscience for our world, ",
+      "to secure life and fortune for all people, to continue teachings of past sages, and to establish peace for all future generations."
+    ],
+    [
+      "Now I mainly focus on my research and work hard to publish more papers. "
+    ]
+  ],
+  "zh": [
+    [
+      "我很欣赏北宋${href_zh(person.zai_zhang)}的一句名言：为天地立心，为生民立命，为往圣继绝学，为万世开太平。"
+    ],
+    [
+      "我现在主要关注在我的研究上面，希望能早日发表更多论文。"
+    ]
+  ]
+}

@@ -1,562 +1,590 @@
-function href(dict, name) {  
-	if (typeof name === "undefined") {  
-		return `<a href=${dict.link}>${dict.name}</a>`;
-	}else{
-		return `<a href=${dict.link}>${name}</a>`;
-	}
+function href(dict, name) {
+  if (typeof name === "undefined") {
+    return `<a href=${dict.link}>${dict.name}</a>`;
+  }else{
+    return `<a href=${dict.link}>${name}</a>`;
+  }
 };
 
-function href_zh(dict, name) {  
-	var link = dict.link_zh;
-	if (typeof link === "undefined") {
-		link = dict.link;
-	}
-	if (typeof name === "undefined") {  
-		return `<a href=${link}>${dict.name_zh}</a>`;
-	}else{
-		return `<a href=${link}>${name}</a>`;
-	}
+function href_zh(dict, name) {
+  var link = dict.link_zh;
+  if (typeof link === "undefined") {
+    link = dict.link;
+  }
+  if (typeof name === "undefined") {
+    return `<a href=${link}>${dict.name_zh}</a>`;
+  }else{
+    return `<a href=${link}>${name}</a>`;
+  }
 };
 
 function pub(paper, zh) {
-	var str = "";
-	str += `<table><td style="width:15px"></td><td valign="middle"><div>`;
-	str += `<b>${paper.name}</b><br>`;
-	for (var i = 0; i < paper.author.length; i++) {  
-		if (paper.author[i].is_me === "Yes") {  
-			str += `<u>${paper.author[i].name}</u>`;
-		}else{
-			str += `${href(paper.author[i])}`;
-		}
-		if (i != (paper.author.length-1)){
-			str += ", ";
-		}
-	} 
-	str += `<br>`;
-	if (paper.pub.name === "arXiv"){
-		str += `<i>${paper.pub.name}, ${selected_pub[i].year}</i><br>`;
-	}else{
-		str += `<i>${paper.pub.name} (<b>${paper.pub.short_name}</b>), ${paper.year}</i><br>`;
-	}
-	for (var i = 0; i < paper.extra_link.length; i++) {
-		if (zh === "Yes") {
-			str += `[${href_zh(paper.extra_link[i])}] `;
-		}else {
-			str += `[${href(paper.extra_link[i])}] `;
-		}
-		
-	}
-	str += `<br><br>`;
-	str += `</div></td></table><br>`;
-	return str
+  var str = "";
+  str += `<table><td style="width:15px"></td><td valign="middle"><div>`;
+  str += `<b>${paper.name}</b><br>`;
+  for (var i = 0; i < paper.author.length; i++) {
+    if (paper.author[i].is_me === "Yes") {
+      str += `<u>${paper.author[i].name}</u>`;
+    }else{
+      str += `${href(paper.author[i])}`;
+    }
+    if (i != (paper.author.length-1)){
+      str += ", ";
+    }
+  }
+  str += `<br>`;
+  if (paper.pub.name === "arXiv"){
+    str += `<i>${paper.pub.name}, ${selected_pub[i].year}</i><br>`;
+  }else{
+    str += `<i>${paper.pub.name} (<b>${paper.pub.short_name}</b>), ${paper.year}</i><br>`;
+  }
+  for (var i = 0; i < paper.extra_link.length; i++) {
+    if (zh === "Yes") {
+      str += `[${href_zh(paper.extra_link[i])}] `;
+    }else {
+      str += `[${href(paper.extra_link[i])}] `;
+    }
+
+  }
+  str += `<br><br>`;
+  str += `</div></td></table><br>`;
+  return str
 };
 
 // 个人信息
-var me = {  
-	name: "An Tao", 
-	name_zh: "陶安", 
-	img: "image/An_Tao.jpg",
-	job: "Postdoctoral Research Fellow",
-	job_zh: "博士后研究员",
-	institute: "Nanyang Technological University",
-	institute_zh: "新加坡南洋理工大学",
-	email: "an.tao@ntu.edu.sg",
-	address: "Centre for Advanced Robotics Technology Innovation (CARTIN), Singapore 639798",
-	address_zh: "新加坡南洋理工大学CARTIN实验室，邮编：639798",
-	is_me: "Yes",
-	icon: "image/icon.jpg"
+
+var me = {
+	"name": "An Tao",
+	"name_zh": "陶安",
+	"img": "image/An_Tao.jpg",
+	"job": "Postdoctoral Researcher",
+	"job_zh": "博士后",
+	"institute": "Shanghai Conservatory of Music",
+	"institute_zh": "上海音乐学院",
+	"email": "taoan2008@shcmusic.edu.cn",
+	"is_me": "Yes",
+	"icon": "image/icon.jpg"
 };
 
 // 个人链接
+
 var my_link = [
 	{
-		name: "Google Scholar",
-		name_zh: "谷歌学术",
-		link: "https://scholar.google.com/citations?user=0FyWZPMAAAAJ&hl=en",
-		link_zh: "https://scholar.google.com.hk/citations?hl=zh-CN&user=0FyWZPMAAAAJ",
+		"name": "Google Scholar",
+		"name_zh": "谷歌学术",
+		"link": "https://scholar.google.com/citations?user=0FyWZPMAAAAJ&hl=en",
+		"link_zh": "https://scholar.google.com.hk/citations?hl=zh-CN&user=0FyWZPMAAAAJ"
 	},
 	{
-		name: "Github",
-		name_zh: "GitHub代码库",
-		link: "https://github.com/antao97",
+		"name": "Github",
+		"name_zh": "GitHub代码库",
+		"link": "https://github.com/antao97"
 	}
-]; 
+];
 
 // 使用到的机构信息
+
 var institute = {
-	ivg: {
-		name: "i-VisionGroup",
-		name_zh: "IVG视觉组",
-		link: "http://ivg.au.tsinghua.edu.cn/index.php",
+	"ivg": {
+		"name": "i-VisionGroup",
+		"name_zh": "IVG视觉组",
+		"link": "http://ivg.au.tsinghua.edu.cn/index.php"
 	},
-	auto: {
-		name: "Department of Automation",
-		name_zh: "自动化系",
-		link: "http://www.au.tsinghua.edu.cn"
+	"auto": {
+		"name": "Department of Automation",
+		"name_zh": "自动化系",
+		"link": "http://www.au.tsinghua.edu.cn"
 	},
-	tsinghua: {
-		name: "Tsinghua University",
-		name_zh: "清华大学",
-		link: "https://www.tsinghua.edu.cn/publish/thu2018en/index.html",
-		link_zh: "https://www.tsinghua.edu.cn",
-		img: "image/tsinghua.png",
-		nation: "China",
-		nation_zh: "中国"
+	"tsinghua": {
+		"name": "Tsinghua University",
+		"name_zh": "清华大学",
+		"link": "https://www.tsinghua.edu.cn/publish/thu2018en/index.html",
+		"link_zh": "https://www.tsinghua.edu.cn",
+		"img": "image/tsinghua.png",
+		"nation": "China",
+		"nation_zh": "中国"
 	},
-	seu: {
-		name: "Southeast University",
-		name_zh: "东南大学",
-		link: "http://www.seu.edu.cn/english/main.html",
-		link_zh: "http://www.seu.edu.cn",
-		img: "image/seu.jpg",
-		nation: "China",
-		nation_zh: "中国"
+	"seu": {
+		"name": "Southeast University",
+		"name_zh": "东南大学",
+		"link": "http://www.seu.edu.cn/english/main.html",
+		"link_zh": "http://www.seu.edu.cn",
+		"img": "image/seu.jpg",
+		"nation": "China",
+		"nation_zh": "中国"
 	},
-	radio: {
-		name: "School of Information Science and Engineering",
-		name_zh: "信息科学与工程学院",
-		link: "http://radio.seu.edu.cn",
+	"radio": {
+		"name": "School of Information Science and Engineering",
+		"name_zh": "信息科学与工程学院",
+		"link": "http://radio.seu.edu.cn"
 	},
-	cartin: {
-		name: "Centre for Advanced Robotics Technology Innovation",
-		short_name: "CARTIN",
-		name_zh: "先进机器人技术创新中心",
-		link: "https://www.ntu.edu.sg/cartin",
+	"cartin": {
+		"name": "Centre for Advanced Robotics Technology Innovation",
+		"short_name": "CARTIN",
+		"name_zh": "先进机器人技术创新中心",
+		"link": "https://www.ntu.edu.sg/cartin"
 	},
-	ntu_eee: {
-		name: "School of Electrical and Electronic Engineering",
-		short_name: "School of EEE",
-		name_zh: "电气与电子工程学院",
-		link: "https://www.ntu.edu.sg/eee",
+	"ntu_eee": {
+		"name": "School of Electrical and Electronic Engineering",
+		"short_name": "School of EEE",
+		"name_zh": "电气与电子工程学院",
+		"link": "https://www.ntu.edu.sg/eee"
 	},
-	ntu: {
-		name: "Nanyang Technological University",
-		short_name: "NTU",
-		name_zh: "南洋理工大学",
-		img: "image/ntu.webp",
-		link: "https://www.ntu.edu.sg/",
-		link_zh: "https://www.ntu.edu.sg/main/cn",
-		nation: "Singapore",
-		nation_zh: "新加坡",
+	"ntu": {
+		"name": "Nanyang Technological University",
+		"short_name": "NTU",
+		"name_zh": "南洋理工大学",
+		"img": "image/ntu.webp",
+		"link": "https://www.ntu.edu.sg/",
+		"link_zh": "https://www.ntu.edu.sg/main/cn",
+		"nation": "Singapore",
+		"nation_zh": "新加坡"
+	},
+	"shcmusic": {
+		"name": "Shanghai Conservatory of Music",
+		"short_name": "SHCM",
+		"name_zh": "上海音乐学院",
+		"link": "https://www.shcmusic.edu.cn",
+		"link_zh": "https://www.shcmusic.edu.cn",
+		"nation": "China",
+		"nation_zh": "中国"
 	}
 };
 
 // 使用到的人物信息
+
 var person = {
-	yueqi_duan: {
-		name: "Yueqi Duan",
-		name_zh: "段岳圻",
-		link: "https://duanyueqi.github.io/",
-		link_zh: "http://web.ee.tsinghua.edu.cn/duanyueqi/zh_CN/index.htm"
+	"yueqi_duan": {
+		"name": "Yueqi Duan",
+		"name_zh": "段岳圻",
+		"link": "https://duanyueqi.github.io/",
+		"link_zh": "http://web.ee.tsinghua.edu.cn/duanyueqi/zh_CN/index.htm"
 	},
-	jiwen_lu: {
-		name: "Jiwen Lu",
-		name_zh: "鲁继文",
-		link: "http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/",
-		link_zh: "https://www.au.tsinghua.edu.cn/info/1078/2330.htm"
+	"jiwen_lu": {
+		"name": "Jiwen Lu",
+		"name_zh": "鲁继文",
+		"link": "http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/",
+		"link_zh": "https://www.au.tsinghua.edu.cn/info/1078/2330.htm"
 	},
-	jie_zhou: {
-		name: "Jie Zhou",
-		name_zh: "周杰",
-		link: "https://www.tsinghua.edu.cn/publish/thu2018en/index.html",
-		link_zh: "https://www.au.tsinghua.edu.cn/info/1078/1635.htm"
+	"jie_zhou": {
+		"name": "Jie Zhou",
+		"name_zh": "周杰",
+		"link": "https://www.tsinghua.edu.cn/publish/thu2018en/index.html",
+		"link_zh": "https://www.au.tsinghua.edu.cn/info/1078/1635.htm"
 	},
-	yingqi_wang: {
-		name: "Yingqi Wang",
-		name_zh: "王英琦",
-		link: "https://github.com/HilbertWang2002"
+	"yingqi_wang": {
+		"name": "Yingqi Wang",
+		"name_zh": "王英琦",
+		"link": "https://github.com/HilbertWang2002"
 	},
-	yi_wei: {
-		name: "Yi Wei",
-		name_zh: "韦祎",
-		link: "https://weiyithu.github.io/"
+	"yi_wei": {
+		"name": "Yi Wei",
+		"name_zh": "韦祎",
+		"link": "https://weiyithu.github.io/"
 	},
-	zai_zhang: {
-		name: "Zhang Zai",
-		name_zh: "张载",
-		link: "https://en.wikipedia.org/wiki/Zhang_Zai",
-		link_zh: "https://baike.baidu.com/item/%E5%BC%A0%E8%BD%BD/5129?fr=aladdin"
+	"zai_zhang": {
+		"name": "Zhang Zai",
+		"name_zh": "张载",
+		"link": "https://en.wikipedia.org/wiki/Zhang_Zai",
+		"link_zh": "https://baike.baidu.com/item/%E5%BC%A0%E8%BD%BD/5129?fr=aladdin"
 	},
-	ning_xu: {
-		name: "Ning Xu",
-		name_zh: "徐宁",
-		link: "http://palm.seu.edu.cn/xuning/",
+	"ning_xu": {
+		"name": "Ning Xu",
+		"name_zh": "徐宁",
+		"link": "http://palm.seu.edu.cn/xuning/"
 	},
-	xin_geng: {
-		name: "Xin Geng",
-		name_zh: "耿新",
-		link: "http://palm.seu.edu.cn/xgeng/",
+	"xin_geng": {
+		"name": "Xin Geng",
+		"name_zh": "耿新",
+		"link": "http://palm.seu.edu.cn/xgeng/"
 	},
-	chenglun_peng: {
-		name: "Chenglun Peng",
-		name_zh: "彭成伦",
-		link: "http://palm.seu.edu.cn/members.html"
+	"chenglun_peng": {
+		"name": "Chenglun Peng",
+		"name_zh": "彭成伦",
+		"link": "http://palm.seu.edu.cn/members.html"
 	},
-	tan_yap_peng: {
-		name: "Tan Yap Peng",
-		name_zh: "Tan Yap Peng",
-		link: "https://personal.ntu.edu.sg/eyptan/"
+	"tan_yap_peng": {
+		"name": "Tan Yap Peng",
+		"name_zh": "Tan Yap Peng",
+		"link": "https://personal.ntu.edu.sg/eyptan/"
 	},
-	ziwei_wang: {
-		name: "Ziwei Wang",
-		name_zh: "王子为",
-		link: "https://ziweiwangthu.github.io/"
+	"ziwei_wang": {
+		"name": "Ziwei Wang",
+		"name_zh": "王子为",
+		"link": "https://ziweiwangthu.github.io/"
+	},
+	"jian_yang": {
+		"name": "Jian Yang",
+		"name_zh": "杨健",
+		"link": "https://scholar.google.com/citations?user=cBDyfFcAAAAJ",
+		"link_zh": "https://www.shcmusic.edu.cn/2017/0323/c1636a22962/page.htm"
 	}
 };
 
 // 使用到的期刊和会议信息
+
 var preprint = {
-	arxiv: {
-		name: "arXiv",
-		name_zh: "预印",
+	"arxiv": {
+		"name": "arXiv",
+		"name_zh": "预印"
 	}
 };
+
 var journal = {
-	tip: {
-		name: "IEEE Transactions on Image Processing",
-		short_name: "TIP",
+	"tip": {
+		"name": "IEEE Transactions on Image Processing",
+		"short_name": "TIP"
 	},
-	tcsvt: {
-		name: "IEEE Transactions on Circuits and Systems for Video Technology",
-		short_name: "TCSVT",
-	},
+	"tcsvt": {
+		"name": "IEEE Transactions on Circuits and Systems for Video Technology",
+		"short_name": "TCSVT"
+	}
 };
+
 var conference = {
-	cvpr: {
-		name: "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
-		short_name: "CVPR",
+	"cvpr": {
+		"name": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+		"short_name": "CVPR"
 	},
-	iccv: {
-		name: "IEEE/CVF International Conference on Computer Vision",
-		short_name: "ICCV",
+	"iccv": {
+		"name": "IEEE/CVF International Conference on Computer Vision",
+		"short_name": "ICCV"
 	},
-	eccv: {
-		name: "European Conference on Computer Vision",
-		short_name: "ECCV",
+	"eccv": {
+		"name": "European Conference on Computer Vision",
+		"short_name": "ECCV"
 	},
-	icme: {
-		name: "IEEE International Conference on Multimedia and Expo",
-		short_name: "ICME",
+	"icme": {
+		"name": "IEEE International Conference on Multimedia and Expo",
+		"short_name": "ICME"
 	},
-	threedv: {
-		name: "IEEE International Conference on 3D Vision",
-		short_name: "3DV",
+	"threedv": {
+		"name": "IEEE International Conference on 3D Vision",
+		"short_name": "3DV"
 	},
-	icip: {
-		name: "IEEE International Conference on Image Processing",
-		short_name: "ICIP",
+	"icip": {
+		"name": "IEEE International Conference on Image Processing",
+		"short_name": "ICIP"
 	},
-	fg: {
-		name: "IEEE International Conference on Automatic Face and Gesture Recognition",
-		short_name: "FG",
+	"fg": {
+		"name": "IEEE International Conference on Automatic Face and Gesture Recognition",
+		"short_name": "FG"
 	},
-	ijcai: {
-		name: "International Joint Conference on Artificial Intelligence",
-		short_name: "IJCAI",
+	"ijcai": {
+		"name": "International Joint Conference on Artificial Intelligence",
+		"short_name": "IJCAI"
 	},
-	pricai: {
-		name: "Pacific Rim International Conference on Artificial Intelligence",
-		short_name: "PRICAI",
+	"pricai": {
+		"name": "Pacific Rim International Conference on Artificial Intelligence",
+		"short_name": "PRICAI"
 	},
-	acm_mm: {
-		name: "ACM Multimedia",
-		short_name: "ACM MM",
-	},
+	"acm_mm": {
+		"name": "ACM Multimedia",
+		"short_name": "ACM MM"
+	}
 };
 
 // 我的文章信息
+
 var paper = {
 	lgm: {
 		short_name: "Dynamics-aware Attack",
 		name: "Dynamics-aware Adversarial Attack of Adaptive Neural Networks",
 		link: "https://arxiv.org/abs/2210.08159",
 		img: "image/attack.png",
-		author: [
-			me, person.yueqi_duan, person.yingqi_wang, person.jiwen_lu, person.jie_zhou
-		],
+		author: [me, person.yueqi_duan, person.yingqi_wang, person.jiwen_lu, person.jie_zhou],
 		pub: journal.tcsvt,
 		type: "journal",
 		year: 2024,
 		extra_link: [
-		{
-			name: "arXiv",
-			name_zh: "论文",
-			link: "https://arxiv.org/abs/2210.08159",
-		},
-		{
-			name: "Code",
-			name_zh: "代码",
-			link: "https://github.com/antao97/LGM",
-		}
-		],
+	{
+		"name": "arXiv",
+		"name_zh": "论文",
+		"link": "https://arxiv.org/abs/2210.08159"
+	},
+	{
+		"name": "Code",
+		"name_zh": "代码",
+		"link": "https://github.com/antao97/LGM"
+	}
+],
 		intro: [
-			"Existing adversarial attack algorithms are designed under a basic assumption -- the network architecture is fixed throughout the attack process.",
-			"We are the first to find that this assumption does not hold for adaptive neural networks, which adaptively deactivate unnecessary execution units based on inputs to improve computational efficiency.",
-			"We study dynamics-aware adversarial attacks on representative adaptive neural networks for 2D images and 3D point clouds.",
-			"Among these networks, 3D sparse convolution network plays an important role in large 3D point cloud processing tasks, and our method shows its great fragility under adversarial attacks."
-		],
+	"Existing adversarial attack algorithms are designed under a basic assumption -- the network architecture is fixed throughout the attack process.",
+	"We are the first to find that this assumption does not hold for adaptive neural networks, which adaptively deactivate unnecessary execution units based on inputs to improve computational efficiency.",
+	"We study dynamics-aware adversarial attacks on representative adaptive neural networks for 2D images and 3D point clouds.",
+	"Among these networks, 3D sparse convolution network plays an important role in large 3D point cloud processing tasks, and our method shows its great fragility under adversarial attacks."
+],
 		intro_zh: [
-			"目前的对抗攻击方法默认网络在攻击前后网络结构不会发生变化，但是此假设并不适用于自适应神经网络，自适应神经网络会根据不同的输入数据自适应地关闭一些不重要的运算单元，导致当下的攻击扰动对攻击后的新网络结构可能无效。",
-			"我们第一个发现了自适应神经网络在对抗攻击中的攻击滞后问题，对二维图像和三维点云上代表性的自适应神经网络进行了研究，其中三维稀疏卷积网络在大型三维点云处理中占据了重要地位，而我们的方法揭露了三维稀疏卷积网络面对对抗攻击的高脆弱性。"
-		]
-  	},
+	"目前的对抗攻击方法默认网络在攻击前后网络结构不会发生变化，但是此假设并不适用于自适应神经网络，自适应神经网络会根据不同的输入数据自适应地关闭一些不重要的运算单元，导致当下的攻击扰动对攻击后的新网络结构可能无效。",
+	"我们第一个发现了自适应神经网络在对抗攻击中的攻击滞后问题，对二维图像和三维点云上代表性的自适应神经网络进行了研究，其中三维稀疏卷积网络在大型三维点云处理中占据了重要地位，而我们的方法揭露了三维稀疏卷积网络面对对抗攻击的高脆弱性。"
+]
+	},
 	seggroup: {
 		short_name: "SegGroup",
 		name: "SegGroup: Seg-Level Supervision for 3D Instance and Semantic Segmentation",
 		link: "https://arxiv.org/abs/2012.10217",
 		img: "image/seggroup.png",
-		author: [
-			me, person.yueqi_duan, person.yi_wei, person.jiwen_lu, person.jie_zhou
-		],
+		author: [me, person.yueqi_duan, person.yi_wei, person.jiwen_lu, person.jie_zhou],
 		pub: journal.tip,
 		type: "journal",
 		year: 2022,
 		extra_link: [
-			{
-				name: "arXiv",
-				name_zh: "论文",
-				link: "https://arxiv.org/abs/2012.10217",
-			},
-			{
-				name: "Code",
-				name_zh: "代码",
-				link: "https://github.com/antao97/SegGroup",
-			},
-			{
-				name: "Zhihu",
-				name_zh: "知乎",
-				link: "https://zhuanlan.zhihu.com/p/536482202",
-			},
-			{
-				name: "FAQ",
-				name_zh: "常见问题",
-				link: "https://github.com/antao97/SegGroup/blob/main/FAQ.md",
-			},
-		],
+	{
+		"name": "arXiv",
+		"name_zh": "论文",
+		"link": "https://arxiv.org/abs/2012.10217"
+	},
+	{
+		"name": "Code",
+		"name_zh": "代码",
+		"link": "https://github.com/antao97/SegGroup"
+	},
+	{
+		"name": "Zhihu",
+		"name_zh": "知乎",
+		"link": "https://zhuanlan.zhihu.com/p/536482202"
+	},
+	{
+		"name": "FAQ",
+		"name_zh": "常见问题",
+		"link": "https://github.com/antao97/SegGroup/blob/main/FAQ.md"
+	}
+],
 		intro: [
-			"By fully taking the advantages of locations, we design a weakly supervised point cloud segmentation algorithm that only requires clicking on one point per instance to indicate its location for annotation.",
-			"Based on the over-segmentation technique, we further extend the labeling information into segments to enlarge the labeled point number.",
-			"Our seg-level supervised method achieves competitive performance with fully-supervised methods and surpasses other weakly-supervised methods."
-		],
+	"By fully taking the advantages of locations, we design a weakly supervised point cloud segmentation algorithm that only requires clicking on one point per instance to indicate its location for annotation.",
+	"Based on the over-segmentation technique, we further extend the labeling information into segments to enlarge the labeled point number.",
+	"Our seg-level supervised method achieves competitive performance with fully-supervised methods and surpasses other weakly-supervised methods."
+],
 		intro_zh: [
-			"在点云实例分割中，为了充分利用实例位置信息的优势，本文设计了一个弱监督点云分割算法，仅需要对每个实例中一个点进行标注以指示其位置，并将对点的标注信息扩展至其所属过分割块以增大标注量。",
-			"我们过分割块级标签监督的方法取得了与全监督方法相比拟的性能，同时超越了其他弱监督方法。"
-		]
+	"在点云实例分割中，为了充分利用实例位置信息的优势，本文设计了一个弱监督点云分割算法，仅需要对每个实例中一个点进行标注以指示其位置，并将对点的标注信息扩展至其所属过分割块以增大标注量。",
+	"我们过分割块级标签监督的方法取得了与全监督方法相比拟的性能，同时超越了其他弱监督方法。"
+]
 	},
 	le: {
 		name: "Label Enhancement for Label Distribution Learning",
 		link: "https://www.ijcai.org/Proceedings/2018/0406.pdf",
-		author: [
-			person.ning_xu, me, person.xin_geng
-		],
+		author: [person.ning_xu, me, person.xin_geng],
 		pub: conference.ijcai,
 		type: "conference",
 		year: 2018,
 		extra_link: [
-			{
-				name: "paper",
-				name_zh: "论文",
-				link: "https://www.ijcai.org/Proceedings/2018/0406.pdf",
-			},
-			{
-				name: "Slides",
-				name_zh: "幻灯片",
-				link: "../slides/IJCAI18_Label Enhancement for Label Distribution Learning.pdf",
-			},
-		],
+	{
+		"name": "paper",
+		"name_zh": "论文",
+		"link": "https://www.ijcai.org/Proceedings/2018/0406.pdf"
+	},
+	{
+		"name": "Slides",
+		"name_zh": "幻灯片",
+		"link": "../slides/IJCAI18_Label Enhancement for Label Distribution Learning.pdf"
+	}
+]
 	},
 	lemlp: {
 		name: "Label Embedding Based on Multi-Scale Locality Preservation",
 		link: "https://www.ijcai.org/Proceedings/2018/0364.pdf",
-		author: [
-			person.chenglun_peng, me, person.xin_geng
-		],
+		author: [person.chenglun_peng, me, person.xin_geng],
 		pub: conference.ijcai,
 		type: "conference",
 		year: 2018,
 		extra_link: [
-			{
-				name: "paper",
-				name_zh: "论文",
-				link: "https://www.ijcai.org/Proceedings/2018/0364.pdf",
-			},
-			{
-				name: "Slides",
-				name_zh: "幻灯片",
-				link: "../slides/IJCAI18_Label Embedding Based on Multi-Scale Locality Preservation.pdf",
-			},
-		],
+	{
+		"name": "paper",
+		"name_zh": "论文",
+		"link": "https://www.ijcai.org/Proceedings/2018/0364.pdf"
+	},
+	{
+		"name": "Slides",
+		"name_zh": "幻灯片",
+		"link": "../slides/IJCAI18_Label Embedding Based on Multi-Scale Locality Preservation.pdf"
+	}
+]
 	},
 	my_le: {
 		name: "Labeling Information Enhancement for Multi-label Learning with Low-Rank Subspace",
 		link: "https://link.springer.com/chapter/10.1007/978-3-319-97304-3_51",
-		author: [
-			me, person.ning_xu, person.xin_geng
-		],
+		author: [me, person.ning_xu, person.xin_geng],
 		pub: conference.pricai,
 		type: "conference",
 		year: 2018,
 		extra_link: [
-			{
-				name: "paper",
-				name_zh: "论文",
-				link: "https://link.springer.com/chapter/10.1007/978-3-319-97304-3_51",
-			},
-		],
+	{
+		"name": "paper",
+		"name_zh": "论文",
+		"link": "https://link.springer.com/chapter/10.1007/978-3-319-97304-3_51"
+	}
+]
 	},
 };
 
 // 精选文章信息
-var selected_pub = [
-	paper.lgm, 
-	paper.seggroup
-];
+
+var selected_pub = [paper.lgm, paper.seggroup];
 
 // 个人介绍
+
 var about = [
-	[
-		`I'm currently working as a postdoctoral research fellow in the ${href(institute.cartin)} (CARTIN) lab in ${href(institute.ntu)} (NTU),`,
-		`supervised by Prof. ${href(person.tan_yap_peng)} and Prof. ${href(person.ziwei_wang)}.`,
-		`Before joining NTU, I got my Ph.D. degree from ${href(institute.tsinghua)} and B.Eng. degree from ${href(institute.seu)}.`,
-	],
-	[
-		`My current research focuses on robotics, especially in robot manipulation policy learning.`,
-		`During my Ph.D. career, I did researches on 3D point clouds.`
-	]
+	[`I'm currently working as a postdoctoral research fellow at ${href(institute.shcmusic)} (SHCM),`, `supervised by Prof. ${href(person.jian_yang)}.`, `I received my Doctor of Engineering (Ph.D.) degree from ${href(institute.tsinghua)} and Bachelor of Engineering (B.Eng.) degree from ${href(institute.seu)}.`],
+	[`During my Ph.D. career in Tsinghua, I conducted research in computer vision in the field of artificial intelligence.`, `After joining ${href(institute.shcmusic)}, my research focuses on AI for music, especially on professional analysis and understanding of classical music, as well as Chinese ethnic music.`],
+	[`I am also a guqin enthusiast and have studied piano for about ten years.`],
 ];
+
 var about_zh = [
-	[
-		`我目前在新加坡${href_zh(institute.ntu)}的${href_zh(institute.cartin)}从事博士后工作，`,
-		`研究导师是${href_zh(person.tan_yap_peng)}教授和${href_zh(person.ziwei_wang)}助理教授。`,
-		`在此之前，我在${href_zh(institute.tsinghua)}${href_zh(institute.auto)}取得博士学位，`,
-		`导师是${href_zh(person.jie_zhou)}教授、${href_zh(person.jiwen_lu)}副教授和${href_zh(person.yueqi_duan)}助理教授。`,
-		`我本科就读于${href_zh(institute.seu)}的${href_zh(institute.radio)}。`
-	],
-	[
-		`我目前的研究专注于机器人领域，特别是机器人操控策略学习。`,
-		`我博士期间开展了三维点云方面的研究。`
-	]
+	[`我目前在${href_zh(institute.shcmusic)}从事博士后工作，`, `合作导师是${href_zh(person.jian_yang)}教授。`, `我在${href_zh(institute.tsinghua)}${href_zh(institute.auto)}取得工学博士学位，`, `导师是${href_zh(person.jie_zhou)}教授和${href_zh(person.jiwen_lu)}副教授。`, `我本科就读于${href_zh(institute.seu)}的${href_zh(institute.radio)}，获得工学学士学位。`],
+	[`我在清华大学读博期间开展了人工智能领域中计算机视觉方面的研究。`, `来到上海音乐学院之后，我的研究专注于音乐人工智能，尤其关注古典音乐的专业性分析理解，以及中国的民族音乐。`],
+	[`我同时还是一名古琴爱好者，曾学过钢琴约十年。`],
 ];
 
 // 新闻
-var break_news = "I'm looking for a relevant postdoctoral position. If you are interested in my researches, feel free to contact me!"
-var break_news_zh = "我正在寻找相关博士后职位，如果您对我的研究感兴趣请随时与我联系！"
+
+var break_news = `I am planning to conduct research related to guqin music, as well as studies on the understanding, analysis, and generation of classical music. If you are interested in collaboration, please feel free to contact me!`;
+
+var break_news_zh = `我正在计划开展古琴音乐相关的研究，以及与古典音乐理解分析/生成相关的研究，如果你有合作意向，欢迎联系我！`;
+
 var news = [
+	{
+		date: "2025.09.30",
+		content: `I join ${href(institute.shcmusic)} as a postdoctoral research fellow!`,
+		content_zh: `我加入${href_zh(institute.shcmusic)}成为了一名博士后研究员！`,
+	},
 	{
 		date: "2024.10.07",
 		content: `I join the ${href(institute.cartin, institute.cartin.short_name)} lab in ${href(institute.ntu, institute.ntu.short_name)} as a postdoctoral research fellow!`,
-		content_zh: `我加入新加坡${href_zh(institute.ntu)}的${href_zh(institute.cartin)}成为了一名博士后研究员！`
+		content_zh: `我加入新加坡${href_zh(institute.ntu)}的${href_zh(institute.cartin)}成为了一名博士后研究员！`,
 	},
 	{
 		date: "2024.01.04",
 		content: `Our ${href(paper.lgm, paper.lgm.short_name)} is accepted by TCSVT!`,
-		content_zh: `我们的${href(paper.lgm, paper.lgm.short_name)}被TCSVT接收了！`
+		content_zh: `我们的${href(paper.lgm, paper.lgm.short_name)}被TCSVT接收了！`,
 	},
 	{
 		date: "2022.10.17",
 		content: `Our ${href(paper.lgm, paper.lgm.short_name)} is on arXiv!`,
-		content_zh: `我们的${href(paper.lgm, paper.lgm.short_name)}可以在arXiv上预览了！`
+		content_zh: `我们的${href(paper.lgm, paper.lgm.short_name)}可以在arXiv上预览了！`,
 	},
 	{
 		date: "2022.07.01",
 		content: `Our ${href(paper.seggroup, paper.seggroup.short_name)} is accepted by TIP!`,
-		content_zh: `我们的${href(paper.seggroup, paper.seggroup.short_name)}被TIP接收了！`
+		content_zh: `我们的${href(paper.seggroup, paper.seggroup.short_name)}被TIP接收了！`,
 	},
 	{
 		date: "2021.12.20",
 		content: `Our ${href(paper.lgm, paper.lgm.short_name)} is on arXiv!`,
-		content_zh: `我们的${href(paper.lgm, paper.lgm.short_name)}可以在arXiv上预览了！`
+		content_zh: `我们的${href(paper.lgm, paper.lgm.short_name)}可以在arXiv上预览了！`,
 	},
 	{
 		date: "2021.11.19",
 		content: `I pass the Ph.D. qualifying exam and become a Ph.D. candidate!`,
-		content_zh: `我通过了博士资格考试，成为了一名博士候选人！`
+		content_zh: `我通过了博士资格考试，成为了一名博士候选人！`,
 	},
 	{
 		date: "2020.12.18",
 		content: `Our ${href(paper.seggroup, paper.seggroup.short_name)} is on arXiv!`,
-		content_zh: `我们的${href(paper.seggroup, paper.seggroup.short_name)}可以在arXiv上预览了！`
-	}
+		content_zh: `我们的${href(paper.seggroup, paper.seggroup.short_name)}可以在arXiv上预览了！`,
+	},
 ];
 
 // 经历
+
 var experience = [
+	{
+		institute: institute.shcmusic,
+		department: institute.shcmusic,
+		job: "Postdoctoral Research Fellow",
+		job_zh: "博士后研究员",
+		time: {
+	"start": {
+		"year": "2025",
+		"month": "9"
+	}
+},
+	},
 	{
 		institute: institute.ntu,
 		department: institute.ntu_eee,
 		job: "Postdoctoral Research Fellow",
 		job_zh: "博士后研究员",
 		time: {
-			start: {
-				year: "2024",
-				month: "10",
-			},
-		}
-  },
+	"start": {
+		"year": "2024",
+		"month": "10"
+	},
+	"end": {
+		"year": "2025",
+		"month": "8"
+	}
+},
+	},
 	{
 		institute: institute.tsinghua,
 		department: institute.auto,
 		job: "Ph.D. Degree",
 		job_zh: "工学博士",
 		time: {
-			start: {
-				year: "2019",
-				month: "8",
-			},
-			end: {
-				year: "2024",
-				month: "6",
-			}
-		}
-  },
+	"start": {
+		"year": "2019",
+		"month": "8"
+	},
+	"end": {
+		"year": "2024",
+		"month": "6"
+	}
+},
+	},
 	{
 		institute: institute.seu,
 		department: institute.radio,
 		job: "B.Eng. Degree",
 		job_zh: "工学学士",
 		time: {
-			start: {
-				year: "2015",
-				month: "8",
-			},
-			end: {
-				year: "2019",
-				month: "6",
-			}
-		}
+	"start": {
+		"year": "2015",
+		"month": "8"
+	},
+	"end": {
+		"year": "2019",
+		"month": "6"
+	}
+},
 	},
 ];
 
 // 荣誉
+
 var hornor = [
 	{
-		name: "Outstanding Graduate of Southeast University",
-		name_zh: "东南大学优秀本科毕业生",
-		year: "2019"
+		"name": "Outstanding Graduate of Southeast University",
+		"name_zh": "东南大学优秀本科毕业生",
+		"year": "2019"
 	},
 	{
-		name: "Merit Student of Southeast University",
-		name_zh: "东南大学三好学生",
-		year: ["2016", "2017", "2018"]
+		"name": "Merit Student of Southeast University",
+		"name_zh": "东南大学三好学生",
+		"year": [
+			"2016",
+			"2017",
+			"2018"
+		]
 	},
 	{
-		name: "President Scholarship of Southeast University",
-		name_zh: "东南大学校长奖学金",
-		year: "2016"
+		"name": "President Scholarship of Southeast University",
+		"name_zh": "东南大学校长奖学金",
+		"year": "2016"
 	},
 	{
-		name: "Mayor's Award of Beijing in Technical Innovation",
-		name_zh: "北京市科技创新市长奖",
-		year: "2015"
+		"name": "Mayor's Award of Beijing in Technical Innovation",
+		"name_zh": "北京市科技创新市长奖",
+		"year": "2015"
 	},
 	{
-		name: "First Prize in the Awarding Program for Future Scientists",
-		name_zh: "第十四届“明天小小科学家”奖励活动一等奖",
-		year: "2014"
-	},
+		"name": "First Prize in the Awarding Program for Future Scientists",
+		"name_zh": "第十四届“明天小小科学家”奖励活动一等奖",
+		"year": "2014"
+	}
 ];
 
 // 活动
+
 var activity = {
 	conference: {
 		name: "Conference Reviewer",
@@ -564,79 +592,71 @@ var activity = {
 		list: [
 			{
 				name: conference.cvpr,
-				year: ["2021", "2022", "2023", "2024"]
+				year: ["2021","2022","2023","2024"],
 			},
 			{
 				name: conference.iccv,
-				year: ["2021", "2023"]
+				year: ["2021","2023"],
 			},
 			{
 				name: conference.eccv,
-				year: ["2022", "2024"]
+				year: ["2022","2024"],
 			},
 			{
 				name: conference.acm_mm,
-				year: ["2024"]
+				year: ["2024"],
 			},
 			{
 				name: conference.icme,
-				year: ["2021", "2022", "2023", "2024"]
+				year: ["2021","2022","2023","2024"],
 			},
 			{
 				name: conference.icip,
-				year: ["2022", "2023", "2024"]
+				year: ["2022","2023","2024"],
 			},
 			{
 				name: conference.fg,
-				year: ["2023", "2024"]
+				year: ["2023","2024"],
 			},
-		]
-	}
+		],
+	},
 };
 
 // 其他方面
+
 var misc = [
-	[
-		`I admire a famous quote from ${href(person.zai_zhang)}: To set conscience for our world, `,
-		`to secure life and fortune for all people, to continue teachings of past sages, and to establish peace for all future generations.`
-	],
-	[
-		`Now I mainly focus on my research and work hard to publish more papers.`
-	]
+	[`I admire a famous quote from ${href(person.zai_zhang)}: To set conscience for our world, `, `to secure life and fortune for all people, to continue teachings of past sages, and to establish peace for all future generations.`],
+	[`Now I mainly focus on my research and work hard to publish more papers. `],
 ];
+
 var misc_zh = [
-	[
-		`我很欣赏北宋${href_zh(person.zai_zhang)}的一句名言：为天地立心，为生民立命，为往圣继绝学，为万世开太平。`
-	],
-	[
-		`我现在主要关注在我的研究上面，希望能早日发表更多论文。`
-	]
+	[`我很欣赏北宋${href_zh(person.zai_zhang)}的一句名言：为天地立心，为生民立命，为往圣继绝学，为万世开太平。`],
+	[`我现在主要关注在我的研究上面，希望能早日发表更多论文。`],
 ];
 
 // 联系方式
+
 var contact = [
 	{
-		name: "Email",
-		name_zh: "邮箱",
-		content: me.email,
+		"name": "Email",
+		"name_zh": "邮箱",
+		"content": "taoan2008@shcmusic.edu.cn"
 	},
 	{
-		name: "Address",
-		name_zh: "地址",
-		content: me.address,
-		content_zh: me.address_zh,
+		"name": "Address",
+		"name_zh": "地址",
+		"content": "9th Floor, Lingling Road Campus, Shanghai Conservatory of Music, Xuhui District, Shanghai 200031",
+		"content_zh": "上海市徐汇区上海音乐学院零陵路校区九楼，邮编：200031"
 	}
 ];
 
 // 版权
+
 var last_update = {
-	month: "Nov",
-	month_zh: "11",
-	year: "2024",
+	"month": "Feb",
+	"month_zh": "2",
+	"year": "2026"
 };
-
-
-
 
 // index_en.html
 // Title
