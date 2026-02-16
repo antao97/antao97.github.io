@@ -791,7 +791,16 @@ for (var i = 0; i < my_link.length; i++) {
 // Selected Projects
 var selected_proj_html = "";
 for (var i = 0; i < selected_proj.length; i++) {
-  selected_proj_html += `<table><tbody><tr><td style="width:15px"></td><td valign="middle"><div>`;
+  selected_proj_html += `<table><tbody><tr>`;
+  if (selected_proj[i].img) {
+    selected_proj_html += `<td style="width:230px;" valign="middle" align='middle'>`;
+    selected_proj_html += `<table><td style="height:15px"></td></table>`;
+    selected_proj_html += `<img src=${selected_proj[i].img} height="200px">`;
+    selected_proj_html += `</td><td style="width:10px"></td>`;
+  } else {
+    selected_proj_html += `<td style="width:15px"></td>`;
+  }
+  selected_proj_html += `<td valign="middle"><div>`;
   selected_proj_html += `<b>${selected_proj[i].name}</b><br>`;
   for (var j = 0; j < selected_proj[i].author.length; j++) {
     var author = selected_proj[i].author[j];
@@ -978,7 +987,16 @@ for (var i = 0; i < my_link.length; i++) {
 // 精选项目（中文）
 var selected_proj_html_zh = "";
 for (var i = 0; i < selected_proj.length; i++) {
-  selected_proj_html_zh += `<table><tbody><tr><td style="width:15px"></td><td valign="middle"><div>`;
+  selected_proj_html_zh += `<table><tbody><tr>`;
+  if (selected_proj[i].img) {
+    selected_proj_html_zh += `<td style="width:230px;" valign="middle" align='middle'>`;
+    selected_proj_html_zh += `<table><td style="height:15px"></td></table>`;
+    selected_proj_html_zh += `<img src=${selected_proj[i].img} height="200px">`;
+    selected_proj_html_zh += `</td><td style="width:10px"></td>`;
+  } else {
+    selected_proj_html_zh += `<td style="width:15px"></td>`;
+  }
+  selected_proj_html_zh += `<td valign="middle"><div>`;
   selected_proj_html_zh += `<b>${selected_proj[i].name}</b><br>`;
   for (var j = 0; j < selected_proj[i].author.length; j++) {
     var author = selected_proj[i].author[j];
