@@ -13,16 +13,49 @@ const preprint = JSON.parse(fs.readFileSync(path.join(dataDir, 'db/preprint.json
 const journal = JSON.parse(fs.readFileSync(path.join(dataDir, 'db/journal.json'), 'utf8'));
 const conference = JSON.parse(fs.readFileSync(path.join(dataDir, 'db/conference.json'), 'utf8'));
 const paper = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/papers.json'), 'utf8'));
-const selected_pub_ids = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/selected_pub.json'), 'utf8'));
+const projects = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/projects.json'), 'utf8'));
+Object.assign(paper, projects);
+const selected_proj_ids = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/selected_proj.json'), 'utf8'));
 const about = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/about.json'), 'utf8'));
 const break_news = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/break_news.json'), 'utf8'));
 const news = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/news.json'), 'utf8'));
 const experience = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/experience.json'), 'utf8'));
-const hornor = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/honors.json'), 'utf8'));
+// Load honors data - check if file exists
+let hornor = [];
+const honorsPath = path.join(dataDir, 'content/honors.json');
+if (fs.existsSync(honorsPath)) {
+  hornor = JSON.parse(fs.readFileSync(honorsPath, 'utf8'));
+}
 const activity = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/activities.json'), 'utf8'));
-const misc = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/misc.json'), 'utf8'));
+// Load teaching data - check if file exists
+let teaching = [];
+const teachingPath = path.join(dataDir, 'content/teaching.json');
+if (fs.existsSync(teachingPath)) {
+  teaching = JSON.parse(fs.readFileSync(teachingPath, 'utf8'));
+}
+// Load misc data - check if file exists
+let misc = { en: [], zh: [] };
+const miscPath = path.join(dataDir, 'content/misc.json');
+if (fs.existsSync(miscPath)) {
+  misc = JSON.parse(fs.readFileSync(miscPath, 'utf8'));
+}
 const contact = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/contact.json'), 'utf8'));
 const last_update = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/last_update.json'), 'utf8'));
+// Load section order - check if file exists
+let section_order = [];
+const sectionOrderPath = path.join(dataDir, 'content/section_order.json');
+if (fs.existsSync(sectionOrderPath)) {
+  section_order = JSON.parse(fs.readFileSync(sectionOrderPath, 'utf8'));
+} else {
+  // Default order
+  section_order = [
+    { id: 'arxiv', name: 'Preprint Papers', name_zh: '预印论文', filter_type: 'arxiv' },
+    { id: 'journal', name: 'Journal Papers', name_zh: '期刊论文', filter_type: 'journal' },
+    { id: 'conference', name: 'Conference Papers', name_zh: '会议论文', filter_type: 'conference' },
+    { id: 'project', name: 'Projects', name_zh: '项目', filter_type: 'project' },
+    { id: 'code', name: 'Code Projects', name_zh: '代码项目', filter_type: 'code' }
+  ];
+}
 
 // Helper to convert template strings with ${...} to backtick strings
 function toTemplateString(str) {
@@ -42,10 +75,9 @@ for (const [id, p] of Object.entries(paper)) {
     pubRef = `journal.${p.pub_id}`;
   } else if (p.pub_type === 'conference') {
     pubRef = `conference.${p.pub_id}`;
-  } else if (p.pub_type === 'preprint') {
-    pubRef = `preprint.${p.pub_id}`;
   } else {
-    pubRef = 'null';
+    // 所有其他类型都引用preprint
+    pubRef = `preprint.${p.pub_id}`;
   }
   paperProcessed[id] = {
     ...p,
@@ -59,23 +91,35 @@ for (const [id, p] of Object.entries(paper)) {
   delete paperProcessed[id].pub_id;
 }
 
-// Process selected_pub: convert ids to references
-const selected_pub = selected_pub_ids.map(id => `paper.${id}`);
+// Process selected_proj: convert ids to references
+const selected_proj = selected_proj_ids.map(id => `paper.${id}`);
 
 // Process experience: convert institute_id and department_id to references
-const experienceProcessed = experience.map(exp => ({
-  ...exp,
-  institute: `institute.${exp.institute_id}`,
-  department: `institute.${exp.department_id}`
-}));
+const experienceProcessed = experience.map(exp => {
+  const inst = institute[exp.institute_id];
+  const processed = {
+    ...exp,
+    institute: `institute.${exp.institute_id}`,
+    city: inst.city || '',
+    city_zh: inst.city_zh || ''
+  };
+  if (exp.department_id) {
+    processed.department = `institute.${exp.department_id}`;
+  }
+  return processed;
+});
 experienceProcessed.forEach(exp => {
   delete exp.institute_id;
-  delete exp.department_id;
+  if (exp.department_id) {
+    delete exp.department_id;
+  }
 });
 
 // Process activity: convert conference_id to references
 const activityProcessed = {};
 for (const [key, val] of Object.entries(activity)) {
+  // Skip entries starting with __ (commented out)
+  if (key.startsWith('__')) continue;
   activityProcessed[key] = {
     ...val,
     list: val.list.map(item => ({
@@ -175,6 +219,8 @@ lines.push(`// 使用到的期刊和会议信息`);
 lines.push(`var preprint = ${JSON.stringify(preprint, null, '\t')};`);
 lines.push(`var journal = ${JSON.stringify(journal, null, '\t')};`);
 lines.push(`var conference = ${JSON.stringify(conference, null, '\t')};`);
+lines.push(`// 章节顺序`);
+lines.push(`var section_order = ${JSON.stringify(section_order, null, '\t')};`);
 
 lines.push(`// 我的文章信息`);
 // Need to output paperProcessed with references as strings, but we need to output JS code that references variables.
@@ -210,8 +256,8 @@ for (const [id, p] of Object.entries(paperProcessed)) {
 paperCode += '};';
 lines.push(paperCode);
 
-lines.push(`// 精选文章信息`);
-lines.push(`var selected_pub = [${selected_pub.join(', ')}];`);
+lines.push(`// 精选项目信息`);
+lines.push(`var selected_proj = [${selected_proj.join(', ')}];`);
 
 lines.push(`// 个人介绍`);
 // aboutProcessed contains template strings, need to output as template literals
@@ -238,7 +284,7 @@ lines.push(`var break_news = ${toTemplateString(break_news.en)};`);
 lines.push(`var break_news_zh = ${toTemplateString(break_news.zh)};`);
 
 let newsCode = 'var news = [\n';
-news.forEach(item => {
+news.filter(item => item.show !== false).forEach(item => {
   newsCode += '\t{\n';
   newsCode += `\t\tdate: ${JSON.stringify(item.date)},\n`;
   newsCode += `\t\tcontent: ${toTemplateString(item.content)},\n`;
@@ -254,10 +300,18 @@ let expCode = 'var experience = [\n';
 experienceProcessed.forEach(exp => {
   expCode += '\t{\n';
   expCode += `\t\tinstitute: ${exp.institute},\n`;
-  expCode += `\t\tdepartment: ${exp.department},\n`;
+  if (exp.department) {
+    expCode += `\t\tdepartment: ${exp.department},\n`;
+  }
   expCode += `\t\tjob: ${JSON.stringify(exp.job)},\n`;
   expCode += `\t\tjob_zh: ${JSON.stringify(exp.job_zh)},\n`;
   expCode += `\t\ttime: ${JSON.stringify(exp.time, null, '\t')},\n`;
+  if (exp.city) {
+    expCode += `\t\tcity: ${JSON.stringify(exp.city)},\n`;
+  }
+  if (exp.city_zh) {
+    expCode += `\t\tcity_zh: ${JSON.stringify(exp.city_zh)},\n`;
+  }
   expCode += '\t},\n';
 });
 expCode += '];';
@@ -265,6 +319,9 @@ lines.push(expCode);
 
 lines.push(`// 荣誉`);
 lines.push(`var hornor = ${JSON.stringify(hornor, null, '\t')};`);
+
+lines.push(`// 任教`);
+lines.push(`var teaching = ${JSON.stringify(teaching, null, '\t')};`);
 
 lines.push(`// 活动`);
 // activityProcessed
@@ -311,7 +368,7 @@ lines.push(`var contact = ${JSON.stringify(contact, null, '\t')};`);
 lines.push(`// 版权`);
 lines.push(`var last_update = ${JSON.stringify(last_update, null, '\t')};`);
 
-// Now generate the HTML string variables (selected_pub_html, about_html, etc.)
+// Now generate the HTML string variables (selected_proj_html, about_html, etc.)
 // This part is lengthy; we can copy the original generation logic from data.js
 // For simplicity, we can output the original generation code as is, assuming variables are defined.
 // However, we need to ensure the generated strings use the variables we just defined.

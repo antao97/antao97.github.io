@@ -22,7 +22,7 @@ This personal website is developed by [An Tao](https://github.com/antao97/). If 
 - `content/me.json` - 个人信息（姓名、职位、联系方式等）
 - `content/links.json` - 个人链接（Google Scholar、GitHub等）
 - `content/papers.json` - 论文信息
-- `content/selected_pub.json` - 精选论文ID列表
+- `content/selected_proj.json` - 精选论文ID列表
 - `content/about.json` - 个人介绍（中英文）
 - `content/news.json` - 新闻动态
 - `content/experience.json` - 教育和工作经历

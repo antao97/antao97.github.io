@@ -10,32 +10,42 @@
     "content_zh": "我加入新加坡${href_zh(institute.ntu)}的${href_zh(institute.cartin)}成为了一名博士后研究员！"
   },
   {
+    "date": "2024.06.28",
+    "content": "I obtain a Ph.D. in Engineering from Tsinghua University!",
+    "content_zh": "我获得了清华大学工学博士学位！"
+  },
+  {
     "date": "2024.01.04",
+    "show": false,
     "content": "Our ${href(paper.lgm, paper.lgm.short_name)} is accepted by TCSVT!",
     "content_zh": "我们的${href(paper.lgm, paper.lgm.short_name)}被TCSVT接收了！"
   },
   {
     "date": "2022.10.17",
+    "show": false,
     "content": "Our ${href(paper.lgm, paper.lgm.short_name)} is on arXiv!",
     "content_zh": "我们的${href(paper.lgm, paper.lgm.short_name)}可以在arXiv上预览了！"
   },
   {
     "date": "2022.07.01",
+    "show": false,
     "content": "Our ${href(paper.seggroup, paper.seggroup.short_name)} is accepted by TIP!",
     "content_zh": "我们的${href(paper.seggroup, paper.seggroup.short_name)}被TIP接收了！"
   },
   {
     "date": "2021.12.20",
+    "show": false,
     "content": "Our ${href(paper.lgm, paper.lgm.short_name)} is on arXiv!",
     "content_zh": "我们的${href(paper.lgm, paper.lgm.short_name)}可以在arXiv上预览了！"
   },
   {
     "date": "2021.11.19",
-    "content": "I pass the Ph.D. qualifying exam and become a Ph.D. candidate!",
-    "content_zh": "我通过了博士资格考试，成为了一名博士候选人！"
+    "content": "I pass the Ph.D. qualifying exam of Tsinghua University and become a Ph.D. candidate!",
+    "content_zh": "我通过了清华大学博士资格考试，成为了一名博士候选人！"
   },
   {
     "date": "2020.12.18",
+    "show": false,
     "content": "Our ${href(paper.seggroup, paper.seggroup.short_name)} is on arXiv!",
     "content_zh": "我们的${href(paper.seggroup, paper.seggroup.short_name)}可以在arXiv上预览了！"
   }

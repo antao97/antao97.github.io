@@ -38,5 +38,10 @@
   "acm_mm": {
     "name": "ACM Multimedia",
     "short_name": "ACM MM"
+  },
+  "isps2025": {
+    "name": "International Symposium on Performance Science 2025 (Shanghai)",
+    "name_zh": "第十届表演科学国际研讨会（上海）",
+    "short_name": "ISPS 2025"
   }
 }

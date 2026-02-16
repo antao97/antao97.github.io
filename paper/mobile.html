@@ -175,40 +175,36 @@ underline {
 
     <h2>全部项目工作</h2><br><br>
     <script type="text/javascript">
-        var paper_arxiv_html = "";
-        for (var key in paper){
-            if (paper.hasOwnProperty(key)) {  
-                if (paper[key].pub.name === "arXiv"){
-                    paper_arxiv_html += pub(paper[key], "Yes");
+        var paper_html = "";
+        for (var i = 0; i < section_order.length; i++) {
+            var section = section_order[i];
+            var section_html = "";
+            for (var key in paper){
+                if (paper.hasOwnProperty(key)) {
+                    var include = false;
+                    if (section.filter_type === "arxiv") {
+                        if (paper[key].pub.name === "arXiv"){
+                            include = true;
+                        }
+                    } else if (section.filter_type === "project") {
+                        if (paper[key].type === "project" || (paper[key].type === "preprint" && paper[key].pub.name !== "arXiv")){
+                            include = true;
+                        }
+                    } else {
+                        if (paper[key].type === section.filter_type){
+                            include = true;
+                        }
+                    }
+                    if (include) {
+                        section_html += pub(paper[key], "Yes");
+                    }
                 }
             }
-        }
-        if (paper_arxiv_html !== ""){
-            paper_arxiv_html = `<table><td style="width:5px"></td><td valign="middle"><div><h3>预印论文</h3></div></td></table><br>` + paper_arxiv_html;
-        }
-        var paper_jur_html = "";
-        for (var key in paper){
-            if (paper.hasOwnProperty(key)) {  
-                if (paper[key].type === "journal"){
-                    paper_jur_html += pub(paper[key], "Yes");
-                }
+            if (section_html !== ""){
+                section_html = `<table><td style="width:5px"></td><td valign="middle"><div><h3>${section.name_zh}</h3></div></td></table><br>` + section_html;
+                paper_html += section_html;
             }
         }
-        if (paper_jur_html !== ""){
-            paper_jur_html = `<table><td style="width:5px"></td><td valign="middle"><div><h3>期刊论文</h3></div></td></table><br>` + paper_jur_html;
-        }
-        var paper_conf_html = "";
-        for (var key in paper){
-            if (paper.hasOwnProperty(key)) {  
-                if (paper[key].type === "conference"){
-                    paper_conf_html += pub(paper[key], "Yes");
-                }
-            }
-        }
-        if (paper_conf_html !== ""){
-            paper_conf_html = `<table><td style="width:5px"></td><td valign="middle"><div><h3>会议论文</h3></div></td></table><br>` + paper_conf_html;
-        }
-        var paper_html = paper_arxiv_html + paper_jur_html + paper_conf_html;
         </script>
         <div id="paper"></div>
   

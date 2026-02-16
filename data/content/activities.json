@@ -1,5 +1,15 @@
 {
-  "conference": {
+  "conference_organizer": {
+    "name": "Conference Co-organizer",
+    "name_zh": "会议协办",
+    "list": [
+      {
+        "conference_id": "isps2025",
+        "year": ["2025"]
+      }
+    ]
+  },
+  "__conference": {
     "name": "Conference Reviewer",
     "name_zh": "会议审稿人",
     "list": [

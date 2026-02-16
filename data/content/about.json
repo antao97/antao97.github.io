@@ -10,7 +10,8 @@
       "After joining ${href(institute.shcmusic)}, my research focuses on AI for music, especially on professional analysis and understanding of classical music, as well as Chinese ethnic music."
     ],
     [
-      "I am also a guqin enthusiast and have studied piano for about ten years."
+      "I am also a guqin enthusiast, having been introduced to it in 2022 through an elective course offered by Tsinghua University.",
+      "I have studied piano as an amateur since the age of five, for about ten years."
     ]
   ],
   "zh": [
@@ -18,7 +19,7 @@
       "我目前在${href_zh(institute.shcmusic)}从事博士后工作，",
       "合作导师是${href_zh(person.jian_yang)}教授。",
       "我在${href_zh(institute.tsinghua)}${href_zh(institute.auto)}取得工学博士学位，",
-      "导师是${href_zh(person.jie_zhou)}教授和${href_zh(person.jiwen_lu)}副教授。",
+      "导师是${href_zh(person.jie_zhou)}教授和${href_zh(person.jiwen_lu)}教授。",
       "我本科就读于${href_zh(institute.seu)}的${href_zh(institute.radio)}，获得工学学士学位。"
     ],
     [
@@ -26,7 +27,8 @@
       "来到上海音乐学院之后，我的研究专注于音乐人工智能，尤其关注古典音乐的专业性分析理解，以及中国的民族音乐。"
     ],
     [
-      "我同时还是一名古琴爱好者，曾学过钢琴约十年。"
+      "我同时还是一名古琴爱好者，于2022年启蒙自清华大学校设古琴选修课。",
+      "我曾自五岁起业余学习钢琴，持续约十年。"
     ]
   ]
 }

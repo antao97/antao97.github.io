@@ -1,7 +1,7 @@
 [
   {
     "institute_id": "shcmusic",
-    "department_id": "shcmusic",
+    "department_id": "music_engineering",
     "job": "Postdoctoral Research Fellow",
     "job_zh": "博士后研究员",
     "time": {
@@ -55,6 +55,21 @@
       },
       "end": {
         "year": "2019",
+        "month": "6"
+      }
+    }
+  },
+  {
+    "institute_id": "rdfz",
+    "job": "Junior and Senior High School Education",
+    "job_zh": "初高中教育",
+    "time": {
+      "start": {
+        "year": "2009",
+        "month": "8"
+      },
+      "end": {
+        "year": "2015",
         "month": "6"
       }
     }

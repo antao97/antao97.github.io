@@ -192,14 +192,16 @@ underline {
 		  	</td>
 		  	<td valign="middle">
 		    	<h4>
-					<a href="#home" style="color: #3B3B3B">Home</a><br><br>
-					<a href="#about-me" style="color: #3B3B3B">About Me</a><br><br>
-					<a href="#publications" style="color: #3B3B3B">Publications</a><br><br>
-					<a href="#experience" style="color: #3B3B3B">Experience</a><br><br>
-					<a href="#honors" style="color: #3B3B3B">Honors</a><br><br>
-					<a href="#activities" style="color: #3B3B3B">Activities</a><br><br>
-					<a href="#misc" style="color: #3B3B3B">Misc Facts</a><br><br>
-					<a href="#contact" style="color: #3B3B3B">Contact</a><br><br>
+					<a id="nav-home" href="#home" style="color: #3B3B3B">Home</a><br><br>
+					<a id="nav-about" href="#about-me" style="color: #3B3B3B">About Me</a><br><br>
+					<a id="nav-news" href="#news" style="color: #3B3B3B">News</a><br><br>
+					<a id="nav-publications" href="#publications" style="color: #3B3B3B">Project Work</a><br><br>
+					<a id="nav-teaching" href="#teaching-section" style="color: #3B3B3B">Teaching</a><br><br>
+					<a id="nav-experience" href="#experience" style="color: #3B3B3B">Experiences</a><br><br>
+					<a id="nav-honors" href="#honors" style="color: #3B3B3B">Honors</a><br><br>
+					<a id="nav-activities" href="#activities" style="color: #3B3B3B">Activities</a><br><br>
+					<a id="nav-misc" href="#misc" style="color: #3B3B3B">Misc Facts</a><br><br>
+					<a id="nav-contact" href="#contact" style="color: #3B3B3B">Contact</a><br><br>
 					<a href="index.html" style="color: #3B3B3B">[中文版]</a>
 				</h4>
 		  	</td>
@@ -232,13 +234,16 @@ underline {
 	<div id="about"></div>
 
 	<br><br><br>
+	<div id="news-section">
+	<a name="news"></a><br><br><br>
 	<h2>News</h2><br>
 	&nbsp&nbsp&nbsp&nbsp<font style="color: #DD0000" id="break_news"></font>
-	<ul id="news"></ul>
+	<ul id="news_list"></ul>
 	<table>
 		<td style="height:20px">
 		</td>
 	</table>
+	</div>
 
   	<a name="publications"></a><br><br><br>
   	<h2>Project Work</h2><br>
@@ -246,7 +251,7 @@ underline {
 	  	<td style="height:10px">
 	  	</td>
 	</table>
-	<div id="selected_pub"></div>
+	<div id="selected_proj"></div>
 	<table>
 	  	<td style="width:30px">
 	  	</td>
@@ -256,24 +261,33 @@ underline {
 	</table>
 
 
+    <div id="teaching-section">
+	<a name="teaching-section"></a><br><br><br>
+	<h2>Teaching</h2><br>
+	<ul id="teaching"></ul>
+    </div>
+
 	<a name="experience"></a><br><br><br>
 	<h2>Experiences</h2><br>
 	<div id="exp"></div>
-	
 
-    <a name="honors"></a><br><br><br>
-    <h2>Honors</h2><br>
-    <ul id="hornor"></ul>
+    <div id="honors-section">
+        <a name="honors"></a><br><br><br>
+        <h2>Honors</h2><br>
+        <ul id="hornor"></ul>
+    </div>
 
 
     <a name="activities"></a><br><br><br>
-    <h2>Professional Activities</h2><br>
+    <h2>Activities</h2><br>
     <div id="activity"></div>
    
   	
+    <div id="misc-section">
 	<a name="misc"></a><br><br><br>
 	<h2>Miscellaneous Facts</h2><br>
 	<div id="m"></div>
+    </div>
 
 
 	<a name="contact"></a><br><br><br>
@@ -294,15 +308,101 @@ underline {
 	document.getElementById("institute").textContent = me.institute;
 	document.getElementById("my_link").innerHTML = my_link_html;
 	document.getElementById("about").innerHTML = about_html;
-	document.getElementById("news").innerHTML = news_html;
+	document.getElementById("news_list").innerHTML = news_html;
 	document.getElementById("break_news").textContent = break_news;
-	document.getElementById("selected_pub").innerHTML = selected_pub_html;
+	// Hide entire news section if no news (navigation link will be hidden by adjustNavigation)
+	if (news.length === 0) {
+		document.getElementById("news-section").style.display = "none";
+	}
+	document.getElementById("selected_proj").innerHTML = selected_proj_html;
 	document.getElementById("exp").innerHTML = experience_html;
 	document.getElementById("hornor").innerHTML = hornor_html;
+	// Hide entire honors section if no honors (navigation link will be hidden by adjustNavigation)
+	if (hornor.length === 0) {
+		document.getElementById("honors-section").style.display = "none";
+	}
 	document.getElementById("activity").innerHTML = activity_html;
+	document.getElementById("teaching").innerHTML = teaching_html;
+	// Hide entire teaching section if no teaching (navigation link will be hidden by adjustNavigation)
+	if (teaching.length === 0) {
+		document.getElementById("teaching-section").style.display = "none";
+	}
 	document.getElementById("m").innerHTML = misc_html;
+	// Hide entire misc section if no misc (navigation link will be hidden by adjustNavigation)
+	if (misc.length === 0) {
+		document.getElementById("misc-section").style.display = "none";
+	}
 	document.getElementById("ct").innerHTML = contact_html;
 	document.getElementById("last_update").innerHTML = last_update_html;
 	document.getElementById("copyright").innerHTML = copyright_html;
+
+	// Function to hide navigation links for empty sections
+	function adjustNavigation() {
+		// Helper function to hide a link and its following <br> elements
+		function hideNavLink(linkId) {
+			var link = document.getElementById(linkId);
+			if (!link) return;
+
+			// Hide the link
+			link.style.display = "none";
+
+			// Hide all following <br> siblings until next <a> tag
+			var next = link.nextSibling;
+			while (next && next.nodeType === 1 && next.tagName === 'BR') {
+				next.style.display = "none";
+				next = next.nextSibling;
+			}
+		}
+
+		// Check and hide navigation links for empty sections
+		// News
+		if (news.length === 0) {
+			hideNavLink("nav-news");
+		}
+
+		// Honors
+		if (hornor.length === 0) {
+			hideNavLink("nav-honors");
+		}
+
+		// Activities
+		if (Object.keys(activity).length === 0) {
+			hideNavLink("nav-activities");
+		}
+
+		// Miscellaneous facts
+		if (misc.length === 0 || (misc.length === 1 && misc[0].length === 0)) {
+			hideNavLink("nav-misc");
+		}
+
+		// Publications (selected projects)
+		if (selected_proj.length === 0) {
+			hideNavLink("nav-publications");
+		}
+
+
+		// About Me
+		if (about.length === 0 || (about.length === 1 && about[0].length === 0)) {
+			hideNavLink("nav-about");
+		}
+
+		// Experience
+		if (experience.length === 0) {
+			hideNavLink("nav-experience");
+		}
+
+		// Teaching
+		if (teaching.length === 0) {
+			hideNavLink("nav-teaching");
+		}
+
+		// Contact
+		if (contact.length === 0) {
+			hideNavLink("nav-contact");
+		}
+	}
+
+	// Adjust navigation based on content
+	adjustNavigation();
 </script>
 </body></html>

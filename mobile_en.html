@@ -178,6 +178,7 @@ underline {
             </td>
         </table><br><br>
 
+        <div id="news-section">
         <h2>News</h2><br>
         <table>
             <tbody><tr>
@@ -188,17 +189,31 @@ underline {
             </td>
             </tr></tbody>
         </table><br><br>
+        </div>
 
         <h2>Project Work</h2><br>
         <div id="Text">
         <table>
             <td style="width:10px"></td>
             <td valign="middle">
-                <div id="selected_pub"></div>
+                <div id="selected_proj"></div>
                 <b>>> <a href="paper/mobile_en.html">Full Project Work List</a></b>
             </td>
         </table>
         </div><br><br>
+
+        <div id="teaching-section">
+            <a name="teaching-section"></a><br>
+            <h2>Teaching</h2><br>
+            <table>
+                <tbody><tr>
+                <td style="width:10px"></td>
+                <td valign="middle">
+                    <div id="teaching"></div>
+                </td>
+                </tr></tbody>
+            </table><br><br>
+        </div>
 
         <h2>Experiences</h2><br>
         <div id="exp_icon"></div>
@@ -211,19 +226,22 @@ underline {
             </tr></tbody>
         </table><br><br>
 
-        <h2>Honors</h2><br>
-        <table>
-            <tbody><tr>
-            <td style="width:2px"></td>
-            <td valign="middle">
-                <div id="hornor"></div>
-            </td>
-            </tr></tbody>
-        </table><br><br>
+        <div id="honors-section">
+            <h2>Honors</h2><br>
+            <table>
+                <tbody><tr>
+                <td style="width:2px"></td>
+                <td valign="middle">
+                    <div id="hornor"></div>
+                </td>
+                </tr></tbody>
+            </table><br><br>
+        </div>
 
-        <h2>Professional Activities</h2><br>
+        <h2>Activities</h2><br>
         <div id="activity"></div>
 
+        <div id="misc-section">
         <h2>Miscellaneous facts</h2><br>
         <table>
             <td style="width:10px"></td>
@@ -231,6 +249,7 @@ underline {
                 <div id="m"></div>
             </td>
         </table><br><br>
+        </div>
       
         <h2>Contact</h2><br>
         <table>
@@ -258,12 +277,29 @@ underline {
     document.getElementById("about").innerHTML = about_html;
     document.getElementById("news").innerHTML = news_html_m;
     document.getElementById("break_news").textContent = break_news;
-    document.getElementById("selected_pub").innerHTML = selected_pub_html_m;
+    // Hide entire news section if no news
+    if (news.length === 0) {
+        document.getElementById("news-section").style.display = "none";
+    }
+    document.getElementById("selected_proj").innerHTML = selected_proj_html_m;
     document.getElementById("exp_icon").innerHTML = experience_icon_html_m;
     document.getElementById("exp").innerHTML = experience_html_m;
     document.getElementById("hornor").innerHTML = hornor_html_m;
+    // Hide entire honors section if no honors
+    if (hornor.length === 0) {
+        document.getElementById("honors-section").style.display = "none";
+    }
     document.getElementById("activity").innerHTML = activity_html_m;
+    document.getElementById("teaching").innerHTML = teaching_html_m;
+    // Hide entire teaching section if no teaching
+    if (teaching.length === 0) {
+        document.getElementById("teaching-section").style.display = "none";
+    }
     document.getElementById("m").innerHTML = misc_html;
+    // Hide entire misc section if no misc (navigation link will be hidden by adjustNavigation)
+    if (misc.length === 0) {
+        document.getElementById("misc-section").style.display = "none";
+    }
     document.getElementById("ct").innerHTML = contact_html_m;
     document.getElementById("last_update").innerHTML = last_update_html_m;
     document.getElementById("copyright").innerHTML = copyright_html_m;
