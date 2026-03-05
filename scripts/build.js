@@ -40,7 +40,16 @@ if (fs.existsSync(miscPath)) {
   misc = JSON.parse(fs.readFileSync(miscPath, 'utf8'));
 }
 const contact = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/contact.json'), 'utf8'));
-const last_update = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/last_update.json'), 'utf8'));
+// Get current date for last_update
+const now = new Date();
+const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const currentMonth = monthNames[now.getMonth()];
+const currentYear = now.getFullYear().toString();
+const last_update = {
+  month: currentMonth,
+  month_zh: (now.getMonth() + 1).toString(),
+  year: currentYear
+};
 // Load section order - check if file exists
 let section_order = [];
 const sectionOrderPath = path.join(dataDir, 'content/section_order.json');
@@ -145,7 +154,7 @@ lines.push(`function href(dict, name) {
 };`);
 
 lines.push(`function href_zh(dict, name) {
-  var link = dict.link_zh;
+  let link = dict.link_zh;
   if (typeof link === "undefined") {
     link = dict.link;
   }
@@ -157,12 +166,12 @@ lines.push(`function href_zh(dict, name) {
 };`);
 
 lines.push(`function pub(paper, zh) {
-  var str = "";
+  let str = "";
   str += \`<table><td style="width:15px"></td><td valign="middle"><div>\`;
   str += \`<b>\${paper.name}</b><br>\`;
-  for (var i = 0; i < paper.author.length; i++) {
-    var author = paper.author[i];
-    var displayChinese = zh === "Yes" && paper.author_display_in_chinese !== false;
+  for (let i = 0; i < paper.author.length; i++) {
+    let author = paper.author[i];
+    let displayChinese = zh === "Yes" && paper.author_display_in_chinese !== false;
     if (author.is_me === "Yes") {
       if (displayChinese) {
         str += \`<u>\${author.name_zh}</u>\`;
@@ -190,7 +199,7 @@ lines.push(`function pub(paper, zh) {
       str += \`<i>\${paper.pub.name}, \${paper.year}</i><br>\`;
     }
   }
-  for (var i = 0; i < paper.extra_link.length; i++) {
+  for (let i = 0; i < paper.extra_link.length; i++) {
     if (zh === "Yes") {
       str += \`[\${href_zh(paper.extra_link[i])}] \`;
     }else {
@@ -204,28 +213,28 @@ lines.push(`function pub(paper, zh) {
 };`);
 
 lines.push(`// 个人信息`);
-lines.push(`var me = ${JSON.stringify(me, null, '\t')};`);
+lines.push(`let me = ${JSON.stringify(me, null, '\t')};`);
 
 lines.push(`// 个人链接`);
-lines.push(`var my_link = ${JSON.stringify(my_link, null, '\t')};`);
+lines.push(`let my_link = ${JSON.stringify(my_link, null, '\t')};`);
 
 lines.push(`// 使用到的机构信息`);
-lines.push(`var institute = ${JSON.stringify(institute, null, '\t')};`);
+lines.push(`let institute = ${JSON.stringify(institute, null, '\t')};`);
 
 lines.push(`// 使用到的人物信息`);
-lines.push(`var person = ${JSON.stringify(person, null, '\t')};`);
+lines.push(`let person = ${JSON.stringify(person, null, '\t')};`);
 
 lines.push(`// 使用到的期刊和会议信息`);
-lines.push(`var preprint = ${JSON.stringify(preprint, null, '\t')};`);
-lines.push(`var journal = ${JSON.stringify(journal, null, '\t')};`);
-lines.push(`var conference = ${JSON.stringify(conference, null, '\t')};`);
+lines.push(`let preprint = ${JSON.stringify(preprint, null, '\t')};`);
+lines.push(`let journal = ${JSON.stringify(journal, null, '\t')};`);
+lines.push(`let conference = ${JSON.stringify(conference, null, '\t')};`);
 lines.push(`// 章节顺序`);
-lines.push(`var section_order = ${JSON.stringify(section_order, null, '\t')};`);
+lines.push(`let section_order = ${JSON.stringify(section_order, null, '\t')};`);
 
 lines.push(`// 我的文章信息`);
 // Need to output paperProcessed with references as strings, but we need to output JS code that references variables.
 // Instead of stringifying, we construct JS object literals with variable references.
-let paperCode = 'var paper = {\n';
+let paperCode = 'let paper = {\n';
 for (const [id, p] of Object.entries(paperProcessed)) {
   paperCode += `\t${id}: {\n`;
   if (p.short_name !== undefined) {
@@ -257,11 +266,11 @@ paperCode += '};';
 lines.push(paperCode);
 
 lines.push(`// 精选项目信息`);
-lines.push(`var selected_proj = [${selected_proj.join(', ')}];`);
+lines.push(`let selected_proj = [${selected_proj.join(', ')}];`);
 
 lines.push(`// 个人介绍`);
 // aboutProcessed contains template strings, need to output as template literals
-let aboutCode = 'var about = [\n';
+let aboutCode = 'let about = [\n';
 aboutProcessed.en.forEach(paragraph => {
   aboutCode += '\t[';
   aboutCode += paragraph.map(s => toTemplateString(s)).join(', ');
@@ -270,7 +279,7 @@ aboutProcessed.en.forEach(paragraph => {
 aboutCode += '];';
 lines.push(aboutCode);
 
-let aboutZhCode = 'var about_zh = [\n';
+let aboutZhCode = 'let about_zh = [\n';
 aboutProcessed.zh.forEach(paragraph => {
   aboutZhCode += '\t[';
   aboutZhCode += paragraph.map(s => toTemplateString(s)).join(', ');
@@ -280,10 +289,10 @@ aboutZhCode += '];';
 lines.push(aboutZhCode);
 
 lines.push(`// 新闻`);
-lines.push(`var break_news = ${toTemplateString(break_news.en)};`);
-lines.push(`var break_news_zh = ${toTemplateString(break_news.zh)};`);
+lines.push(`let break_news = ${toTemplateString(break_news.en)};`);
+lines.push(`let break_news_zh = ${toTemplateString(break_news.zh)};`);
 
-let newsCode = 'var news = [\n';
+let newsCode = 'let news = [\n';
 news.filter(item => item.show !== false).forEach(item => {
   newsCode += '\t{\n';
   newsCode += `\t\tdate: ${JSON.stringify(item.date)},\n`;
@@ -296,7 +305,7 @@ lines.push(newsCode);
 
 lines.push(`// 经历`);
 // experienceProcessed contains references as strings
-let expCode = 'var experience = [\n';
+let expCode = 'let experience = [\n';
 experienceProcessed.forEach(exp => {
   expCode += '\t{\n';
   expCode += `\t\tinstitute: ${exp.institute},\n`;
@@ -318,14 +327,14 @@ expCode += '];';
 lines.push(expCode);
 
 lines.push(`// 荣誉`);
-lines.push(`var hornor = ${JSON.stringify(hornor, null, '\t')};`);
+lines.push(`let hornor = ${JSON.stringify(hornor, null, '\t')};`);
 
 lines.push(`// 任教`);
-lines.push(`var teaching = ${JSON.stringify(teaching, null, '\t')};`);
+lines.push(`let teaching = ${JSON.stringify(teaching, null, '\t')};`);
 
 lines.push(`// 活动`);
 // activityProcessed
-let activityCode = 'var activity = {\n';
+let activityCode = 'let activity = {\n';
 for (const [key, val] of Object.entries(activityProcessed)) {
   activityCode += `\t${key}: {\n`;
   activityCode += `\t\tname: ${JSON.stringify(val.name)},\n`;
@@ -344,7 +353,7 @@ activityCode += '};';
 lines.push(activityCode);
 
 lines.push(`// 其他方面`);
-let miscCode = 'var misc = [\n';
+let miscCode = 'let misc = [\n';
 miscProcessed.en.forEach(paragraph => {
   miscCode += '\t[';
   miscCode += paragraph.map(s => toTemplateString(s)).join(', ');
@@ -353,7 +362,7 @@ miscProcessed.en.forEach(paragraph => {
 miscCode += '];';
 lines.push(miscCode);
 
-let miscZhCode = 'var misc_zh = [\n';
+let miscZhCode = 'let misc_zh = [\n';
 miscProcessed.zh.forEach(paragraph => {
   miscZhCode += '\t[';
   miscZhCode += paragraph.map(s => toTemplateString(s)).join(', ');
@@ -363,10 +372,10 @@ miscZhCode += '];';
 lines.push(miscZhCode);
 
 lines.push(`// 联系方式`);
-lines.push(`var contact = ${JSON.stringify(contact, null, '\t')};`);
+lines.push(`let contact = ${JSON.stringify(contact, null, '\t')};`);
 
 lines.push(`// 版权`);
-lines.push(`var last_update = ${JSON.stringify(last_update, null, '\t')};`);
+lines.push(`let last_update = ${JSON.stringify(last_update, null, '\t')};`);
 
 // Now generate the HTML string variables (selected_proj_html, about_html, etc.)
 // This part is lengthy; we can copy the original generation logic from data.js
@@ -387,3 +396,8 @@ lines.push(rest);
 // Write to file
 fs.writeFileSync(outputFile, lines.join('\n\n'), 'utf8');
 console.log('Generated data.js');
+
+// Update last_update.json with current date
+const lastUpdatePath = path.join(dataDir, 'content/last_update.json');
+fs.writeFileSync(lastUpdatePath, JSON.stringify(last_update, null, 2) + '\n', 'utf8');
+console.log('Updated last_update.json');

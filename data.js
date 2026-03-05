@@ -7,7 +7,7 @@ function href(dict, name) {
 };
 
 function href_zh(dict, name) {
-  var link = dict.link_zh;
+  let link = dict.link_zh;
   if (typeof link === "undefined") {
     link = dict.link;
   }
@@ -19,12 +19,12 @@ function href_zh(dict, name) {
 };
 
 function pub(paper, zh) {
-  var str = "";
+  let str = "";
   str += `<table><td style="width:15px"></td><td valign="middle"><div>`;
   str += `<b>${paper.name}</b><br>`;
-  for (var i = 0; i < paper.author.length; i++) {
-    var author = paper.author[i];
-    var displayChinese = zh === "Yes" && paper.author_display_in_chinese !== false;
+  for (let i = 0; i < paper.author.length; i++) {
+    let author = paper.author[i];
+    let displayChinese = zh === "Yes" && paper.author_display_in_chinese !== false;
     if (author.is_me === "Yes") {
       if (displayChinese) {
         str += `<u>${author.name_zh}</u>`;
@@ -52,7 +52,7 @@ function pub(paper, zh) {
       str += `<i>${paper.pub.name}, ${paper.year}</i><br>`;
     }
   }
-  for (var i = 0; i < paper.extra_link.length; i++) {
+  for (let i = 0; i < paper.extra_link.length; i++) {
     if (zh === "Yes") {
       str += `[${href_zh(paper.extra_link[i])}] `;
     }else {
@@ -67,7 +67,7 @@ function pub(paper, zh) {
 
 // 个人信息
 
-var me = {
+let me = {
 	"name": "An Tao",
 	"name_zh": "陶安",
 	"img": "image/An_Tao.jpg",
@@ -82,7 +82,7 @@ var me = {
 
 // 个人链接
 
-var my_link = [
+let my_link = [
 	{
 		"name": "Google Scholar",
 		"name_zh": "谷歌学术",
@@ -98,7 +98,7 @@ var my_link = [
 
 // 使用到的机构信息
 
-var institute = {
+let institute = {
 	"ivg": {
 		"name": "i-VisionGroup",
 		"name_zh": "IVG视觉组",
@@ -213,7 +213,7 @@ var institute = {
 
 // 使用到的人物信息
 
-var person = {
+let person = {
 	"yueqi_duan": {
 		"name": "Yueqi Duan",
 		"name_zh": "段岳圻",
@@ -224,13 +224,13 @@ var person = {
 		"name": "Jiwen Lu",
 		"name_zh": "鲁继文",
 		"link": "http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/",
-		"link_zh": "https://www.au.tsinghua.edu.cn/info/1078/2330.htm"
+		"link_zh": "https://www.au.tsinghua.edu.cn/info/1078/3156.htm"
 	},
 	"jie_zhou": {
 		"name": "Jie Zhou",
 		"name_zh": "周杰",
-		"link": "https://www.tsinghua.edu.cn/publish/thu2018en/index.html",
-		"link_zh": "https://www.au.tsinghua.edu.cn/info/1078/1635.htm"
+		"link": "https://www.au.tsinghua.edu.cn/en/info/1110/3217.htm",
+		"link_zh": "https://www.au.tsinghua.edu.cn/info/1078/3126.htm"
 	},
 	"yingqi_wang": {
 		"name": "Yingqi Wang",
@@ -283,7 +283,7 @@ var person = {
 
 // 使用到的期刊和会议信息
 
-var preprint = {
+let preprint = {
 	"arxiv": {
 		"name": "arXiv",
 		"name_zh": "预印"
@@ -294,7 +294,7 @@ var preprint = {
 	}
 };
 
-var journal = {
+let journal = {
 	"tip": {
 		"name": "IEEE Transactions on Image Processing",
 		"short_name": "TIP"
@@ -305,7 +305,7 @@ var journal = {
 	}
 };
 
-var conference = {
+let conference = {
 	"cvpr": {
 		"name": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
 		"short_name": "CVPR"
@@ -355,7 +355,7 @@ var conference = {
 
 // 章节顺序
 
-var section_order = [
+let section_order = [
 	{
 		"id": "code",
 		"name": "Code Projects",
@@ -390,7 +390,7 @@ var section_order = [
 
 // 我的文章信息
 
-var paper = {
+let paper = {
 	lgm: {
 		short_name: "Dynamics-aware Attack",
 		name: "Dynamics-aware Adversarial Attack of Adaptive Neural Networks",
@@ -563,17 +563,17 @@ var paper = {
 
 // 精选项目信息
 
-var selected_proj = [paper.shcmthesis];
+let selected_proj = [paper.shcmthesis];
 
 // 个人介绍
 
-var about = [
+let about = [
 	[`I'm currently working as a postdoctoral research fellow at ${href(institute.shcmusic)} (SHCM),`, `supervised by Prof. ${href(person.jian_yang)}.`, `I received my Doctor of Engineering (Ph.D.) degree from ${href(institute.tsinghua)} and Bachelor of Engineering (B.Eng.) degree from ${href(institute.seu)}.`],
-	[`During my Ph.D. career in Tsinghua, I conducted research in computer vision in the field of artificial intelligence.`, `After joining ${href(institute.shcmusic)}, my research focuses on AI for music, especially on professional analysis and understanding of classical music, as well as Chinese ethnic music.`],
+	[`During my Ph.D. career in Tsinghua, I conducted research in computer vision in the field of artificial intelligence.`, `After joining SHCM, my research focuses on AI for music, especially on professional analysis and understanding of classical music, as well as Chinese ethnic music.`],
 	[`I am also a guqin enthusiast, having been introduced to it in 2022 through an elective course offered by Tsinghua University.`, `I have studied piano as an amateur since the age of five, for about ten years.`],
 ];
 
-var about_zh = [
+let about_zh = [
 	[`我目前在${href_zh(institute.shcmusic)}从事博士后工作，`, `合作导师是${href_zh(person.jian_yang)}教授。`, `我在${href_zh(institute.tsinghua)}${href_zh(institute.auto)}取得工学博士学位，`, `导师是${href_zh(person.jie_zhou)}教授和${href_zh(person.jiwen_lu)}教授。`, `我本科就读于${href_zh(institute.seu)}的${href_zh(institute.radio)}，获得工学学士学位。`],
 	[`我在清华大学读博期间开展了人工智能领域中计算机视觉方面的研究。`, `来到上海音乐学院之后，我的研究专注于音乐人工智能，尤其关注古典音乐的专业性分析理解，以及中国的民族音乐。`],
 	[`我同时还是一名古琴爱好者，于2022年启蒙自清华大学校设古琴选修课。`, `我曾自五岁起业余学习钢琴，持续约十年。`],
@@ -581,11 +581,11 @@ var about_zh = [
 
 // 新闻
 
-var break_news = `I am planning to conduct research related to guqin music, as well as studies on the understanding, analysis, and generation of classical music. If you are interested in collaboration, please feel free to contact me!`;
+let break_news = `I am planning to conduct research related to guqin music, as well as studies on the understanding, analysis, and generation of classical music. If you are interested in collaboration, please feel free to contact me!`;
 
-var break_news_zh = `我正在计划开展古琴音乐相关的研究，以及与古典音乐理解分析/生成相关的研究，如果你有合作意向，欢迎联系我！`;
+let break_news_zh = `我正在计划开展古琴音乐相关的研究，以及与古典音乐理解分析/生成相关的研究，如果你有合作意向，欢迎联系我！`;
 
-var news = [
+let news = [
 	{
 		date: "2025.09.30",
 		content: `I join ${href(institute.shcmusic)} as a postdoctoral research fellow!`,
@@ -598,7 +598,7 @@ var news = [
 	},
 	{
 		date: "2024.06.28",
-		content: `I obtain a Ph.D. in Engineering from Tsinghua University!`,
+		content: `I obtain the Ph.D. degree in Engineering from Tsinghua University!`,
 		content_zh: `我获得了清华大学工学博士学位！`,
 	},
 	{
@@ -610,7 +610,7 @@ var news = [
 
 // 经历
 
-var experience = [
+let experience = [
 	{
 		institute: institute.shcmusic,
 		department: institute.music_engineering,
@@ -700,11 +700,17 @@ var experience = [
 
 // 荣誉
 
-var hornor = [];
+let hornor = [];
 
 // 任教
 
-var teaching = [
+let teaching = [
+	{
+		"course_name": "Music Programming (Undergraduate Course)",
+		"course_name_zh": "《音乐编程》（本科生课程）",
+		"role": "Teaching Assistant",
+		"role_zh": "授课助教"
+	},
 	{
 		"course_name": "Design and Development of Music Online Applications (Graduate Course)",
 		"course_name_zh": "《音乐类在线应用的设计与开发》（研究生课程）",
@@ -727,7 +733,7 @@ var teaching = [
 
 // 活动
 
-var activity = {
+let activity = {
 	conference_organizer: {
 		name: "Conference Co-organizer",
 		name_zh: "会议协办",
@@ -742,15 +748,15 @@ var activity = {
 
 // 其他方面
 
-var misc = [
+let misc = [
 ];
 
-var misc_zh = [
+let misc_zh = [
 ];
 
 // 联系方式
 
-var contact = [
+let contact = [
 	{
 		"name": "Email",
 		"name_zh": "邮箱",
@@ -766,9 +772,9 @@ var contact = [
 
 // 版权
 
-var last_update = {
-	"month": "Feb",
-	"month_zh": "2",
+let last_update = {
+	"month": "Mar",
+	"month_zh": "3",
 	"year": "2026"
 };
 

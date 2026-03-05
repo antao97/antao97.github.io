@@ -1,5 +1,11 @@
 [
   {
+    "course_name": "Music Programming (Undergraduate Course)",
+    "course_name_zh": "《音乐编程》（本科生课程）",
+    "role": "Teaching Assistant",
+    "role_zh": "授课助教"
+  },
+  {
     "course_name": "Design and Development of Music Online Applications (Graduate Course)",
     "course_name_zh": "《音乐类在线应用的设计与开发》（研究生课程）",
     "role": "Teaching Assistant",
