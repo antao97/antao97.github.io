@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Google Scholar",
+    "name_zh": "谷歌学术",
+    "link": "https://scholar.google.com/citations?user=0FyWZPMAAAAJ&hl=en",
+    "link_zh": "https://scholar.google.com.hk/citations?hl=zh-CN&user=0FyWZPMAAAAJ"
+  },
+  {
+    "name": "Github",
+    "name_zh": "GitHub代码库",
+    "link": "https://github.com/antao97"
+  }
+]
