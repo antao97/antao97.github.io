@@ -19,6 +19,11 @@
         "name": "Zhihu",
         "name_zh": "知乎文档",
         "link": "https://zhuanlan.zhihu.com/p/14553247725"
+      },
+      {
+        "name": "TexPage",
+        "name_zh": "TexPage在线编译",
+        "link": "https://www.texpage.com/zh/template/2387f991-a81e-416f-ae68-2e0085f97310/"
       }
     ],
     "intro": [
