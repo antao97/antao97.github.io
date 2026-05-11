@@ -1,0 +1,26 @@
+[
+  {
+    "id": "book_transl",
+    "name": "Book Translation",
+    "name_zh": "翻译著作",
+    "filter_type": "book_transl"
+  },
+  {
+    "id": "arxiv",
+    "name": "Preprint Papers",
+    "name_zh": "预印论文",
+    "filter_type": "arxiv"
+  },
+  {
+    "id": "journal",
+    "name": "Journal Papers",
+    "name_zh": "期刊论文",
+    "filter_type": "journal"
+  },
+  {
+    "id": "conference",
+    "name": "Conference Papers",
+    "name_zh": "会议论文",
+    "filter_type": "conference"
+  }
+]

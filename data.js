@@ -414,6 +414,39 @@ let section_order = [
 // 我的文章信息
 
 let paper = {
+	isps_review: {
+		name_zh: "音乐表演研究的跨界融合新趋势——“第十届表演科学国际研讨会”述评",
+		name: "A New Trend of Interdisciplinary Integration in Music Performance Research: A Review of the 10th International Symposium on Performance Science",
+		link: "https://doi.org/10.16504/j.cnki.cn11-1183/j.2026.01.011",
+		img: "image/isps_review.png",
+		author: [person.jian_yang, me, person.renping_qian],
+		pub: journal.jccom,
+		type: "journal",
+		year: 2026,
+		volume: 1,
+		extra_link: [
+	{
+		"name": "paper",
+		"name_zh": "论文",
+		"link": "https://doi.org/10.16504/j.cnki.cn11-1183/j.2026.01.011"
+	},
+	{
+		"name": "ISPS 2025",
+		"name_zh": "ISPS 2025",
+		"link": "https://event.fourwaves.com/isps2025/"
+	}
+],
+		intro: [
+	"This article examines recent developments in music performance research by taking the 10th International Symposium on Performance Science (ISPS 2025) as a case study.",
+	"Based on an analysis of the symposium’s thematic structure and keyword frequency data, it explores emerging structural shifts between scientific empiricism, humanistic interpretation, and practice-oriented inquiry.",
+	"The study shows that, in the context of the rapid development of artificial intelligence, renewed attention has shifted toward performer-centred perspectives, core musical issues, and data-driven research methods, leading to a more balanced research landscape."
+],
+		intro_zh: [
+	"文章以第十届表演科学国际研讨会为切入点，结合会议议题结构与词频统计等数据，系统考察当代音乐表演研究在科学实证、人文阐释与实践应用之间的结构性转向。",
+	"研究发现，在人工智能快速发展的背景下，表演者视角、音乐本体问题与数据驱动方法等要素正在重新获得平衡。"
+],
+		author_display_in_chinese: true
+	},
 	lgm: {
 		short_name: "Dynamics-aware Attack",
 		name: "Dynamics-aware Adversarial Attack of Adaptive Neural Networks",
@@ -547,39 +580,6 @@ let paper = {
 ],
 		author_display_in_chinese: false
 	},
-	isps_review: {
-		name_zh: "音乐表演研究的跨界融合新趋势——“第十届表演科学国际研讨会”述评",
-		name: "A New Trend of Interdisciplinary Integration in Music Performance Research: A Review of the 10th International Symposium on Performance Science",
-		link: "https://doi.org/10.16504/j.cnki.cn11-1183/j.2026.01.011",
-		img: "image/isps_review.png",
-		author: [person.jian_yang, me, person.renping_qian],
-		pub: journal.jccom,
-		type: "journal",
-		year: 2026,
-		volume: 1,
-		extra_link: [
-	{
-		"name": "paper",
-		"name_zh": "论文",
-		"link": "https://doi.org/10.16504/j.cnki.cn11-1183/j.2026.01.011"
-	},
-	{
-		"name": "ISPS 2025",
-		"name_zh": "ISPS 2025",
-		"link": "https://event.fourwaves.com/isps2025/"
-	}
-],
-		intro: [
-	"This article examines recent developments in music performance research by taking the 10th International Symposium on Performance Science (ISPS 2025) as a case study.",
-	"Based on an analysis of the symposium’s thematic structure and keyword frequency data, it explores emerging structural shifts between scientific empiricism, humanistic interpretation, and practice-oriented inquiry.",
-	"The study shows that, in the context of the rapid development of artificial intelligence, renewed attention has shifted toward performer-centred perspectives, core musical issues, and data-driven research methods, leading to a more balanced research landscape."
-],
-		intro_zh: [
-	"文章以第十届表演科学国际研讨会为切入点，结合会议议题结构与词频统计等数据，系统考察当代音乐表演研究在科学实证、人文阐释与实践应用之间的结构性转向。",
-	"研究发现，在人工智能快速发展的背景下，表演者视角、音乐本体问题与数据驱动方法等要素正在重新获得平衡。"
-],
-		author_display_in_chinese: true
-	},
 	shcmthesis: {
 		short_name: "SHCM Thesis Template",
 		name: "ShcmThesis: Shanghai Conservatory of Music LaTeX Thesis Template",
@@ -624,7 +624,51 @@ let paper = {
 
 // 精选项目信息
 
-let selected_proj = [paper.isps_review, paper.shcmthesis];
+let selected_proj = [paper.shcmthesis];
+
+// 精选出版物信息
+
+let selected_pub = [paper.isps_review];
+
+// 出版物分类顺序
+
+let pub_section_order = [
+	{
+		"id": "book_transl",
+		"name": "Book Translation",
+		"name_zh": "翻译著作",
+		"filter_type": "book_transl"
+	},
+	{
+		"id": "arxiv",
+		"name": "Preprint Papers",
+		"name_zh": "预印论文",
+		"filter_type": "arxiv"
+	},
+	{
+		"id": "journal",
+		"name": "Journal Papers",
+		"name_zh": "期刊论文",
+		"filter_type": "journal"
+	},
+	{
+		"id": "conference",
+		"name": "Conference Papers",
+		"name_zh": "会议论文",
+		"filter_type": "conference"
+	}
+];
+
+// 项目分类顺序
+
+let proj_section_order = [
+	{
+		"id": "code",
+		"name": "Code Projects",
+		"name_zh": "代码项目",
+		"filter_type": "code"
+	}
+];
 
 // 个人介绍
 
@@ -906,7 +950,59 @@ for (var i = 0; i < selected_proj.length; i++) {
   }
   selected_proj_html += `</div></td></tr></tbody></table>`;
   selected_proj_html += `<table><td style="height:35px"></td></table>`;
-} 
+}
+
+// Selected Publications
+var selected_pub_html = "";
+for (var i = 0; i < selected_pub.length; i++) {
+  selected_pub_html += `<table><tbody><tr>`;
+  if (selected_pub[i].img) {
+    selected_pub_html += `<td style="width:230px;" valign="middle" align='middle'>`;
+    selected_pub_html += `<table><td style="height:15px"></td></table>`;
+    selected_pub_html += `<img src=${selected_pub[i].img} height="200px">`;
+    selected_pub_html += `</td><td style="width:10px"></td>`;
+  } else {
+    selected_pub_html += `<td style="width:15px"></td>`;
+  }
+  selected_pub_html += `<td valign="middle"><div>`;
+  selected_pub_html += `<b>${selected_pub[i].name}</b><br>`;
+  for (var j = 0; j < selected_pub[i].author.length; j++) {
+    var author = selected_pub[i].author[j];
+    if (author.is_me === "Yes") {
+      selected_pub_html += `<u>${author.name}</u>`;
+    } else {
+      selected_pub_html += `${href(author)}`;
+    }
+    if (j != (selected_pub[i].author.length-1)){
+      selected_pub_html += ", ";
+    }
+  }
+  selected_pub_html += `<br>`;
+  if (selected_pub[i].pub.name === "arXiv"){
+    selected_pub_html += `<i>${selected_pub[i].pub.name}, ${selected_pub[i].year}</i><br>`;
+  }else{
+    var volumeStr = "";
+    if (selected_pub[i].volume) {
+      volumeStr = `Vol. ${selected_pub[i].volume}, `;
+    }
+    if (selected_pub[i].pub.short_name) {
+      selected_pub_html += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>), ${volumeStr}${selected_pub[i].year}</i><br>`;
+    } else {
+      selected_pub_html += `<i>${selected_pub[i].pub.name}, ${volumeStr}${selected_pub[i].year}</i><br>`;
+    }
+  }
+  selected_pub_html += `<font size=3>`;
+  for (var j = 0; j < selected_pub[i].extra_link.length; j++) {
+    selected_pub_html += `[${href(selected_pub[i].extra_link[j])}] `;
+  }
+  selected_pub_html += `</font><br>`;
+  selected_pub_html += `<table><td style="height:10px"></td></table>`;
+  if (selected_pub[i].intro) {
+    selected_pub_html += `<font size=3>${selected_pub[i].intro.join(" ")}</font>`;
+  }
+  selected_pub_html += `</div></td></tr></tbody></table>`;
+  selected_pub_html += `<table><td style="height:35px"></td></table>`;
+}
 
 // About
 var about_html = "";
@@ -1118,7 +1214,72 @@ for (var i = 0; i < selected_proj.length; i++) {
   }
   selected_proj_html_zh += `</div></td></tr></tbody></table>`;
   selected_proj_html_zh += `<table><td style="height:35px"></td></table>`;
-} 
+}
+
+// 精选出版物（中文）
+var selected_pub_html_zh = "";
+for (var i = 0; i < selected_pub.length; i++) {
+  selected_pub_html_zh += `<table><tbody><tr>`;
+  if (selected_pub[i].img) {
+    selected_pub_html_zh += `<td style="width:230px;" valign="middle" align='middle'>`;
+    selected_pub_html_zh += `<table><td style="height:15px"></td></table>`;
+    selected_pub_html_zh += `<img src=${selected_pub[i].img} height="200px">`;
+    selected_pub_html_zh += `</td><td style="width:10px"></td>`;
+  } else {
+    selected_pub_html_zh += `<td style="width:15px"></td>`;
+  }
+  selected_pub_html_zh += `<td valign="middle"><div>`;
+  var displayName = selected_pub[i].name_zh ? selected_pub[i].name_zh : selected_pub[i].name;
+  selected_pub_html_zh += `<b>${displayName}</b><br>`;
+  for (var j = 0; j < selected_pub[i].author.length; j++) {
+    var author = selected_pub[i].author[j];
+    var displayChinese = selected_pub[i].author_display_in_chinese !== false;
+    if (author.is_me === "Yes") {
+      if (displayChinese) {
+        selected_pub_html_zh += `<u>${author.name_zh}</u>`;
+      } else {
+        selected_pub_html_zh += `<u>${author.name}</u>`;
+      }
+    } else {
+      if (displayChinese) {
+        selected_pub_html_zh += `${href_zh(author)}`;
+      } else {
+        selected_pub_html_zh += `${href_zh(author, author.name)}`;
+      }
+    }
+    if (j != (selected_pub[i].author.length-1)){
+      selected_pub_html_zh += ", ";
+    }
+  }
+  selected_pub_html_zh += `<br>`;
+  if (selected_pub[i].pub.name === "arXiv"){
+    selected_pub_html_zh += `<i>${selected_pub[i].pub.name_zh}, ${selected_pub[i].year}</i><br>`;
+  }else{
+    var pubName = selected_pub[i].pub.name_zh ? selected_pub[i].pub.name_zh : selected_pub[i].pub.name;
+    var yearStr;
+    if (selected_pub[i].volume) {
+      yearStr = `${selected_pub[i].year}年第${selected_pub[i].volume}期`;
+    } else {
+      yearStr = `${selected_pub[i].year}`;
+    }
+    if (selected_pub[i].pub.short_name) {
+      selected_pub_html_zh += `<i>${pubName} (<b>${selected_pub[i].pub.short_name}</b>), ${yearStr}</i><br>`;
+    } else {
+      selected_pub_html_zh += `<i>${pubName}, ${yearStr}</i><br>`;
+    }
+  }
+  selected_pub_html_zh += `<font size=3>`;
+  for (var j = 0; j < selected_pub[i].extra_link.length; j++) {
+    selected_pub_html_zh += `[${href_zh(selected_pub[i].extra_link[j])}] `;
+  }
+  selected_pub_html_zh += `</font><br>`;
+  selected_pub_html_zh += `<table><td style="height:10px"></td></table>`;
+  if (selected_pub[i].intro_zh) {
+    selected_pub_html_zh += `<font size=3>${selected_pub[i].intro_zh.join("")}</font>`;
+  }
+  selected_pub_html_zh += `</div></td></tr></tbody></table>`;
+  selected_pub_html_zh += `<table><td style="height:35px"></td></table>`;
+}
 
 // 个人介绍
 var about_html_zh = "";
@@ -1284,7 +1445,43 @@ for (var i = 0; i < selected_proj.length; i++) {
     selected_proj_html_m += `[${href(selected_proj[i].extra_link[j])}] `;
   }
   selected_proj_html_m += `<br><br>`;
-} 
+}
+
+// Selected Publications (Mobile)
+var selected_pub_html_m = "";
+for (var i = 0; i < selected_pub.length; i++) {
+  selected_pub_html_m += `<b>${selected_pub[i].name}</b><br>`;
+  for (var j = 0; j < selected_pub[i].author.length; j++) {
+    var author = selected_pub[i].author[j];
+    var displayChinese = false;
+    if (author.is_me === "Yes") {
+      selected_pub_html_m += `<u>${author.name}</u>`;
+    } else {
+      selected_pub_html_m += `${href(author)}`;
+    }
+    if (j != (selected_pub[i].author.length-1)){
+      selected_pub_html_m += ", ";
+    }
+  }
+  selected_pub_html_m += `<br>`;
+  if (selected_pub[i].pub.name === "arXiv"){
+    selected_pub_html_m += `<i>${selected_pub[i].pub.name}, ${selected_pub[i].year}</i><br>`;
+  }else{
+    var volumeStr = "";
+    if (selected_pub[i].volume) {
+      volumeStr = `Vol. ${selected_pub[i].volume}, `;
+    }
+    if (selected_pub[i].pub.short_name) {
+      selected_pub_html_m += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>), ${volumeStr}${selected_pub[i].year}</i><br>`;
+    } else {
+      selected_pub_html_m += `<i>${selected_pub[i].pub.name}, ${volumeStr}${selected_pub[i].year}</i><br>`;
+    }
+  }
+  for (var j = 0; j < selected_pub[i].extra_link.length; j++) {
+    selected_pub_html_m += `[${href(selected_pub[i].extra_link[j])}] `;
+  }
+  selected_pub_html_m += `<br><br>`;
+}
 
 // Experience
 var experience_icon_html_m = "";
@@ -1451,7 +1648,55 @@ for (var i = 0; i < selected_proj.length; i++) {
     selected_proj_html_m_zh += `[${href_zh(selected_proj[i].extra_link[j])}] `;
   }
   selected_proj_html_m_zh += `<br><br>`;
-} 
+}
+
+// 精选出版物（移动端中文）
+var selected_pub_html_m_zh = "";
+for (var i = 0; i < selected_pub.length; i++) {
+  var displayName = selected_pub[i].name_zh ? selected_pub[i].name_zh : selected_pub[i].name;
+  selected_pub_html_m_zh += `<b>${displayName}</b><br>`;
+  for (var j = 0; j < selected_pub[i].author.length; j++) {
+    var author = selected_pub[i].author[j];
+    var displayChinese = selected_pub[i].author_display_in_chinese !== false;
+    if (author.is_me === "Yes") {
+      if (displayChinese) {
+        selected_pub_html_m_zh += `<u>${author.name_zh}</u>`;
+      } else {
+        selected_pub_html_m_zh += `<u>${author.name}</u>`;
+      }
+    } else {
+      if (displayChinese) {
+        selected_pub_html_m_zh += `${href_zh(author)}`;
+      } else {
+        selected_pub_html_m_zh += `${href_zh(author, author.name)}`;
+      }
+    }
+    if (j != (selected_pub[i].author.length-1)){
+      selected_pub_html_m_zh += ", ";
+    }
+  }
+  selected_pub_html_m_zh += `<br>`;
+  if (selected_pub[i].pub.name === "arXiv"){
+    selected_pub_html_m_zh += `<i>${selected_pub[i].pub.name_zh}, ${selected_pub[i].year}</i><br>`;
+  }else{
+    var pubName = selected_pub[i].pub.name_zh ? selected_pub[i].pub.name_zh : selected_pub[i].pub.name;
+    var yearStr;
+    if (selected_pub[i].volume) {
+      yearStr = `${selected_pub[i].year}年第${selected_pub[i].volume}期`;
+    } else {
+      yearStr = `${selected_pub[i].year}`;
+    }
+    if (selected_pub[i].pub.short_name) {
+      selected_pub_html_m_zh += `<i>${pubName} (<b>${selected_pub[i].pub.short_name}</b>), ${yearStr}</i><br>`;
+    } else {
+      selected_pub_html_m_zh += `<i>${pubName}, ${yearStr}</i><br>`;
+    }
+  }
+  for (var j = 0; j < selected_pub[i].extra_link.length; j++) {
+    selected_pub_html_m_zh += `[${href_zh(selected_pub[i].extra_link[j])}] `;
+  }
+  selected_pub_html_m_zh += `<br><br>`;
+}
 
 // 经历
 var experience_icon_html_m_zh = "";

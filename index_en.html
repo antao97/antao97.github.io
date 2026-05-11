@@ -4,7 +4,7 @@
 <link rel="icon" href="image/icon.jpg" >
 
 <script type="text/javascript">
-      //判断是否手机访问 如果是跳转 
+      //判断是否手机访问 如果是跳转
       try {
       var urlhash = window.location.hash;
       if (!urlhash.match("fromapp")) {
@@ -13,9 +13,9 @@
       }
       }
       } catch (err) {}
-</script> 
+</script>
 
-<script src="./data.js"></script>  
+<script src="./data.js"></script>
 
 <link rel="stylesheet" href="./style.css">
 <link rel="stylesheet" href="./desktop.css">
@@ -58,7 +58,8 @@
 					<a id="nav-home" href="#home" style="color: #3B3B3B">Home</a><br><br>
 					<a id="nav-about" href="#about-me" style="color: #3B3B3B">About Me</a><br><br>
 					<a id="nav-news" href="#news" style="color: #3B3B3B">News</a><br><br>
-					<a id="nav-publications" href="#publications" style="color: #3B3B3B">Project Work</a><br><br>
+					<a id="nav-publications" href="#publications" style="color: #3B3B3B">Publications</a><br><br>
+					<a id="nav-projects" href="#projects" style="color: #3B3B3B">Projects</a><br><br>
 					<a id="nav-teaching" href="#teaching-section" style="color: #3B3B3B">Teaching</a><br><br>
 					<a id="nav-experience" href="#experience" style="color: #3B3B3B">Experiences</a><br><br>
 					<a id="nav-honors" href="#honors" style="color: #3B3B3B">Honors</a><br><br>
@@ -108,20 +109,39 @@
 	</table>
 	</div>
 
-  	<a name="publications"></a><br><br><br>
-  	<h2>Project Work</h2><br>
-  	<table>
-	  	<td style="height:10px">
-	  	</td>
+	<div id="publications-section">
+	<a name="publications"></a><br><br><br>
+	<h2>Publications</h2><br>
+	<table>
+		<td style="height:10px">
+		</td>
+	</table>
+	<div id="selected_pub"></div>
+	<table>
+		<td style="width:30px">
+		</td>
+		<td>
+			<h4>>> <a href="paper/index_en.html">Full Publication List</a></h4>
+		</td>
+	</table>
+	</div>
+
+	<div id="projects-section">
+	<a name="projects"></a><br><br><br>
+	<h2>Projects</h2><br>
+	<table>
+		<td style="height:10px">
+		</td>
 	</table>
 	<div id="selected_proj"></div>
 	<table>
-	  	<td style="width:30px">
-	  	</td>
-	  	<td>
-	  		<h4>>> <a href="paper/index_en.html">Full Project Work List</a></h4>
-	  	</td>
+		<td style="width:30px">
+		</td>
+		<td>
+			<h4>>> <a href="project/index_en.html">Full Project List</a></h4>
+		</td>
 	</table>
+	</div>
 
     <div id="teaching-section">
 	<a name="teaching-section"></a><br><br><br>
@@ -142,8 +162,8 @@
     <a name="activities"></a><br><br><br>
     <h2>Activities</h2><br>
     <div id="activity"></div>
-   
-  	
+
+
     <div id="misc-section">
 	<a name="misc"></a><br><br><br>
 	<h2>Miscellaneous Facts</h2><br>
@@ -160,7 +180,7 @@
 <center id="last_update"></center><br>
 <center id="copyright"></center><br>
 
-<script>  
+<script>
 	document.getElementById("title").textContent = title;
 	document.getElementById("img").innerHTML = img_html;
 	document.getElementById("name").textContent = me.name;
@@ -175,6 +195,13 @@
 		document.getElementById("news-section").style.display = "none";
 	}
 	document.getElementById("selected_proj").innerHTML = selected_proj_html;
+	document.getElementById("selected_pub").innerHTML = selected_pub_html;
+	if (selected_proj.length === 0) {
+		document.getElementById("projects-section").style.display = "none";
+	}
+	if (selected_pub.length === 0) {
+		document.getElementById("publications-section").style.display = "none";
+	}
 	document.getElementById("exp").innerHTML = experience_html;
 	document.getElementById("hornor").innerHTML = hornor_html;
 	// Hide entire honors section if no honors (navigation link will be hidden by adjustNavigation)
@@ -235,8 +262,13 @@
 			hideNavLink("nav-misc");
 		}
 
-		// Publications (selected projects)
+		// Projects
 		if (selected_proj.length === 0) {
+			hideNavLink("nav-projects");
+		}
+
+		// Publications
+		if (selected_pub.length === 0) {
 			hideNavLink("nav-publications");
 		}
 

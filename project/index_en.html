@@ -9,7 +9,7 @@
       	var urlhash = window.location.hash;
       	if (!urlhash.match("fromapp")) {
       	if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios|iPad)/i))) {
-      		window.location = "/mobile_en.html";
+      		window.location = "/project/mobile_en.html";
       		}
      	}
     } catch (err) {}
@@ -48,11 +48,11 @@
 </div>
 <br>
 <div class="content">
-	<h2>Full Publication List</h2><br><br>
+	<h2>Full Project List</h2><br><br>
 	<script type="text/javascript">
 		var paper_html = "";
-		for (var i = 0; i < pub_section_order.length; i++) {
-			var section = pub_section_order[i];
+		for (var i = 0; i < proj_section_order.length; i++) {
+			var section = proj_section_order[i];
 			var section_html = "";
 			for (var key in paper){
 				if (paper.hasOwnProperty(key)) {

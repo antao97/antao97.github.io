@@ -1,4 +1,37 @@
 {
+  "isps_review": {
+    "name_zh": "音乐表演研究的跨界融合新趋势——“第十届表演科学国际研讨会”述评",
+    "name": "A New Trend of Interdisciplinary Integration in Music Performance Research: A Review of the 10th International Symposium on Performance Science",
+    "link": "https://doi.org/10.16504/j.cnki.cn11-1183/j.2026.01.011",
+    "img": "image/isps_review.png",
+    "author_ids": ["jian_yang", "me", "renping_qian"],
+    "pub_type": "journal",
+    "pub_id": "jccom",
+    "year": 2026,
+    "volume": 1,
+    "author_display_in_chinese": true,
+    "extra_link": [
+      {
+        "name": "paper",
+        "name_zh": "论文",
+        "link": "https://doi.org/10.16504/j.cnki.cn11-1183/j.2026.01.011"
+      },
+      {
+        "name": "ISPS 2025",
+        "name_zh": "ISPS 2025",
+        "link": "https://event.fourwaves.com/isps2025/"
+      }
+    ],
+    "intro": [
+      "This article examines recent developments in music performance research by taking the 10th International Symposium on Performance Science (ISPS 2025) as a case study.",
+      "Based on an analysis of the symposium’s thematic structure and keyword frequency data, it explores emerging structural shifts between scientific empiricism, humanistic interpretation, and practice-oriented inquiry.",
+      "The study shows that, in the context of the rapid development of artificial intelligence, renewed attention has shifted toward performer-centred perspectives, core musical issues, and data-driven research methods, leading to a more balanced research landscape."
+    ],
+    "intro_zh": [
+      "文章以第十届表演科学国际研讨会为切入点，结合会议议题结构与词频统计等数据，系统考察当代音乐表演研究在科学实证、人文阐释与实践应用之间的结构性转向。",
+      "研究发现，在人工智能快速发展的背景下，表演者视角、音乐本体问题与数据驱动方法等要素正在重新获得平衡。"
+    ]
+  },
   "lgm": {
     "short_name": "Dynamics-aware Attack",
     "name": "Dynamics-aware Adversarial Attack of Adaptive Neural Networks",
@@ -130,39 +163,6 @@
         "name_zh": "论文",
         "link": "https://link.springer.com/chapter/10.1007/978-3-319-97304-3_51"
       }
-    ]
-  },
-  "isps_review": {
-    "name_zh": "音乐表演研究的跨界融合新趋势——“第十届表演科学国际研讨会”述评",
-    "name": "A New Trend of Interdisciplinary Integration in Music Performance Research: A Review of the 10th International Symposium on Performance Science",
-    "link": "https://doi.org/10.16504/j.cnki.cn11-1183/j.2026.01.011",
-    "img": "image/isps_review.png",
-    "author_ids": ["jian_yang", "me", "renping_qian"],
-    "pub_type": "journal",
-    "pub_id": "jccom",
-    "year": 2026,
-    "volume": 1,
-    "author_display_in_chinese": true,
-    "extra_link": [
-      {
-        "name": "paper",
-        "name_zh": "论文",
-        "link": "https://doi.org/10.16504/j.cnki.cn11-1183/j.2026.01.011"
-      },
-      {
-        "name": "ISPS 2025",
-        "name_zh": "ISPS 2025",
-        "link": "https://event.fourwaves.com/isps2025/"
-      }
-    ],
-    "intro": [
-      "This article examines recent developments in music performance research by taking the 10th International Symposium on Performance Science (ISPS 2025) as a case study.",
-      "Based on an analysis of the symposium’s thematic structure and keyword frequency data, it explores emerging structural shifts between scientific empiricism, humanistic interpretation, and practice-oriented inquiry.",
-      "The study shows that, in the context of the rapid development of artificial intelligence, renewed attention has shifted toward performer-centred perspectives, core musical issues, and data-driven research methods, leading to a more balanced research landscape."
-    ],
-    "intro_zh": [
-      "文章以第十届表演科学国际研讨会为切入点，结合会议议题结构与词频统计等数据，系统考察当代音乐表演研究在科学实证、人文阐释与实践应用之间的结构性转向。",
-      "研究发现，在人工智能快速发展的背景下，表演者视角、音乐本体问题与数据驱动方法等要素正在重新获得平衡。"
     ]
   }
 }

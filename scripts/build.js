@@ -16,6 +16,7 @@ const paper = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/papers.json
 const projects = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/projects.json'), 'utf8'));
 Object.assign(paper, projects);
 const selected_proj_ids = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/selected_proj.json'), 'utf8'));
+const selected_pub_ids = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/selected_pub.json'), 'utf8'));
 const about = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/about.json'), 'utf8'));
 const break_news = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/break_news.json'), 'utf8'));
 const news = JSON.parse(fs.readFileSync(path.join(dataDir, 'content/news.json'), 'utf8'));
@@ -65,6 +66,18 @@ if (fs.existsSync(sectionOrderPath)) {
     { id: 'code', name: 'Code Projects', name_zh: '代码项目', filter_type: 'code' }
   ];
 }
+// Load publication section order
+let pub_section_order = [];
+const pubSectionOrderPath = path.join(dataDir, 'content/pub_section_order.json');
+if (fs.existsSync(pubSectionOrderPath)) {
+  pub_section_order = JSON.parse(fs.readFileSync(pubSectionOrderPath, 'utf8'));
+}
+// Load project section order
+let proj_section_order = [];
+const projSectionOrderPath = path.join(dataDir, 'content/proj_section_order.json');
+if (fs.existsSync(projSectionOrderPath)) {
+  proj_section_order = JSON.parse(fs.readFileSync(projSectionOrderPath, 'utf8'));
+}
 
 // Helper to convert template strings with ${...} to backtick strings
 function toTemplateString(str) {
@@ -102,6 +115,7 @@ for (const [id, p] of Object.entries(paper)) {
 
 // Process selected_proj: convert ids to references
 const selected_proj = selected_proj_ids.map(id => `paper.${id}`);
+const selected_pub = selected_pub_ids.map(id => `paper.${id}`);
 
 // Process experience: convert institute_id and department_id to references
 const experienceProcessed = experience.map(exp => {
@@ -287,6 +301,12 @@ lines.push(paperCode);
 
 lines.push(`// 精选项目信息`);
 lines.push(`let selected_proj = [${selected_proj.join(', ')}];`);
+lines.push(`// 精选出版物信息`);
+lines.push(`let selected_pub = [${selected_pub.join(', ')}];`);
+lines.push(`// 出版物分类顺序`);
+lines.push(`let pub_section_order = ${JSON.stringify(pub_section_order, null, '\t')};`);
+lines.push(`// 项目分类顺序`);
+lines.push(`let proj_section_order = ${JSON.stringify(proj_section_order, null, '\t')};`);
 
 lines.push(`// 个人介绍`);
 // aboutProcessed contains template strings, need to output as template literals

@@ -4,7 +4,7 @@
 <title id="title"></title>
 <link rel="icon" href="image/icon.jpg" >
 
-<script src="./data.js"></script>  
+<script src="./data.js"></script>
 
 <link rel="stylesheet" href="./style.css">
 <link rel="stylesheet" href="./mobile.css">
@@ -28,7 +28,7 @@
         </div><br><br>
         <table>
             <td style="height:20px"></td>
-        </table>  
+        </table>
         <div style="text-align:center;">
             <font size=10 id="job"></font>
         </div>
@@ -67,16 +67,31 @@
         </table><br><br>
         </div>
 
+        <div id="publications-section">
+        <h2>出版物</h2><br>
+        <div id="Text">
+        <table>
+            <td style="width:10px"></td>
+            <td valign="middle">
+                <div id="selected_pub"></div>
+                <b>>> <a href="paper/mobile.html">全部出版物</a></b>
+            </td>
+        </table>
+        </div><br><br>
+        </div>
+
+        <div id="projects-section">
         <h2>项目工作</h2><br>
         <div id="Text">
         <table>
             <td style="width:10px"></td>
             <td valign="middle">
                 <div id="selected_proj"></div>
-                <b>>> <a href="paper/mobile.html">全部项目工作</a></b>
+                <b>>> <a href="project/mobile.html">全部项目工作</a></b>
             </td>
         </table>
         </div><br><br>
+        </div>
 
         <div id="teaching-section">
             <a name="teaching-section"></a><br>
@@ -126,7 +141,7 @@
             </td>
         </table><br><br>
         </div>
-      
+
         <h2>联系方式</h2><br>
         <table>
             <tbody><tr>
@@ -136,7 +151,7 @@
             </td>
             </tr></tbody>
         </table><br><br>
-  
+
     </div>
 </div>
 
@@ -158,6 +173,13 @@
         document.getElementById("news-section").style.display = "none";
     }
     document.getElementById("selected_proj").innerHTML = selected_proj_html_m_zh;
+    document.getElementById("selected_pub").innerHTML = selected_pub_html_m_zh;
+    if (selected_proj.length === 0) {
+        document.getElementById("projects-section").style.display = "none";
+    }
+    if (selected_pub.length === 0) {
+        document.getElementById("publications-section").style.display = "none";
+    }
     document.getElementById("exp_icon").innerHTML = experience_icon_html_m_zh;
     document.getElementById("exp").innerHTML = experience_html_m_zh;
     document.getElementById("hornor").innerHTML = hornor_html_m_zh;

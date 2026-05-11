@@ -13,15 +13,15 @@
 
 <body class="paper">
 <div class="content">
-    <b>>> <a href="../mobile_en.html">Back to Homepage</a></b>
+    <b>>> <a href="../mobile.html">返回主页</a></b>
     <br><br><br>
     <div id="container">
 
-    <h2>Full Publication List</h2><br><br>
+    <h2>全部项目工作</h2><br><br>
     <script type="text/javascript">
         var paper_html = "";
-        for (var i = 0; i < pub_section_order.length; i++) {
-            var section = pub_section_order[i];
+        for (var i = 0; i < proj_section_order.length; i++) {
+            var section = proj_section_order[i];
             var section_html = "";
             for (var key in paper){
                 if (paper.hasOwnProperty(key)) {
@@ -40,12 +40,12 @@
                         }
                     }
                     if (include) {
-                        section_html += pub(paper[key]);
+                        section_html += pub(paper[key], "Yes");
                     }
                 }
             }
             if (section_html !== ""){
-                section_html = `<table><td style="width:5px"></td><td valign="middle"><div><h3>${section.name}</h3></div></td></table><br>` + section_html;
+                section_html = `<table><td style="width:5px"></td><td valign="middle"><div><h3>${section.name_zh}</h3></div></td></table><br>` + section_html;
                 paper_html += section_html;
             }
         }
@@ -55,20 +55,20 @@
 
     </div><br><br>
 
-    <b>>> <a href="../mobile_en.html">Back to Homepage</a></b>
+    <b>>> <a href="../mobile.html">返回主页</a></b>
 
 </div></div>
 </div><br><br>
 <script type="text/javascript">
-    var last_update_html = `<font size=6 style="color: #3B3B3B">—&nbsp;&nbsp; Last updated: ${last_update.month}, ${last_update.year} &nbsp;&nbsp;—</font>`;
-    var copyright_html = `<font size=6 style="color: #BBBBBB">Copyright &copy ${last_update.year} ${me.name}. All Rights Reserved.</font>`;
+    var last_update_html = `<font size=6 style="color: #3B3B3B">—&nbsp;&nbsp; 最近更新：${last_update.year}年${last_update.month_zh}月 &nbsp;&nbsp;—</font>`;
+    var copyright_html = `<font size=6 style="color: #BBBBBB">版权所有 &copy ${last_update.year} ${me.name_zh}</font>`;
 </script>
 
 <center id="last_update"></center><br>
 <center id="copyright"></center><br>
 
 <script>
-    document.getElementById("title").textContent = title;
+    document.getElementById("title").textContent = title_zh;
     document.getElementById("paper").innerHTML = paper_html;
     document.getElementById("last_update").innerHTML = last_update_html;
     document.getElementById("copyright").innerHTML = copyright_html;

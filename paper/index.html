@@ -4,7 +4,7 @@
 <link rel="icon" href="../image/icon.jpg" >
 
 <script type="text/javascript">
-    //判断是否手机访问 如果是跳转 
+    //判断是否手机访问 如果是跳转
     try {
       	var urlhash = window.location.hash;
       	if (!urlhash.match("fromapp")) {
@@ -15,7 +15,7 @@
     } catch (err) {}
 </script>
 
-<script src="../data.js"></script>  
+<script src="../data.js"></script>
 
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../desktop.css">
@@ -48,11 +48,11 @@
 </div>
 <br>
 <div class="content">
-	<h2>全部项目工作</h2><br><br>
+	<h2>全部出版物</h2><br><br>
 	<script type="text/javascript">
 		var paper_html = "";
-		for (var i = 0; i < section_order.length; i++) {
-			var section = section_order[i];
+		for (var i = 0; i < pub_section_order.length; i++) {
+			var section = pub_section_order[i];
 			var section_html = "";
 			for (var key in paper){
 				if (paper.hasOwnProperty(key)) {
@@ -92,7 +92,7 @@
 <center id="last_update"></center><br>
 <center id="copyright"></center><br>
 
-<script>  
+<script>
 	document.getElementById("title").textContent = title_zh;
 	document.getElementById("paper").innerHTML = paper_html;
 	document.getElementById("last_update").innerHTML = last_update_html;
