@@ -215,6 +215,15 @@ let institute = {
 		"nation": "China",
 		"nation_zh": "中国"
 	},
+	"inst_music_art": {
+		"name": "Institute of Music Art",
+		"name_zh": "音乐艺术研究院",
+		"link": "https://www.shcmusic.edu.cn/1538/list.htm",
+		"city": "Shanghai",
+		"city_zh": "上海",
+		"nation": "China",
+		"nation_zh": "中国"
+	},
 	"rdfz": {
 		"name": "High School Affiliated to Renmin University of China",
 		"name_zh": "中国人民大学附属中学",
@@ -733,7 +742,6 @@ let news = [
 let experience = [
 	{
 		institute: institute.shcmusic,
-		department: institute.music_engineering,
 		job: "Postdoctoral Research Fellow",
 		job_zh: "博士后研究员",
 		time: {
