@@ -168,7 +168,8 @@ lines.push(`function href_zh(dict, name) {
 lines.push(`function pub(paper, zh) {
   let str = "";
   str += \`<table><td style="width:15px"></td><td valign="middle"><div>\`;
-  str += \`<b>\${paper.name}</b><br>\`;
+  let displayName = (zh === "Yes" && paper.name_zh) ? paper.name_zh : paper.name;
+  str += \`<b>\${displayName}</b><br>\`;
   for (let i = 0; i < paper.author.length; i++) {
     let author = paper.author[i];
     let displayChinese = zh === "Yes" && paper.author_display_in_chinese !== false;
@@ -191,12 +192,25 @@ lines.push(`function pub(paper, zh) {
   }
   str += \`<br>\`;
   if (paper.pub.name === "arXiv"){
-    str += \`<i>\${paper.pub.name}, \${paper.year}</i><br>\`;
-  }else{
-    if (paper.pub.short_name) {
-      str += \`<i>\${paper.pub.name} (<b>\${paper.pub.short_name}</b>), \${paper.year}</i><br>\`;
+    if (zh === "Yes" && paper.pub.name_zh) {
+      str += \`<i>\${paper.pub.name_zh}, \${paper.year}</i><br>\`;
     } else {
       str += \`<i>\${paper.pub.name}, \${paper.year}</i><br>\`;
+    }
+  }else{
+    var pubName = (zh === "Yes" && paper.pub.name_zh) ? paper.pub.name_zh : paper.pub.name;
+    var yearStr;
+    if (zh === "Yes" && paper.volume) {
+      yearStr = \`\${paper.year}年第\${paper.volume}期\`;
+    } else if (paper.volume) {
+      yearStr = \`Vol. \${paper.volume}, \${paper.year}\`;
+    } else {
+      yearStr = \`\${paper.year}\`;
+    }
+    if (paper.pub.short_name) {
+      str += \`<i>\${pubName} (<b>\${paper.pub.short_name}</b>), \${yearStr}</i><br>\`;
+    } else {
+      str += \`<i>\${pubName}, \${yearStr}</i><br>\`;
     }
   }
   for (let i = 0; i < paper.extra_link.length; i++) {
@@ -240,6 +254,9 @@ for (const [id, p] of Object.entries(paperProcessed)) {
   if (p.short_name !== undefined) {
     paperCode += `\t\tshort_name: ${JSON.stringify(p.short_name)},\n`;
   }
+  if (p.name_zh !== undefined) {
+    paperCode += `\t\tname_zh: ${JSON.stringify(p.name_zh)},\n`;
+  }
   paperCode += `\t\tname: ${JSON.stringify(p.name)},\n`;
   paperCode += `\t\tlink: ${JSON.stringify(p.link)},\n`;
   if (p.img !== undefined) {
@@ -249,6 +266,9 @@ for (const [id, p] of Object.entries(paperProcessed)) {
   paperCode += `\t\tpub: ${p.pub},\n`;
   paperCode += `\t\ttype: ${JSON.stringify(p.type)},\n`;
   paperCode += `\t\tyear: ${p.year},\n`;
+  if (p.volume !== undefined) {
+    paperCode += `\t\tvolume: ${p.volume},\n`;
+  }
   paperCode += `\t\textra_link: ${JSON.stringify(p.extra_link, null, '\t')},\n`;
   if (p.intro) {
     paperCode += `\t\tintro: ${JSON.stringify(p.intro, null, '\t')},\n`;

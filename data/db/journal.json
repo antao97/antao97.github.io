@@ -6,5 +6,9 @@
   "tcsvt": {
     "name": "IEEE Transactions on Circuits and Systems for Video Technology",
     "short_name": "TCSVT"
+  },
+  "jccom": {
+    "name_zh": "中央音乐学院学报",
+    "name": "Journal of Central Conservatory of Music"
   }
 }

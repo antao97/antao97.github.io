@@ -18,144 +18,7 @@
 <script src="./data.js"></script>  
 
 <link rel="stylesheet" href="./style.css">
-<style type="text/css">
-
-body
-{
- 	font-family: Times, 'STSong', Helvetica, 'Lucida Grande', Arial, 'STXihei', sans-serif; 
-    background-color : #fff;
-    font-size: 18px;
-    width : 1440px;
-}
-    .content
-	{
-    		width : 1100px;
-    		padding : 25px 30px;
-    		margin : 25px auto;
-    		margin-left: 260px;
-/*     		background-color : #fff;
-    		box-shadow: 0px 0px 10px #999; */
-/*     		border-radius: 15px;  */
-	}	
-	table
-	{
-		padding: 5px;
-	}
-	
-  	table.pub_table,td.pub_td1,td.pub_td2
-	{
-		padding: 8px;
-		width: 990px;
-        border-collapse: separate;
-        border-spacing: 15px;
-        margin-top: -5px;
-	}
-
-	td.pub_td1
-	{
-		width:50px;
-	}
-    td.pub_td1 img
-    {
-        height:120px;
-        width: 160px;
-    }
-	
-	div#container
-	{
-		margin-left: auto;
-		margin-right: auto;
-		width: 980px;
-		text-align: left;
-		position: relative;
-		background-color: #FFF;
-	}
-	div#DocInfo
-	{
-		/*color: #1367a7;*/
-		height: 158px;
-/*     		font-size:110%; */
-	}
-	h4,h3,h2,h1
-	{
-		color: #3B3B3B;
-	}
-	h1
-	{
-		font-size:210%;
-	}
-	h2
-	{
-		font-size:150%;
-	}
-	h3
-	{
-		font-size:120%;
-	}
-	h4
-	{
-		font-size:110%;
-	}
-	p
-	{
-/*		color: #5B5B5B;*/
-		margin-bottom: 10px;
-		/*margin-left: 20px;*/
-		text-indent:2em;
-	}
-	p.caption
-	{
-		color: #9B9B9B;
-		text-align: left;
-		width: 600px;
-	}
-	p.caption2
-	{
-		color: #9B9B9B;
-		text-align: left;
-		width: 800px;
-	}
-	#header_img
-	{
-		position: absolute;
-		top: 0px; right: 0px;
-    }
-	a:link,a:visited
-	{
-		color: #1367a7;
-		text-decoration: none;
-	}
-	a:hover
-	{
-		text-decoration:underline;
-		color: #C20C0C;
-	}
-
-    #tsinghua_logo {
-        position: absolute;
-        left: 646px;
-        top: 28px;
-        width: 200px;
-        height: 20px;
-    }
-   
-    table.pub_table tr {
-        outline: thin dotted #666666;
-    }
-    .papericon {
-        border-radius: 8px; 
-        /*-moz-box-shadow: 3px 3px 6px #888;
-        -webkit-box-shadow: 3px 3px 6px #888;*/
-        /*box-shadow: 3px 3px 6px #888;*/
-    }
-
-
-underline {
-	border-bottom: 2px solid;
-	display:inline-block;
-}
-
-</style>
+<link rel="stylesheet" href="./desktop.css">
 
 <script type="text/javascript" language="javascript">
 	function addEventHandler(target, type, func){
@@ -260,7 +123,6 @@ underline {
 	  	</td>
 	</table>
 
-
     <div id="teaching-section">
 	<a name="teaching-section"></a><br><br><br>
 	<h2>Teaching</h2><br>
@@ -277,7 +139,6 @@ underline {
         <ul id="hornor"></ul>
     </div>
 
-
     <a name="activities"></a><br><br><br>
     <h2>Activities</h2><br>
     <div id="activity"></div>
@@ -288,7 +149,6 @@ underline {
 	<h2>Miscellaneous Facts</h2><br>
 	<div id="m"></div>
     </div>
-
 
 	<a name="contact"></a><br><br><br>
 	<h2>Contact</h2><br>
@@ -379,7 +239,6 @@ underline {
 		if (selected_proj.length === 0) {
 			hideNavLink("nav-publications");
 		}
-
 
 		// About Me
 		if (about.length === 0 || (about.length === 1 && about[0].length === 0)) {

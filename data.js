@@ -21,7 +21,8 @@ function href_zh(dict, name) {
 function pub(paper, zh) {
   let str = "";
   str += `<table><td style="width:15px"></td><td valign="middle"><div>`;
-  str += `<b>${paper.name}</b><br>`;
+  let displayName = (zh === "Yes" && paper.name_zh) ? paper.name_zh : paper.name;
+  str += `<b>${displayName}</b><br>`;
   for (let i = 0; i < paper.author.length; i++) {
     let author = paper.author[i];
     let displayChinese = zh === "Yes" && paper.author_display_in_chinese !== false;
@@ -44,12 +45,25 @@ function pub(paper, zh) {
   }
   str += `<br>`;
   if (paper.pub.name === "arXiv"){
-    str += `<i>${paper.pub.name}, ${paper.year}</i><br>`;
-  }else{
-    if (paper.pub.short_name) {
-      str += `<i>${paper.pub.name} (<b>${paper.pub.short_name}</b>), ${paper.year}</i><br>`;
+    if (zh === "Yes" && paper.pub.name_zh) {
+      str += `<i>${paper.pub.name_zh}, ${paper.year}</i><br>`;
     } else {
       str += `<i>${paper.pub.name}, ${paper.year}</i><br>`;
+    }
+  }else{
+    var pubName = (zh === "Yes" && paper.pub.name_zh) ? paper.pub.name_zh : paper.pub.name;
+    var yearStr;
+    if (zh === "Yes" && paper.volume) {
+      yearStr = `${paper.year}年第${paper.volume}期`;
+    } else if (paper.volume) {
+      yearStr = `Vol. ${paper.volume}, ${paper.year}`;
+    } else {
+      yearStr = `${paper.year}`;
+    }
+    if (paper.pub.short_name) {
+      str += `<i>${pubName} (<b>${paper.pub.short_name}</b>), ${yearStr}</i><br>`;
+    } else {
+      str += `<i>${pubName}, ${yearStr}</i><br>`;
     }
   }
   for (let i = 0; i < paper.extra_link.length; i++) {
@@ -278,6 +292,11 @@ let person = {
 		"name_zh": "杨健",
 		"link": "https://scholar.google.com/citations?user=cBDyfFcAAAAJ",
 		"link_zh": "https://www.shcmusic.edu.cn/2017/0323/c1636a22962/page.htm"
+	},
+	"renping_qian": {
+		"name": "Renping Qian",
+		"name_zh": "钱仁平",
+		"link": "https://yjsb.shcmusic.edu.cn/2016/1213/c204a2133/page.htm"
 	}
 };
 
@@ -302,6 +321,10 @@ let journal = {
 	"tcsvt": {
 		"name": "IEEE Transactions on Circuits and Systems for Video Technology",
 		"short_name": "TCSVT"
+	},
+	"jccom": {
+		"name_zh": "中央音乐学院学报",
+		"name": "Journal of Central Conservatory of Music"
 	}
 };
 
@@ -524,6 +547,39 @@ let paper = {
 ],
 		author_display_in_chinese: false
 	},
+	isps_review: {
+		name_zh: "音乐表演研究的跨界融合新趋势——“第十届表演科学国际研讨会”述评",
+		name: "A New Trend of Interdisciplinary Integration in Music Performance Research: A Review of the 10th International Symposium on Performance Science",
+		link: "https://doi.org/10.16504/j.cnki.cn11-1183/j.2026.01.011",
+		img: "image/isps_review.png",
+		author: [person.jian_yang, me, person.renping_qian],
+		pub: journal.jccom,
+		type: "journal",
+		year: 2026,
+		volume: 1,
+		extra_link: [
+	{
+		"name": "paper",
+		"name_zh": "论文",
+		"link": "https://doi.org/10.16504/j.cnki.cn11-1183/j.2026.01.011"
+	},
+	{
+		"name": "ISPS 2025",
+		"name_zh": "ISPS 2025",
+		"link": "https://event.fourwaves.com/isps2025/"
+	}
+],
+		intro: [
+	"This article examines recent developments in music performance research by taking the 10th International Symposium on Performance Science (ISPS 2025) as a case study.",
+	"Based on an analysis of the symposium’s thematic structure and keyword frequency data, it explores emerging structural shifts between scientific empiricism, humanistic interpretation, and practice-oriented inquiry.",
+	"The study shows that, in the context of the rapid development of artificial intelligence, renewed attention has shifted toward performer-centred perspectives, core musical issues, and data-driven research methods, leading to a more balanced research landscape."
+],
+		intro_zh: [
+	"文章以第十届表演科学国际研讨会为切入点，结合会议议题结构与词频统计等数据，系统考察当代音乐表演研究在科学实证、人文阐释与实践应用之间的结构性转向。",
+	"研究发现，在人工智能快速发展的背景下，表演者视角、音乐本体问题与数据驱动方法等要素正在重新获得平衡。"
+],
+		author_display_in_chinese: true
+	},
 	shcmthesis: {
 		short_name: "SHCM Thesis Template",
 		name: "ShcmThesis: Shanghai Conservatory of Music LaTeX Thesis Template",
@@ -568,7 +624,7 @@ let paper = {
 
 // 精选项目信息
 
-let selected_proj = [paper.shcmthesis];
+let selected_proj = [paper.isps_review, paper.shcmthesis];
 
 // 个人介绍
 
@@ -778,8 +834,8 @@ let contact = [
 // 版权
 
 let last_update = {
-	"month": "Mar",
-	"month_zh": "3",
+	"month": "May",
+	"month_zh": "5",
 	"year": "2026"
 };
 
@@ -829,10 +885,14 @@ for (var i = 0; i < selected_proj.length; i++) {
   if (selected_proj[i].pub.name === "arXiv"){
     selected_proj_html += `<i>${selected_proj[i].pub.name}, ${selected_proj[i].year}</i><br>`;
   }else{
+    var volumeStr = "";
+    if (selected_proj[i].volume) {
+      volumeStr = `Vol. ${selected_proj[i].volume}, `;
+    }
     if (selected_proj[i].pub.short_name) {
-      selected_proj_html += `<i>${selected_proj[i].pub.name} (<b>${selected_proj[i].pub.short_name}</b>), ${selected_proj[i].year}</i><br>`;
+      selected_proj_html += `<i>${selected_proj[i].pub.name} (<b>${selected_proj[i].pub.short_name}</b>), ${volumeStr}${selected_proj[i].year}</i><br>`;
     } else {
-      selected_proj_html += `<i>${selected_proj[i].pub.name}, ${selected_proj[i].year}</i><br>`;
+      selected_proj_html += `<i>${selected_proj[i].pub.name}, ${volumeStr}${selected_proj[i].year}</i><br>`;
     }
   }
   selected_proj_html += `<font size=3>`;
@@ -1008,7 +1068,8 @@ for (var i = 0; i < selected_proj.length; i++) {
     selected_proj_html_zh += `<td style="width:15px"></td>`;
   }
   selected_proj_html_zh += `<td valign="middle"><div>`;
-  selected_proj_html_zh += `<b>${selected_proj[i].name}</b><br>`;
+  var displayName = selected_proj[i].name_zh ? selected_proj[i].name_zh : selected_proj[i].name;
+  selected_proj_html_zh += `<b>${displayName}</b><br>`;
   for (var j = 0; j < selected_proj[i].author.length; j++) {
     var author = selected_proj[i].author[j];
     var displayChinese = selected_proj[i].author_display_in_chinese !== false;
@@ -1033,10 +1094,17 @@ for (var i = 0; i < selected_proj.length; i++) {
   if (selected_proj[i].pub.name === "arXiv"){
     selected_proj_html_zh += `<i>${selected_proj[i].pub.name_zh}, ${selected_proj[i].year}</i><br>`;
   }else{
-    if (selected_proj[i].pub.short_name) {
-      selected_proj_html_zh += `<i>${selected_proj[i].pub.name} (<b>${selected_proj[i].pub.short_name}</b>), ${selected_proj[i].year}</i><br>`;
+    var pubName = selected_proj[i].pub.name_zh ? selected_proj[i].pub.name_zh : selected_proj[i].pub.name;
+    var yearStr;
+    if (selected_proj[i].volume) {
+      yearStr = `${selected_proj[i].year}年第${selected_proj[i].volume}期`;
     } else {
-      selected_proj_html_zh += `<i>${selected_proj[i].pub.name}, ${selected_proj[i].year}</i><br>`;
+      yearStr = `${selected_proj[i].year}`;
+    }
+    if (selected_proj[i].pub.short_name) {
+      selected_proj_html_zh += `<i>${pubName} (<b>${selected_proj[i].pub.short_name}</b>), ${yearStr}</i><br>`;
+    } else {
+      selected_proj_html_zh += `<i>${pubName}, ${yearStr}</i><br>`;
     }
   }
   selected_proj_html_zh += `<font size=3>`;
@@ -1202,10 +1270,14 @@ for (var i = 0; i < selected_proj.length; i++) {
   if (selected_proj[i].pub.name === "arXiv"){
     selected_proj_html_m += `<i>${selected_proj[i].pub.name}, ${selected_proj[i].year}</i><br>`;
   }else{
+    var volumeStr = "";
+    if (selected_proj[i].volume) {
+      volumeStr = `Vol. ${selected_proj[i].volume}, `;
+    }
     if (selected_proj[i].pub.short_name) {
-      selected_proj_html_m += `<i>${selected_proj[i].pub.name} (<b>${selected_proj[i].pub.short_name}</b>), ${selected_proj[i].year}</i><br>`;
+      selected_proj_html_m += `<i>${selected_proj[i].pub.name} (<b>${selected_proj[i].pub.short_name}</b>), ${volumeStr}${selected_proj[i].year}</i><br>`;
     } else {
-      selected_proj_html_m += `<i>${selected_proj[i].pub.name}, ${selected_proj[i].year}</i><br>`;
+      selected_proj_html_m += `<i>${selected_proj[i].pub.name}, ${volumeStr}${selected_proj[i].year}</i><br>`;
     }
   }
   for (var j = 0; j < selected_proj[i].extra_link.length; j++) {
@@ -1336,7 +1408,8 @@ for (var i = 0; i < news.length; i++) {
 // 精选项目（移动端中文）
 var selected_proj_html_m_zh = "";
 for (var i = 0; i < selected_proj.length; i++) {
-  selected_proj_html_m_zh += `<b>${selected_proj[i].name}</b><br>`;
+  var displayName = selected_proj[i].name_zh ? selected_proj[i].name_zh : selected_proj[i].name;
+  selected_proj_html_m_zh += `<b>${displayName}</b><br>`;
   for (var j = 0; j < selected_proj[i].author.length; j++) {
     var author = selected_proj[i].author[j];
     var displayChinese = selected_proj[i].author_display_in_chinese !== false;
@@ -1361,10 +1434,17 @@ for (var i = 0; i < selected_proj.length; i++) {
   if (selected_proj[i].pub.name === "arXiv"){
     selected_proj_html_m_zh += `<i>${selected_proj[i].pub.name_zh}, ${selected_proj[i].year}</i><br>`;
   }else{
-    if (selected_proj[i].pub.short_name) {
-      selected_proj_html_m_zh += `<i>${selected_proj[i].pub.name} (<b>${selected_proj[i].pub.short_name}</b>), ${selected_proj[i].year}</i><br>`;
+    var pubName = selected_proj[i].pub.name_zh ? selected_proj[i].pub.name_zh : selected_proj[i].pub.name;
+    var yearStr;
+    if (selected_proj[i].volume) {
+      yearStr = `${selected_proj[i].year}年第${selected_proj[i].volume}期`;
     } else {
-      selected_proj_html_m_zh += `<i>${selected_proj[i].pub.name}, ${selected_proj[i].year}</i><br>`;
+      yearStr = `${selected_proj[i].year}`;
+    }
+    if (selected_proj[i].pub.short_name) {
+      selected_proj_html_m_zh += `<i>${pubName} (<b>${selected_proj[i].pub.short_name}</b>), ${yearStr}</i><br>`;
+    } else {
+      selected_proj_html_m_zh += `<i>${pubName}, ${yearStr}</i><br>`;
     }
   }
   for (var j = 0; j < selected_proj[i].extra_link.length; j++) {
