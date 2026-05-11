@@ -298,6 +298,11 @@ let person = {
 		"name": "Renping Qian",
 		"name_zh": "钱仁平",
 		"link": "https://yjsb.shcmusic.edu.cn/2016/1213/c204a2133/page.htm"
+	},
+	"xiaolian_dai": {
+		"name": "Xiaolian Dai",
+		"name_zh": "戴晓莲",
+		"link": "https://www.shcmusic.edu.cn/2007/1101/c1627a22815/page.htm"
 	}
 };
 
@@ -678,15 +683,15 @@ let proj_section_order = [
 // 个人介绍
 
 let about = [
-	[`I'm currently working as a postdoctoral research fellow at ${href(institute.shcmusic)} (SHCM),`, `supervised by Prof. ${href(person.jian_yang)}.`, `I received my Doctor of Engineering (Ph.D.) degree from ${href(institute.tsinghua)} and Bachelor of Engineering (B.Eng.) degree from ${href(institute.seu)}.`],
-	[`During my Ph.D. career in Tsinghua, I conducted research in computer vision in the field of artificial intelligence.`, `After joining SHCM, my research focuses on AI for music, especially on professional analysis and understanding of classical music, as well as Chinese ethnic music.`],
-	[`I am also a guqin enthusiast, having been introduced to it in 2022 through an elective course offered by Tsinghua University.`, `I have studied piano as an amateur since the age of five, for about ten years.`],
+	[`I'm currently working as a postdoctoral research fellow at ${href(institute.shcmusic)} (SHCM),`, `supervised by Prof. ${href(person.jian_yang)}.`, `I received my Doctor of Engineering (Ph.D.) degree from ${href(institute.tsinghua)} in 2024 and Bachelor of Engineering (B.Eng.) degree from ${href(institute.seu)} in 2019.`],
+	[`During my Ph.D. studies at Tsinghua University, my research primarily focused on computer vision within the field of artificial intelligence.`, `After moving to the Shanghai Conservatory of Music, my research emphasis shifted to music artificial intelligence, with a particular focus on the professional analysis and understanding of classical music, as well as Chinese folk music.`],
+	[`I am also an enthusiast of the guqin.`, `I first encountered it and began learning through a guqin elective course offered by Tsinghua University in 2022, and I am now continuing my study under the guidance of Prof. ${href(person.xiaolian_dai)}.`, `In addition, I studied piano as an amateur for about ten years, starting from the age of five.`],
 ];
 
 let about_zh = [
-	[`我目前在${href_zh(institute.shcmusic)}从事博士后工作，`, `合作导师是${href_zh(person.jian_yang)}教授。`, `我在${href_zh(institute.tsinghua)}${href_zh(institute.auto)}取得工学博士学位，`, `导师是${href_zh(person.jie_zhou)}教授和${href_zh(person.jiwen_lu)}教授。`, `我本科就读于${href_zh(institute.seu)}的${href_zh(institute.radio)}，获得工学学士学位。`],
-	[`我在清华大学读博期间开展了人工智能领域中计算机视觉方面的研究。`, `来到上海音乐学院之后，我的研究专注于音乐人工智能，尤其关注古典音乐的专业性分析理解，以及中国的民族音乐。`],
-	[`我同时还是一名古琴爱好者，于2022年启蒙自清华大学校设古琴选修课。`, `我曾自五岁起业余学习钢琴，持续约十年。`],
+	[`目前我在${href_zh(institute.shcmusic)}从事博士后研究，`, `合作导师为${href_zh(person.jian_yang)}教授。`, `我于${href_zh(institute.tsinghua)}${href_zh(institute.auto)}获得工学博士学位（2024年），`, `师从${href_zh(person.jie_zhou)}教授和${href_zh(person.jiwen_lu)}教授。`, `本科就读于${href_zh(institute.seu)}的${href_zh(institute.radio)}，获得工学学士学位（2019年）。`],
+	[`在清华大学读博期间，我主要研究人工智能领域的计算机视觉方向。`, `来到上海音乐学院后，我的研究重心转向音乐人工智能，尤其关注古典音乐的专业分析与理解，以及中国民族音乐。`],
+	[`我还是一名古琴爱好者，2022年通过清华大学开设的古琴选修课初次接触并开始习琴，目前在上海音乐学院${href_zh(person.xiaolian_dai)}教授的指导下继续深造。`, `此外，我曾从五岁起业余学习钢琴约十年。`],
 ];
 
 // 新闻
