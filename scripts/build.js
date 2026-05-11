@@ -161,9 +161,9 @@ const lines = [];
 
 lines.push(`function href(dict, name) {
   if (typeof name === "undefined") {
-    return \`<a href=\${dict.link}>\${dict.name}</a>\`;
+    return \`<a href="\${dict.link}">\${dict.name}</a>\`;
   }else{
-    return \`<a href=\${dict.link}>\${name}</a>\`;
+    return \`<a href="\${dict.link}">\${name}</a>\`;
   }
 };`);
 
@@ -173,9 +173,9 @@ lines.push(`function href_zh(dict, name) {
     link = dict.link;
   }
   if (typeof name === "undefined") {
-    return \`<a href=\${link}>\${dict.name_zh}</a>\`;
+    return \`<a href="\${link}">\${dict.name_zh}</a>\`;
   }else{
-    return \`<a href=\${link}>\${name}</a>\`;
+    return \`<a href="\${link}">\${name}</a>\`;
   }
 };`);
 
@@ -201,18 +201,19 @@ lines.push(`function pub(paper, zh) {
       }
     }
     if (i != (paper.author.length-1)){
-      str += ", ";
+      str += displayChinese ? "，" : ", ";
     }
   }
   str += \`<br>\`;
   if (paper.pub.name === "arXiv"){
     if (zh === "Yes" && paper.pub.name_zh) {
-      str += \`<i>\${paper.pub.name_zh}, \${paper.year}</i><br>\`;
+      str += \`<i>\${paper.pub.name_zh}，\${paper.year}</i><br>\`;
     } else {
       str += \`<i>\${paper.pub.name}, \${paper.year}</i><br>\`;
     }
   }else{
     var pubName = (zh === "Yes" && paper.pub.name_zh) ? paper.pub.name_zh : paper.pub.name;
+    var pubComma = (zh === "Yes" && paper.pub.name_zh) ? "，" : ", ";
     var yearStr;
     if (zh === "Yes" && paper.volume) {
       yearStr = \`\${paper.year}年第\${paper.volume}期\`;
@@ -222,9 +223,9 @@ lines.push(`function pub(paper, zh) {
       yearStr = \`\${paper.year}\`;
     }
     if (paper.pub.short_name) {
-      str += \`<i>\${pubName} (<b>\${paper.pub.short_name}</b>), \${yearStr}</i><br>\`;
+      str += \`<i>\${pubName} (<b>\${paper.pub.short_name}</b>)\${pubComma}\${yearStr}</i><br>\`;
     } else {
-      str += \`<i>\${pubName}, \${yearStr}</i><br>\`;
+      str += \`<i>\${pubName}\${pubComma}\${yearStr}</i><br>\`;
     }
   }
   for (let i = 0; i < paper.extra_link.length; i++) {

@@ -1,8 +1,8 @@
 function href(dict, name) {
   if (typeof name === "undefined") {
-    return `<a href=${dict.link}>${dict.name}</a>`;
+    return `<a href="${dict.link}">${dict.name}</a>`;
   }else{
-    return `<a href=${dict.link}>${name}</a>`;
+    return `<a href="${dict.link}">${name}</a>`;
   }
 };
 
@@ -12,9 +12,9 @@ function href_zh(dict, name) {
     link = dict.link;
   }
   if (typeof name === "undefined") {
-    return `<a href=${link}>${dict.name_zh}</a>`;
+    return `<a href="${link}">${dict.name_zh}</a>`;
   }else{
-    return `<a href=${link}>${name}</a>`;
+    return `<a href="${link}">${name}</a>`;
   }
 };
 
@@ -40,18 +40,19 @@ function pub(paper, zh) {
       }
     }
     if (i != (paper.author.length-1)){
-      str += ", ";
+      str += displayChinese ? "，" : ", ";
     }
   }
   str += `<br>`;
   if (paper.pub.name === "arXiv"){
     if (zh === "Yes" && paper.pub.name_zh) {
-      str += `<i>${paper.pub.name_zh}, ${paper.year}</i><br>`;
+      str += `<i>${paper.pub.name_zh}，${paper.year}</i><br>`;
     } else {
       str += `<i>${paper.pub.name}, ${paper.year}</i><br>`;
     }
   }else{
     var pubName = (zh === "Yes" && paper.pub.name_zh) ? paper.pub.name_zh : paper.pub.name;
+    var pubComma = (zh === "Yes" && paper.pub.name_zh) ? "，" : ", ";
     var yearStr;
     if (zh === "Yes" && paper.volume) {
       yearStr = `${paper.year}年第${paper.volume}期`;
@@ -61,9 +62,9 @@ function pub(paper, zh) {
       yearStr = `${paper.year}`;
     }
     if (paper.pub.short_name) {
-      str += `<i>${pubName} (<b>${paper.pub.short_name}</b>), ${yearStr}</i><br>`;
+      str += `<i>${pubName} (<b>${paper.pub.short_name}</b>)${pubComma}${yearStr}</i><br>`;
     } else {
-      str += `<i>${pubName}, ${yearStr}</i><br>`;
+      str += `<i>${pubName}${pubComma}${yearStr}</i><br>`;
     }
   }
   for (let i = 0; i < paper.extra_link.length; i++) {
@@ -371,9 +372,12 @@ let conference = {
 		"short_name": "ACM MM"
 	},
 	"isps2025": {
-		"name": "International Symposium on Performance Science 2025 (Shanghai)",
-		"name_zh": "第十届表演科学国际研讨会（上海）",
-		"short_name": "ISPS 2025"
+		"name": "International Symposium on Performance Science 2025",
+		"name_zh": "第十届表演科学国际研讨会",
+		"location": "Shanghai",
+		"location_zh": "上海",
+		"short_name": "ISPS 2025",
+		"link": "https://event.fourwaves.com/isps2025/"
 	}
 };
 
@@ -694,8 +698,8 @@ let break_news_zh = `我正在计划开展古琴音乐相关的研究，以及�
 let news = [
 	{
 		date: "2026.03.20",
-		content: `A review of the 10th International Symposium on Performing Arts (ISPS 2025) has been included in ${href(journal.jccom)}!`,
-		content_zh: `我们对“第十届表演科学国际研讨会”的述评被${href_zh(journal.jccom)}收录了！`,
+		content: `A review of the ${href(conference.isps2025)} has been included in ${href(journal.jccom)}!`,
+		content_zh: `我们对${href_zh(conference.isps2025)}的述评被${href_zh(journal.jccom)}收录了！`,
 	},
 	{
 		date: "2025.09.30",
@@ -1095,15 +1099,17 @@ for (var key in activity){
 			}
 			var parsed = parseConferenceName(activity[key].list[i].name.name);
 			var displayText = parsed.name;
-			if (parsed.location) {
-				displayText += ", " + parsed.location;
+			var loc = parsed.location || activity[key].list[i].name.location || "";
+			if (loc) {
+				displayText += ", " + loc;
 			}
 			activity_html += `<p><li>&nbsp; ${displayText}, ${activity[key].list[i].year.join("/")}</li></p>`;
 			}else{
 			var parsed = parseConferenceName(activity[key].list[i].name.name);
 			var displayText = parsed.name;
-			if (parsed.location) {
-				displayText += ", " + parsed.location;
+			var loc = parsed.location || activity[key].list[i].name.location || "";
+			if (loc) {
+				displayText += ", " + loc;
 			}
 			activity_html += `<p><li>&nbsp; ${displayText}, ${activity[key].list[i].year}</li></p>`;
 			}
@@ -1189,14 +1195,15 @@ for (var i = 0; i < selected_proj.length; i++) {
       }
     }
     if (j != (selected_proj[i].author.length-1)){
-      selected_proj_html_zh += ", ";
+      selected_proj_html_zh += displayChinese ? "，" : ", ";
     }
   }
   selected_proj_html_zh += `<br>`;
   if (selected_proj[i].pub.name === "arXiv"){
-    selected_proj_html_zh += `<i>${selected_proj[i].pub.name_zh}, ${selected_proj[i].year}</i><br>`;
+    selected_proj_html_zh += `<i>${selected_proj[i].pub.name_zh}，${selected_proj[i].year}</i><br>`;
   }else{
     var pubName = selected_proj[i].pub.name_zh ? selected_proj[i].pub.name_zh : selected_proj[i].pub.name;
+    var pubComma = selected_proj[i].pub.name_zh ? "，" : ", ";
     var yearStr;
     if (selected_proj[i].volume) {
       yearStr = `${selected_proj[i].year}年第${selected_proj[i].volume}期`;
@@ -1204,9 +1211,9 @@ for (var i = 0; i < selected_proj.length; i++) {
       yearStr = `${selected_proj[i].year}`;
     }
     if (selected_proj[i].pub.short_name) {
-      selected_proj_html_zh += `<i>${pubName} (<b>${selected_proj[i].pub.short_name}</b>), ${yearStr}</i><br>`;
+      selected_proj_html_zh += `<i>${pubName} (<b>${selected_proj[i].pub.short_name}</b>)${pubComma}${yearStr}</i><br>`;
     } else {
-      selected_proj_html_zh += `<i>${pubName}, ${yearStr}</i><br>`;
+      selected_proj_html_zh += `<i>${pubName}${pubComma}${yearStr}</i><br>`;
     }
   }
   selected_proj_html_zh += `<font size=3>`;
@@ -1254,14 +1261,15 @@ for (var i = 0; i < selected_pub.length; i++) {
       }
     }
     if (j != (selected_pub[i].author.length-1)){
-      selected_pub_html_zh += ", ";
+      selected_pub_html_zh += displayChinese ? "，" : ", ";
     }
   }
   selected_pub_html_zh += `<br>`;
   if (selected_pub[i].pub.name === "arXiv"){
-    selected_pub_html_zh += `<i>${selected_pub[i].pub.name_zh}, ${selected_pub[i].year}</i><br>`;
+    selected_pub_html_zh += `<i>${selected_pub[i].pub.name_zh}，${selected_pub[i].year}</i><br>`;
   }else{
     var pubName = selected_pub[i].pub.name_zh ? selected_pub[i].pub.name_zh : selected_pub[i].pub.name;
+    var pubComma = selected_pub[i].pub.name_zh ? "，" : ", ";
     var yearStr;
     if (selected_pub[i].volume) {
       yearStr = `${selected_pub[i].year}年第${selected_pub[i].volume}期`;
@@ -1269,9 +1277,9 @@ for (var i = 0; i < selected_pub.length; i++) {
       yearStr = `${selected_pub[i].year}`;
     }
     if (selected_pub[i].pub.short_name) {
-      selected_pub_html_zh += `<i>${pubName} (<b>${selected_pub[i].pub.short_name}</b>), ${yearStr}</i><br>`;
+      selected_pub_html_zh += `<i>${pubName} (<b>${selected_pub[i].pub.short_name}</b>)${pubComma}${yearStr}</i><br>`;
     } else {
-      selected_pub_html_zh += `<i>${pubName}, ${yearStr}</i><br>`;
+      selected_pub_html_zh += `<i>${pubName}${pubComma}${yearStr}</i><br>`;
     }
   }
   selected_pub_html_zh += `<font size=3>`;
@@ -1353,16 +1361,18 @@ for (var key in activity){
 				var confName = activity[key].list[i].name.name_zh ? activity[key].list[i].name.name_zh : activity[key].list[i].name.name;
 				var parsed = parseConferenceName(confName);
 				var displayText = parsed.name;
-				if (parsed.location) {
-					displayText += "，" + parsed.location;
+				var loc = parsed.location || activity[key].list[i].name.location_zh || activity[key].list[i].name.location || "";
+			if (loc) {
+					displayText += "，" + loc;
 				}
 				activity_html_zh += `<p><li>&nbsp; ${displayText}，${activity[key].list[i].year.join("/")}</li></p>`;
 			}else{
 				var confName = activity[key].list[i].name.name_zh ? activity[key].list[i].name.name_zh : activity[key].list[i].name.name;
 				var parsed = parseConferenceName(confName);
 				var displayText = parsed.name;
-				if (parsed.location) {
-					displayText += "，" + parsed.location;
+				var loc = parsed.location || activity[key].list[i].name.location_zh || activity[key].list[i].name.location || "";
+			if (loc) {
+					displayText += "，" + loc;
 				}
 				activity_html_zh += `<p><li>&nbsp; ${displayText}，${activity[key].list[i].year}</li></p>`;
 			}
@@ -1567,15 +1577,17 @@ for (var key in activity){
 			}
 			var parsed = parseConferenceName(activity[key].list[i].name.name);
 			var displayText = parsed.name;
-			if (parsed.location) {
-				displayText += ", " + parsed.location;
+			var loc = parsed.location || activity[key].list[i].name.location || "";
+			if (loc) {
+				displayText += ", " + loc;
 			}
 			activity_html_m += `<p><li>${displayText}, ${activity[key].list[i].year.join("/")}</li></p>`;
 			}else{
 			var parsed = parseConferenceName(activity[key].list[i].name.name);
 			var displayText = parsed.name;
-			if (parsed.location) {
-				displayText += ", " + parsed.location;
+			var loc = parsed.location || activity[key].list[i].name.location || "";
+			if (loc) {
+				displayText += ", " + loc;
 			}
 			activity_html_m += `<p><li>${displayText}, ${activity[key].list[i].year}</li></p>`;
 			}
@@ -1630,14 +1642,15 @@ for (var i = 0; i < selected_proj.length; i++) {
       }
     }
     if (j != (selected_proj[i].author.length-1)){
-      selected_proj_html_m_zh += ", ";
+      selected_proj_html_m_zh += displayChinese ? "，" : ", ";
     }
   }
   selected_proj_html_m_zh += `<br>`;
   if (selected_proj[i].pub.name === "arXiv"){
-    selected_proj_html_m_zh += `<i>${selected_proj[i].pub.name_zh}, ${selected_proj[i].year}</i><br>`;
+    selected_proj_html_m_zh += `<i>${selected_proj[i].pub.name_zh}，${selected_proj[i].year}</i><br>`;
   }else{
     var pubName = selected_proj[i].pub.name_zh ? selected_proj[i].pub.name_zh : selected_proj[i].pub.name;
+    var pubComma = selected_proj[i].pub.name_zh ? "，" : ", ";
     var yearStr;
     if (selected_proj[i].volume) {
       yearStr = `${selected_proj[i].year}年第${selected_proj[i].volume}期`;
@@ -1645,9 +1658,9 @@ for (var i = 0; i < selected_proj.length; i++) {
       yearStr = `${selected_proj[i].year}`;
     }
     if (selected_proj[i].pub.short_name) {
-      selected_proj_html_m_zh += `<i>${pubName} (<b>${selected_proj[i].pub.short_name}</b>), ${yearStr}</i><br>`;
+      selected_proj_html_m_zh += `<i>${pubName} (<b>${selected_proj[i].pub.short_name}</b>)${pubComma}${yearStr}</i><br>`;
     } else {
-      selected_proj_html_m_zh += `<i>${pubName}, ${yearStr}</i><br>`;
+      selected_proj_html_m_zh += `<i>${pubName}${pubComma}${yearStr}</i><br>`;
     }
   }
   for (var j = 0; j < selected_proj[i].extra_link.length; j++) {
@@ -1678,14 +1691,15 @@ for (var i = 0; i < selected_pub.length; i++) {
       }
     }
     if (j != (selected_pub[i].author.length-1)){
-      selected_pub_html_m_zh += ", ";
+      selected_pub_html_m_zh += displayChinese ? "，" : ", ";
     }
   }
   selected_pub_html_m_zh += `<br>`;
   if (selected_pub[i].pub.name === "arXiv"){
-    selected_pub_html_m_zh += `<i>${selected_pub[i].pub.name_zh}, ${selected_pub[i].year}</i><br>`;
+    selected_pub_html_m_zh += `<i>${selected_pub[i].pub.name_zh}，${selected_pub[i].year}</i><br>`;
   }else{
     var pubName = selected_pub[i].pub.name_zh ? selected_pub[i].pub.name_zh : selected_pub[i].pub.name;
+    var pubComma = selected_pub[i].pub.name_zh ? "，" : ", ";
     var yearStr;
     if (selected_pub[i].volume) {
       yearStr = `${selected_pub[i].year}年第${selected_pub[i].volume}期`;
@@ -1693,9 +1707,9 @@ for (var i = 0; i < selected_pub.length; i++) {
       yearStr = `${selected_pub[i].year}`;
     }
     if (selected_pub[i].pub.short_name) {
-      selected_pub_html_m_zh += `<i>${pubName} (<b>${selected_pub[i].pub.short_name}</b>), ${yearStr}</i><br>`;
+      selected_pub_html_m_zh += `<i>${pubName} (<b>${selected_pub[i].pub.short_name}</b>)${pubComma}${yearStr}</i><br>`;
     } else {
-      selected_pub_html_m_zh += `<i>${pubName}, ${yearStr}</i><br>`;
+      selected_pub_html_m_zh += `<i>${pubName}${pubComma}${yearStr}</i><br>`;
     }
   }
   for (var j = 0; j < selected_pub[i].extra_link.length; j++) {
@@ -1779,16 +1793,18 @@ for (var key in activity){
 			var confName = activity[key].list[i].name.name_zh ? activity[key].list[i].name.name_zh : activity[key].list[i].name.name;
 			var parsed = parseConferenceName(confName);
 			var displayText = parsed.name;
-			if (parsed.location) {
-				displayText += "，" + parsed.location;
+			var loc = parsed.location || activity[key].list[i].name.location_zh || activity[key].list[i].name.location || "";
+			if (loc) {
+				displayText += "，" + loc;
 			}
 			activity_html_m_zh += `<p><li>${displayText}，${activity[key].list[i].year.join("/")}</li></p>`;
 			}else{
 			var confName = activity[key].list[i].name.name_zh ? activity[key].list[i].name.name_zh : activity[key].list[i].name.name;
 			var parsed = parseConferenceName(confName);
 			var displayText = parsed.name;
-			if (parsed.location) {
-				displayText += "，" + parsed.location;
+			var loc = parsed.location || activity[key].list[i].name.location_zh || activity[key].list[i].name.location || "";
+			if (loc) {
+				displayText += "，" + loc;
 			}
 			activity_html_m_zh += `<p><li>${displayText}，${activity[key].list[i].year}</li></p>`;
 			}
