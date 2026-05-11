@@ -324,7 +324,8 @@ let journal = {
 	},
 	"jccom": {
 		"name_zh": "中央音乐学院学报",
-		"name": "Journal of Central Conservatory of Music"
+		"name": "Journal of Central Conservatory of Music",
+		"link": "https://xuebao.ccom.edu.cn/CN/home"
 	}
 };
 
@@ -691,6 +692,11 @@ let break_news = `I am planning to conduct research related to guqin music, as w
 let break_news_zh = `我正在计划开展古琴音乐相关的研究，以及与古典音乐理解分析/生成相关的研究，如果你有合作意向，欢迎联系我！`;
 
 let news = [
+	{
+		date: "2026.03.20",
+		content: `A review of the 10th International Symposium on Performing Arts (ISPS 2025) has been included in ${href(journal.jccom)}!`,
+		content_zh: `我们对“第十届表演科学国际研讨会”的述评被${href_zh(journal.jccom)}收录了！`,
+	},
 	{
 		date: "2025.09.30",
 		content: `I join ${href(institute.shcmusic)} as a postdoctoral research fellow!`,

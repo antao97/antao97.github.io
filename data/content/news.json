@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026.03.20",
+    "content": "A review of the 10th International Symposium on Performing Arts (ISPS 2025) has been included in ${href(journal.jccom)}!",
+    "content_zh": "我们对“第十届表演科学国际研讨会”的述评被${href_zh(journal.jccom)}收录了！"
+  },
+  {
     "date": "2025.09.30",
     "content": "I join ${href(institute.shcmusic)} as a postdoctoral research fellow!",
     "content_zh": "我加入${href_zh(institute.shcmusic)}成为了一名博士后研究员！"
