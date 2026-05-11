@@ -445,7 +445,7 @@ let paper = {
 		volume: 1,
 		extra_link: [
 	{
-		"name": "paper",
+		"name": "Paper",
 		"name_zh": "论文",
 		"link": "https://doi.org/10.16504/j.cnki.cn11-1183/j.2026.01.011"
 	},
@@ -457,7 +457,6 @@ let paper = {
 ],
 		intro: [
 	"This article examines recent developments in music performance research by taking the 10th International Symposium on Performance Science (ISPS 2025) as a case study.",
-	"Based on an analysis of the symposium’s thematic structure and keyword frequency data, it explores emerging structural shifts between scientific empiricism, humanistic interpretation, and practice-oriented inquiry.",
 	"The study shows that, in the context of the rapid development of artificial intelligence, renewed attention has shifted toward performer-centred perspectives, core musical issues, and data-driven research methods, leading to a more balanced research landscape."
 ],
 		intro_zh: [
@@ -550,7 +549,7 @@ let paper = {
 		year: 2018,
 		extra_link: [
 	{
-		"name": "paper",
+		"name": "Paper",
 		"name_zh": "论文",
 		"link": "https://www.ijcai.org/Proceedings/2018/0406.pdf"
 	},
@@ -571,7 +570,7 @@ let paper = {
 		year: 2018,
 		extra_link: [
 	{
-		"name": "paper",
+		"name": "Paper",
 		"name_zh": "论文",
 		"link": "https://www.ijcai.org/Proceedings/2018/0364.pdf"
 	},
@@ -592,7 +591,7 @@ let paper = {
 		year: 2018,
 		extra_link: [
 	{
-		"name": "paper",
+		"name": "Paper",
 		"name_zh": "论文",
 		"link": "https://link.springer.com/chapter/10.1007/978-3-319-97304-3_51"
 	}
@@ -705,9 +704,9 @@ let about_zh = [
 
 // 新闻
 
-let break_news = `I am planning to conduct research related to guqin music, as well as studies on the understanding, analysis, and generation of classical music. If you are interested in collaboration, please feel free to contact me!`;
+let break_news = `I am planning to conduct research related to guqin music, as well as research on the analysis and generation of classical music. If you are interested in collaboration, please feel free to contact me!`;
 
-let break_news_zh = `我正在计划开展古琴音乐相关的研究，以及与古典音乐理解分析/生成相关的研究，如果你有合作意向，欢迎联系我！`;
+let break_news_zh = `我计划开展古琴音乐相关研究，以及古典音乐的分析与生成研究。如有合作意向，欢迎联系我！`;
 
 let news = [
 	{

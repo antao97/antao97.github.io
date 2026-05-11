@@ -12,7 +12,7 @@
     "author_display_in_chinese": true,
     "extra_link": [
       {
-        "name": "paper",
+        "name": "Paper",
         "name_zh": "论文",
         "link": "https://doi.org/10.16504/j.cnki.cn11-1183/j.2026.01.011"
       },
@@ -24,7 +24,6 @@
     ],
     "intro": [
       "This article examines recent developments in music performance research by taking the 10th International Symposium on Performance Science (ISPS 2025) as a case study.",
-      "Based on an analysis of the symposium’s thematic structure and keyword frequency data, it explores emerging structural shifts between scientific empiricism, humanistic interpretation, and practice-oriented inquiry.",
       "The study shows that, in the context of the rapid development of artificial intelligence, renewed attention has shifted toward performer-centred perspectives, core musical issues, and data-driven research methods, leading to a more balanced research landscape."
     ],
     "intro_zh": [
@@ -117,7 +116,7 @@
     "author_display_in_chinese": false,
     "extra_link": [
       {
-        "name": "paper",
+        "name": "Paper",
         "name_zh": "论文",
         "link": "https://www.ijcai.org/Proceedings/2018/0406.pdf"
       },
@@ -138,7 +137,7 @@
     "author_display_in_chinese": false,
     "extra_link": [
       {
-        "name": "paper",
+        "name": "Paper",
         "name_zh": "论文",
         "link": "https://www.ijcai.org/Proceedings/2018/0364.pdf"
       },
@@ -159,7 +158,7 @@
     "author_display_in_chinese": false,
     "extra_link": [
       {
-        "name": "paper",
+        "name": "Paper",
         "name_zh": "论文",
         "link": "https://link.springer.com/chapter/10.1007/978-3-319-97304-3_51"
       }
