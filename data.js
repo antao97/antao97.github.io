@@ -689,7 +689,7 @@ let about = [
 ];
 
 let about_zh = [
-	[`目前我在${href_zh(institute.shcmusic)}从事博士后研究，`, `合作导师为${href_zh(person.jian_yang)}教授。`, `我于${href_zh(institute.tsinghua)}${href_zh(institute.auto)}获得工学博士学位（2024年），`, `师从${href_zh(person.jie_zhou)}教授和${href_zh(person.jiwen_lu)}教授。`, `本科就读于${href_zh(institute.seu)}的${href_zh(institute.radio)}，获得工学学士学位（2019年）。`],
+	[`目前我在${href_zh(institute.shcmusic)}从事博士后研究，`, `合作导师为${href_zh(person.jian_yang)}教授。`, `我于${href_zh(institute.tsinghua)}${href_zh(institute.auto)}获得工学博士学位（2024年），`, `师从${href_zh(person.jie_zhou)}教授和${href_zh(person.jiwen_lu)}教授。`, `本科就读于${href_zh(institute.seu)}${href_zh(institute.radio)}，获得工学学士学位（2019年）。`],
 	[`在清华大学读博期间，我主要研究人工智能领域的计算机视觉方向。`, `来到上海音乐学院后，我的研究重心转向音乐人工智能，尤其关注古典音乐的专业分析与理解，以及中国民族音乐。`],
 	[`我还是一名古琴爱好者，2022年通过清华大学开设的古琴选修课初次接触并开始习琴，目前在上海音乐学院${href_zh(person.xiaolian_dai)}教授的指导下继续深造。`, `此外，我曾从五岁起业余学习钢琴约十年。`],
 ];

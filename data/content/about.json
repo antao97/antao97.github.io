@@ -21,7 +21,7 @@
       "合作导师为${href_zh(person.jian_yang)}教授。",
       "我于${href_zh(institute.tsinghua)}${href_zh(institute.auto)}获得工学博士学位（2024年），",
       "师从${href_zh(person.jie_zhou)}教授和${href_zh(person.jiwen_lu)}教授。",
-      "本科就读于${href_zh(institute.seu)}的${href_zh(institute.radio)}，获得工学学士学位（2019年）。"
+      "本科就读于${href_zh(institute.seu)}${href_zh(institute.radio)}，获得工学学士学位（2019年）。"
     ],
     [
       "在清华大学读博期间，我主要研究人工智能领域的计算机视觉方向。",
