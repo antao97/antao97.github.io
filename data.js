@@ -600,6 +600,7 @@ let paper = {
 	},
 	shcmthesis: {
 		short_name: "SHCM Thesis Template",
+		name_zh: "ShcmThesis：上海音乐学院学位论文LaTex模板",
 		name: "ShcmThesis: Shanghai Conservatory of Music LaTeX Thesis Template",
 		link: "https://github.com/antao97/shcmthesis",
 		img: "image/shcmthesis.png",

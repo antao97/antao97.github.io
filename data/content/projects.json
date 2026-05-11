@@ -2,6 +2,7 @@
   "shcmthesis": {
     "short_name": "SHCM Thesis Template",
     "name": "ShcmThesis: Shanghai Conservatory of Music LaTeX Thesis Template",
+    "name_zh": "ShcmThesis：上海音乐学院学位论文LaTex模板",
     "link": "https://github.com/antao97/shcmthesis",
     "img": "image/shcmthesis.png",
     "author_ids": ["me"],
