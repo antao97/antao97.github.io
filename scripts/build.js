@@ -289,6 +289,9 @@ for (const [id, p] of Object.entries(paperProcessed)) {
     paperCode += `\t\tintro: ${JSON.stringify(p.intro, null, '\t')},\n`;
     paperCode += `\t\tintro_zh: ${JSON.stringify(p.intro_zh, null, '\t')},\n`;
   }
+  if (p.paper_type !== undefined) {
+    paperCode += `\t\tpaper_type: ${JSON.stringify(p.paper_type)},\n`;
+  }
   // Add author_display_in_chinese field
   if (p.author_display_in_chinese !== undefined) {
     paperCode += `\t\tauthor_display_in_chinese: ${p.author_display_in_chinese},\n`;

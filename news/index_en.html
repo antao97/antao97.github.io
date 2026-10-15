@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html><head>
+<title id="title"></title>
+<link rel="icon" href="../image/icon.jpg" >
+
+<script type="text/javascript">
+    //判断是否手机访问 如果是跳转
+    try {
+      	var urlhash = window.location.hash;
+      	if (!urlhash.match("fromapp")) {
+      	if ((navigator.userAgent.match(/(iPhone|iPod|Android|ios|iPad)/i))) {
+      		window.location = "/mobile_en.html";
+      		}
+     	}
+    } catch (err) {}
+</script>
+
+<script src="../data.js"></script>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../desktop.css">
+
+<script type="text/javascript" language="javascript">
+	function addEventHandler(target, type, func){
+		if (target.addEventListener)
+			target.addEventListener(type, func, false);
+		else if (target.attachEvent)
+			target.attachEvent("on" + type, func);
+		else target["on" + type] = func;
+	}
+	var advIniTop = 0;
+	function move(){
+		var layer1 = document.getElementById("nav1");
+		if (layer1) layer1.style.top = advIniTop + document.body.scrollTop || document.documentElement.scrollTop + 10 + "px";
+	}
+	addEventHandler(window, "scroll", move);
+</script>
+
+</head>
+<a name="home"></a>
+<body class="paper">
+<div id="nav1" style="position:absolute;z-index:10;top:10px;left:50px;width:200px;height:500px">
+	<table>
+	  <td style="height:68px">
+	  </td>
+	</table>
+	<h4>>> <a href="../index_en.html">Back to Homepage</a></h4>
+</div>
+<br>
+<div class="content">
+	<h2>Full News List</h2><br><br>
+	<ul id="news_list"></ul>
+</div><br>
+
+<script type="text/javascript">
+	var last_update_html = `<font size=3 style="color: #3B3B3B">—&nbsp;&nbsp; Last updated: ${last_update.month}, ${last_update.year} &nbsp;&nbsp;—</font>`;
+	var copyright_html = `<font size=2 style="color: #BBBBBB">Copyright &copy ${last_update.year} ${me.name}. All Rights Reserved.</font>`;
+</script>
+
+<center id="last_update"></center><br>
+<center id="copyright"></center><br>
+
+<script>
+	document.getElementById("title").textContent = title;
+	document.getElementById("news_list").innerHTML = news_html_full;
+	document.getElementById("last_update").innerHTML = last_update_html;
+	document.getElementById("copyright").innerHTML = copyright_html;
+</script>
+</body></html>

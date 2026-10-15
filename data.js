@@ -312,6 +312,11 @@ let person = {
 		"name": "Xiaolian Dai",
 		"name_zh": "戴晓莲",
 		"link": "https://www.shcmusic.edu.cn/2007/1101/c1627a22815/page.htm"
+	},
+	"haishen_yu": {
+		"name": "Haishen Yu",
+		"name_zh": "于海深",
+		"link": "https://orcid.org/0009-0008-3378-9390"
 	}
 };
 
@@ -392,6 +397,11 @@ let conference = {
 		"location_zh": "上海",
 		"short_name": "ISPS 2025",
 		"link": "https://event.fourwaves.com/isps2025/"
+	},
+	"jcdl": {
+		"name": "ACM/IEEE Joint Conference on Digital Libraries",
+		"short_name": "JCDL",
+		"link": "https://www.jcdl.org/"
 	}
 };
 
@@ -464,6 +474,43 @@ let paper = {
 	"研究发现，在人工智能快速发展的背景下，表演者视角、音乐本体问题与数据驱动方法等要素正在重新获得平衡。"
 ],
 		author_display_in_chinese: true
+	},
+	vmus: {
+		short_name: "Vmus.net V3",
+		name: "Making Music Performance Research Cumulative: Vmus.net V3 as a Digital Library for Versioned, Attributable Annotations",
+		link: "https://doi.org/10.1145/3805696.3846508",
+		img: "image/vmus_jcdl.png",
+		author: [person.jian_yang, person.haishen_yu, me],
+		pub: conference.jcdl,
+		type: "conference",
+		year: 2026,
+		extra_link: [
+	{
+		"name": "Paper",
+		"name_zh": "论文",
+		"link": "https://doi.org/10.1145/3805696.3846508"
+	},
+	{
+		"name": "Vmus.net V3",
+		"name_zh": "Vmus.net V3",
+		"link": "https://v3.vmus.net"
+	},
+	{
+		"name": "Video",
+		"name_zh": "视频",
+		"link": "https://q.vmus.net/v3demo/jcdl2026-demo.mp4"
+	}
+],
+		intro: [
+	"Empirical music performance research relies on expert annotations of recorded performances, which in practice mostly remain in loose files, overwritten in place, unattributed and hard to cite.",
+	"This demo presents <a href=\"https://v3.vmus.net\">Vmus.net V3</a>, a music digital library that treats performance annotations as first-class library objects: every save creates an immutable, attributed new version, resolvable at a stable version-specific URL, so that annotations can be cited, compared and reused as research data."
+],
+		intro_zh: [
+	"实证性的音乐表演研究依赖于专家对录音演奏的标注，但实践中这些标注大多散落于松散文件中，被就地覆盖、缺少归属且难以引用。",
+	"本文提出<a href=\"https://v3.vmus.net\">Vmus.net V3</a>，一个将演奏标注视为一等图书馆对象的音乐数字图书馆：每次保存都会创建一个不可变、可署名的新版本，并可通过稳定的版本级URL解析，从而使标注可作为研究数据被引用、比较与复用。"
+],
+		paper_type: "demo",
+		author_display_in_chinese: false
 	},
 	lgm: {
 		short_name: "Dynamics-aware Attack",
@@ -628,13 +675,11 @@ let paper = {
 		intro: [
 	"ShcmThesis is a LaTeX thesis template specifically designed for Shanghai Conservatory of Music (SHCM).",
 	"This template supports bachelor's, master's, and doctoral theses, providing a standardized format for academic writing at SHCM.",
-	"Based on the Tsinghua University thesis template (ThuThesis), it has been adapted to meet SHCM's specific formatting requirements and guidelines.",
 	"The template simplifies the thesis writing process, ensuring compliance with institutional standards while maintaining the flexibility and quality of LaTeX typesetting."
 ],
 		intro_zh: [
 	"ShcmThesis是专门为上海音乐学院设计的LaTeX学位论文模板。",
 	"该模板支持本科综合论文训练、硕士论文和博士论文，为上海音乐学院的学术写作提供标准化格式。",
-	"基于清华大学学位论文模板（ThuThesis）开发，根据上海音乐学院的格式要求和规范进行了适配修改。",
 	"模板简化了论文写作过程，在保持LaTeX排版灵活性和质量的同时，确保符合学院的标准规范。"
 ],
 		author_display_in_chinese: true
@@ -647,7 +692,7 @@ let selected_proj = [paper.shcmthesis];
 
 // 精选出版物信息
 
-let selected_pub = [paper.isps_review];
+let selected_pub = [paper.vmus, paper.isps_review];
 
 // 出版物分类顺序
 
@@ -692,15 +737,15 @@ let proj_section_order = [
 // 个人介绍
 
 let about = [
-	[`I'm currently working as a postdoctoral research fellow at ${href(institute.shcmusic)} (SHCM),`, `supervised by Prof. ${href(person.jian_yang)}.`, `I received my Doctor of Engineering (Ph.D.) degree from ${href(institute.tsinghua)} in 2024 and Bachelor of Engineering (B.Eng.) degree from ${href(institute.seu)} in 2019.`],
-	[`During my Ph.D. studies at Tsinghua University, my research primarily focused on computer vision within the field of artificial intelligence.`, `After moving to the Shanghai Conservatory of Music, my research emphasis shifted to music artificial intelligence, with a particular focus on the professional analysis and understanding of classical music, as well as Chinese folk music.`],
-	[`I am also an enthusiast of the guqin.`, `I first encountered it and began learning through a guqin elective course offered by Tsinghua University in 2022, and I am now continuing my study under the guidance of Prof. ${href(person.xiaolian_dai)}.`, `In addition, I studied piano as an amateur for about ten years, starting from the age of five.`],
+	[`I am currently a postdoctoral research fellow at ${href(institute.shcmusic)}, and also an external faculty member at the ${href(institute.music_engineering)}, under the supervision of Prof. ${href(person.jian_yang)}.`, `I received my Bachelor of Engineering (B.Eng.) degree from ${href(institute.seu)} in 2019.`, `I received my Doctor of Engineering (Ph.D.) degree from ${href(institute.tsinghua)} in 2024, under the supervision of Prof. ${href(person.jie_zhou)} and Prof. ${href(person.jiwen_lu)}.`],
+	[`During my Ph.D. studies, I mainly focused on computer vision within the field of artificial intelligence.`, `After joining the Shanghai Conservatory of Music, my research shifted toward music artificial intelligence, with a particular focus on the professional analysis and understanding of classical music, as well as Chinese folk music.`, `My current teaching covers artificial intelligence topics such as machine learning.`],
+	[`I am also a practitioner of the guqin, first introduced to it through a guqin elective course at Tsinghua University, and now studying under the guidance of Prof. ${href(person.xiaolian_dai)} at ${href(institute.shcmusic)}.`, `In addition, I studied piano as an amateur for about ten years, starting from the age of five.`],
 ];
 
 let about_zh = [
-	[`目前我在${href_zh(institute.shcmusic)}从事博士后研究，`, `合作导师为${href_zh(person.jian_yang)}教授。`, `我于${href_zh(institute.tsinghua)}${href_zh(institute.auto)}获得工学博士学位（2024年），`, `师从${href_zh(person.jie_zhou)}教授和${href_zh(person.jiwen_lu)}教授。`, `本科就读于${href_zh(institute.seu)}${href_zh(institute.radio)}，获得工学学士学位（2019年）。`],
-	[`在清华大学读博期间，我主要研究人工智能领域的计算机视觉方向。`, `来到上海音乐学院后，我的研究重心转向音乐人工智能，尤其关注古典音乐的专业分析与理解，以及中国民族音乐。`],
-	[`我还是一名古琴爱好者，2022年通过清华大学开设的古琴选修课初次接触并开始习琴，目前在上海音乐学院${href_zh(person.xiaolian_dai)}教授的指导下继续深造。`, `此外，我曾从五岁起业余学习钢琴约十年。`],
+	[`我目前在${href_zh(institute.shcmusic)}从事博士后研究，并任${href_zh(institute.music_engineering)}外聘教师，合作导师为${href_zh(person.jian_yang)}教授。`, `2019年本科毕业于${href_zh(institute.seu)}${href_zh(institute.radio)}，获工学学士学位。`, `2024年博士毕业于${href_zh(institute.tsinghua)}${href_zh(institute.auto)}，获工学博士学位，`, `师从${href_zh(person.jie_zhou)}教授、${href_zh(person.jiwen_lu)}教授。`],
+	[`博士期间主要研究人工智能领域的计算机视觉。`, `加入上海音乐学院后，研究重心转向音乐人工智能，重点关注古典音乐的专业分析与理解，以及中国民族音乐。`, `目前教学涉及机器学习等人工智能内容。`],
+	[`我同时也是一名古琴研习者，启蒙于清华大学古琴选修课，现师从${href_zh(institute.shcmusic)}${href_zh(person.xiaolian_dai)}教授。`, `此外，我自五岁起业余学习钢琴，持续约十年。`],
 ];
 
 // 新闻
@@ -710,6 +755,11 @@ let break_news = `I am planning to conduct research related to guqin music, as w
 let break_news_zh = `我计划开展古琴音乐相关研究，以及古典音乐的分析与生成研究。如有合作意向，欢迎联系我！`;
 
 let news = [
+	{
+		date: "2026.09.03",
+		content: `Our <a href="https://v3.vmus.net">Vmus.net V3</a> has been accepted as a demo at ${href(conference.jcdl, conference.jcdl.short_name + " 2026")}!`,
+		content_zh: `我们的<a href="https://v3.vmus.net">Vmus.net V3</a>被${href_zh(conference.jcdl, conference.jcdl.short_name + " 2026")}接收为演示论文了！`,
+	},
 	{
 		date: "2026.03.20",
 		content: `A review of the ${href(conference.isps2025)} has been included in ${href(journal.jccom)}!`,
@@ -836,8 +886,8 @@ let teaching = [
 	{
 		"course_name": "Music Programming (Undergraduate Course)",
 		"course_name_zh": "《音乐编程》（本科生课程）",
-		"role": "Teaching Assistant",
-		"role_zh": "授课助教"
+		"role": "Lecturer",
+		"role_zh": "主讲"
 	},
 	{
 		"course_name": "Design and Development of Music Online Applications (Graduate Course)",
@@ -852,8 +902,8 @@ let teaching = [
 		"role_zh": "授课助教"
 	},
 	{
-		"course_name": "Thesis and Experimental Report Writing (Orchestra) (Graduate Course)",
-		"course_name_zh": "《学位论文与实验报告写作（管弦）》（研究生课程）",
+		"course_name": "Thesis and Experimental Report Writing (Graduate Course)",
+		"course_name_zh": "《学位论文与实验报告写作》（研究生课程）",
 		"role": "Teaching Assistant",
 		"role_zh": "授课助教"
 	}
@@ -901,8 +951,8 @@ let contact = [
 // 版权
 
 let last_update = {
-	"month": "May",
-	"month_zh": "5",
+	"month": "Oct",
+	"month_zh": "10",
 	"year": "2026"
 };
 
@@ -1009,9 +1059,9 @@ for (var i = 0; i < selected_pub.length; i++) {
       volumeStr = `Vol. ${selected_pub[i].volume}, `;
     }
     if (selected_pub[i].pub.short_name) {
-      selected_pub_html += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>), ${volumeStr}${selected_pub[i].year}</i><br>`;
+      selected_pub_html += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>)${selected_pub[i].paper_type === "demo" ? ", demo, " : ", "}${volumeStr}${selected_pub[i].year}</i><br>`;
     } else {
-      selected_pub_html += `<i>${selected_pub[i].pub.name}, ${volumeStr}${selected_pub[i].year}</i><br>`;
+      selected_pub_html += `<i>${selected_pub[i].pub.name}${selected_pub[i].paper_type === "demo" ? ", demo, " : ", "}${volumeStr}${selected_pub[i].year}</i><br>`;
     }
   }
   selected_pub_html += `<font size=3>`;
@@ -1035,9 +1085,16 @@ for (var i = 0; i < about.length; i++) {
 
 // News
 var news_html = "";
-for (var i = 0; i < news.length; i++) {  
+var news_home_count = 5;
+for (var i = 0; i < Math.min(news.length, news_home_count); i++) {
 	news_html += `<p><li>[${news[i].date}] ${news[i].content}</li></p>`;
-} 
+}
+
+// Full news list (for the dedicated news page)
+var news_html_full = "";
+for (var i = 0; i < news.length; i++) {
+	news_html_full += `<p><li>[${news[i].date}] ${news[i].content}</li></p>`;
+}
 
 // Experience
 var experience_html = "";
@@ -1290,9 +1347,9 @@ for (var i = 0; i < selected_pub.length; i++) {
       yearStr = `${selected_pub[i].year}`;
     }
     if (selected_pub[i].pub.short_name) {
-      selected_pub_html_zh += `<i>${pubName} (<b>${selected_pub[i].pub.short_name}</b>)${pubComma}${yearStr}</i><br>`;
+      selected_pub_html_zh += `<i>${pubName} (<b>${selected_pub[i].pub.short_name}</b>)${selected_pub[i].paper_type === "demo" ? ", demo, " : pubComma}${yearStr}</i><br>`;
     } else {
-      selected_pub_html_zh += `<i>${pubName}${pubComma}${yearStr}</i><br>`;
+      selected_pub_html_zh += `<i>${pubName}${selected_pub[i].paper_type === "demo" ? ", demo, " : pubComma}${yearStr}</i><br>`;
     }
   }
   selected_pub_html_zh += `<font size=3>`;
@@ -1316,9 +1373,15 @@ for (var i = 0; i < about_zh.length; i++) {
 
 // 新闻
 var news_html_zh = "";
-for (var i = 0; i < news.length; i++) {  
+for (var i = 0; i < Math.min(news.length, news_home_count); i++) {
 	news_html_zh += `<p><li>[${news[i].date}] ${news[i].content_zh}</li></p>`;
-} 
+}
+
+// 完整新闻列表（用于专门动态页面）
+var news_html_full_zh = "";
+for (var i = 0; i < news.length; i++) {
+	news_html_full_zh += `<p><li>[${news[i].date}] ${news[i].content_zh}</li></p>`;
+}
 
 // 经历
 var experience_html_zh = "";
@@ -1435,7 +1498,7 @@ var img_html_m = `<img id="myPicture" src=${me.img} style="float:center; border-
 
 // News
 var news_html_m = "";
-for (var i = 0; i < news.length; i++) {  
+for (var i = 0; i < Math.min(news.length, news_home_count); i++) {
 	news_html_m += `<p>[${news[i].date}] ${news[i].content}</p>`;
 }
 
@@ -1501,9 +1564,9 @@ for (var i = 0; i < selected_pub.length; i++) {
       volumeStr = `Vol. ${selected_pub[i].volume}, `;
     }
     if (selected_pub[i].pub.short_name) {
-      selected_pub_html_m += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>), ${volumeStr}${selected_pub[i].year}</i><br>`;
+      selected_pub_html_m += `<i>${selected_pub[i].pub.name} (<b>${selected_pub[i].pub.short_name}</b>)${selected_pub[i].paper_type === "demo" ? ", demo, " : ", "}${volumeStr}${selected_pub[i].year}</i><br>`;
     } else {
-      selected_pub_html_m += `<i>${selected_pub[i].pub.name}, ${volumeStr}${selected_pub[i].year}</i><br>`;
+      selected_pub_html_m += `<i>${selected_pub[i].pub.name}${selected_pub[i].paper_type === "demo" ? ", demo, " : ", "}${volumeStr}${selected_pub[i].year}</i><br>`;
     }
   }
   for (var j = 0; j < selected_pub[i].extra_link.length; j++) {
@@ -1628,7 +1691,7 @@ var copyright_html_m = `<font size=6 style="color: #BBBBBB">Copyright &copy ${la
 // mobile.html
 // 新闻
 var news_html_m_zh = "";
-for (var i = 0; i < news.length; i++) {  
+for (var i = 0; i < Math.min(news.length, news_home_count); i++) {
 	news_html_m_zh += `<p>[${news[i].date}] ${news[i].content_zh}</p>`;
 }
 
@@ -1720,9 +1783,9 @@ for (var i = 0; i < selected_pub.length; i++) {
       yearStr = `${selected_pub[i].year}`;
     }
     if (selected_pub[i].pub.short_name) {
-      selected_pub_html_m_zh += `<i>${pubName} (<b>${selected_pub[i].pub.short_name}</b>)${pubComma}${yearStr}</i><br>`;
+      selected_pub_html_m_zh += `<i>${pubName} (<b>${selected_pub[i].pub.short_name}</b>)${selected_pub[i].paper_type === "demo" ? ", demo, " : pubComma}${yearStr}</i><br>`;
     } else {
-      selected_pub_html_m_zh += `<i>${pubName}${pubComma}${yearStr}</i><br>`;
+      selected_pub_html_m_zh += `<i>${pubName}${selected_pub[i].paper_type === "demo" ? ", demo, " : pubComma}${yearStr}</i><br>`;
     }
   }
   for (var j = 0; j < selected_pub[i].extra_link.length; j++) {

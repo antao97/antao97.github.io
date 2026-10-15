@@ -1,35 +1,35 @@
 {
   "en": [
     [
-      "I'm currently working as a postdoctoral research fellow at ${href(institute.shcmusic)} (SHCM),",
-      "supervised by Prof. ${href(person.jian_yang)}.",
-      "I received my Doctor of Engineering (Ph.D.) degree from ${href(institute.tsinghua)} in 2024 and Bachelor of Engineering (B.Eng.) degree from ${href(institute.seu)} in 2019."
+      "I am currently a postdoctoral research fellow at ${href(institute.shcmusic)}, and also an external faculty member at the ${href(institute.music_engineering)}, under the supervision of Prof. ${href(person.jian_yang)}.",
+      "I received my Bachelor of Engineering (B.Eng.) degree from ${href(institute.seu)} in 2019.",
+      "I received my Doctor of Engineering (Ph.D.) degree from ${href(institute.tsinghua)} in 2024, under the supervision of Prof. ${href(person.jie_zhou)} and Prof. ${href(person.jiwen_lu)}."
     ],
     [
-      "During my Ph.D. studies at Tsinghua University, my research primarily focused on computer vision within the field of artificial intelligence.",
-      "After moving to the Shanghai Conservatory of Music, my research emphasis shifted to music artificial intelligence, with a particular focus on the professional analysis and understanding of classical music, as well as Chinese folk music."
+      "During my Ph.D. studies, I mainly focused on computer vision within the field of artificial intelligence.",
+      "After joining the Shanghai Conservatory of Music, my research shifted toward music artificial intelligence, with a particular focus on the professional analysis and understanding of classical music, as well as Chinese folk music.",
+      "My current teaching covers artificial intelligence topics such as machine learning."
     ],
     [
-      "I am also an enthusiast of the guqin.",
-      "I first encountered it and began learning through a guqin elective course offered by Tsinghua University in 2022, and I am now continuing my study under the guidance of Prof. ${href(person.xiaolian_dai)}.",
+      "I am also a practitioner of the guqin, first introduced to it through a guqin elective course at Tsinghua University, and now studying under the guidance of Prof. ${href(person.xiaolian_dai)} at ${href(institute.shcmusic)}.",
       "In addition, I studied piano as an amateur for about ten years, starting from the age of five."
     ]
   ],
   "zh": [
     [
-      "目前我在${href_zh(institute.shcmusic)}从事博士后研究，",
-      "合作导师为${href_zh(person.jian_yang)}教授。",
-      "我于${href_zh(institute.tsinghua)}${href_zh(institute.auto)}获得工学博士学位（2024年），",
-      "师从${href_zh(person.jie_zhou)}教授和${href_zh(person.jiwen_lu)}教授。",
-      "本科就读于${href_zh(institute.seu)}${href_zh(institute.radio)}，获得工学学士学位（2019年）。"
+      "我目前在${href_zh(institute.shcmusic)}从事博士后研究，并任${href_zh(institute.music_engineering)}外聘教师，合作导师为${href_zh(person.jian_yang)}教授。",
+      "2019年本科毕业于${href_zh(institute.seu)}${href_zh(institute.radio)}，获工学学士学位。",
+      "2024年博士毕业于${href_zh(institute.tsinghua)}${href_zh(institute.auto)}，获工学博士学位，",
+      "师从${href_zh(person.jie_zhou)}教授、${href_zh(person.jiwen_lu)}教授。"
     ],
     [
-      "在清华大学读博期间，我主要研究人工智能领域的计算机视觉方向。",
-      "来到上海音乐学院后，我的研究重心转向音乐人工智能，尤其关注古典音乐的专业分析与理解，以及中国民族音乐。"
+      "博士期间主要研究人工智能领域的计算机视觉。",
+      "加入上海音乐学院后，研究重心转向音乐人工智能，重点关注古典音乐的专业分析与理解，以及中国民族音乐。",
+      "目前教学涉及机器学习等人工智能内容。"
     ],
     [
-      "我还是一名古琴爱好者，2022年通过清华大学开设的古琴选修课初次接触并开始习琴，目前在上海音乐学院${href_zh(person.xiaolian_dai)}教授的指导下继续深造。",
-      "此外，我曾从五岁起业余学习钢琴约十年。"
+      "我同时也是一名古琴研习者，启蒙于清华大学古琴选修课，现师从${href_zh(institute.shcmusic)}${href_zh(person.xiaolian_dai)}教授。",
+      "此外，我自五岁起业余学习钢琴，持续约十年。"
     ]
   ]
 }

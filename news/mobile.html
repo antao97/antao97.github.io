@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html><head>
+<title id="title"></title>
+<link rel="icon" href="../image/icon.jpg" >
+
+<script src="../data.js"></script>
+
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../mobile.css">
+
+</head>
+
+<body class="paper">
+<div class="content">
+    <b>>> <a href="../mobile.html">返回主页</a></b>
+    <br><br><br>
+    <div id="container">
+
+    <h2>全部动态</h2><br><br>
+    <ul id="news_list"></ul>
+
+    </div><br><br>
+
+    <b>>> <a href="../mobile.html">返回主页</a></b>
+
+</div></div>
+</div><br><br>
+<script type="text/javascript">
+    var last_update_html = `<font size=6 style="color: #3B3B3B">—&nbsp;&nbsp; 最近更新：${last_update.year}年${last_update.month_zh}月 &nbsp;&nbsp;—</font>`;
+    var copyright_html = `<font size=6 style="color: #BBBBBB">版权所有 &copy ${last_update.year} ${me.name_zh}</font>`;
+</script>
+
+<center id="last_update"></center><br>
+<center id="copyright"></center><br>
+
+<script>
+    document.getElementById("title").textContent = title_zh;
+    document.getElementById("news_list").innerHTML = news_html_full_zh;
+    document.getElementById("last_update").innerHTML = last_update_html;
+    document.getElementById("copyright").innerHTML = copyright_html;
+</script>
+</body></html>

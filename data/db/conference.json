@@ -46,5 +46,10 @@
     "location_zh": "上海",
     "short_name": "ISPS 2025",
     "link": "https://event.fourwaves.com/isps2025/"
+  },
+  "jcdl": {
+    "name": "ACM/IEEE Joint Conference on Digital Libraries",
+    "short_name": "JCDL",
+    "link": "https://www.jcdl.org/"
   }
 }

@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026.09.03",
+    "content": "Our <a href=\"https://v3.vmus.net\">Vmus.net V3</a> has been accepted as a demo at ${href(conference.jcdl, conference.jcdl.short_name + \" 2026\")}!",
+    "content_zh": "我们的<a href=\"https://v3.vmus.net\">Vmus.net V3</a>被${href_zh(conference.jcdl, conference.jcdl.short_name + \" 2026\")}接收为演示论文了！"
+  },
+  {
     "date": "2026.03.20",
     "content": "A review of the ${href(conference.isps2025)} has been included in ${href(journal.jccom)}!",
     "content_zh": "我们对${href_zh(conference.isps2025)}的述评被${href_zh(journal.jccom)}收录了！"

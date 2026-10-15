@@ -2,8 +2,8 @@
   {
     "course_name": "Music Programming (Undergraduate Course)",
     "course_name_zh": "《音乐编程》（本科生课程）",
-    "role": "Teaching Assistant",
-    "role_zh": "授课助教"
+    "role": "Lecturer",
+    "role_zh": "主讲"
   },
   {
     "course_name": "Design and Development of Music Online Applications (Graduate Course)",
@@ -18,8 +18,8 @@
     "role_zh": "授课助教"
   },
   {
-    "course_name": "Thesis and Experimental Report Writing (Orchestra) (Graduate Course)",
-    "course_name_zh": "《学位论文与实验报告写作（管弦）》（研究生课程）",
+    "course_name": "Thesis and Experimental Report Writing (Graduate Course)",
+    "course_name_zh": "《学位论文与实验报告写作》（研究生课程）",
     "role": "Teaching Assistant",
     "role_zh": "授课助教"
   }

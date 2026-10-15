@@ -31,6 +31,43 @@
       "研究发现，在人工智能快速发展的背景下，表演者视角、音乐本体问题与数据驱动方法等要素正在重新获得平衡。"
     ]
   },
+  "vmus": {
+    "short_name": "Vmus.net V3",
+    "name": "Making Music Performance Research Cumulative: Vmus.net V3 as a Digital Library for Versioned, Attributable Annotations",
+    "link": "https://doi.org/10.1145/3805696.3846508",
+    "img": "image/vmus_jcdl.png",
+    "author_ids": ["jian_yang", "haishen_yu", "me"],
+    "pub_type": "conference",
+    "pub_id": "jcdl",
+    "paper_type": "demo",
+    "year": 2026,
+    "author_display_in_chinese": false,
+    "extra_link": [
+      {
+        "name": "Paper",
+        "name_zh": "论文",
+        "link": "https://doi.org/10.1145/3805696.3846508"
+      },
+      {
+        "name": "Vmus.net V3",
+        "name_zh": "Vmus.net V3",
+        "link": "https://v3.vmus.net"
+      },
+      {
+        "name": "Video",
+        "name_zh": "视频",
+        "link": "https://q.vmus.net/v3demo/jcdl2026-demo.mp4"
+      }
+    ],
+    "intro": [
+      "Empirical music performance research relies on expert annotations of recorded performances, which in practice mostly remain in loose files, overwritten in place, unattributed and hard to cite.",
+      "This demo presents <a href=\"https://v3.vmus.net\">Vmus.net V3</a>, a music digital library that treats performance annotations as first-class library objects: every save creates an immutable, attributed new version, resolvable at a stable version-specific URL, so that annotations can be cited, compared and reused as research data."
+    ],
+    "intro_zh": [
+      "实证性的音乐表演研究依赖于专家对录音演奏的标注，但实践中这些标注大多散落于松散文件中，被就地覆盖、缺少归属且难以引用。",
+      "本文提出<a href=\"https://v3.vmus.net\">Vmus.net V3</a>，一个将演奏标注视为一等图书馆对象的音乐数字图书馆：每次保存都会创建一个不可变、可署名的新版本，并可通过稳定的版本级URL解析，从而使标注可作为研究数据被引用、比较与复用。"
+    ]
+  },
   "lgm": {
     "short_name": "Dynamics-aware Attack",
     "name": "Dynamics-aware Adversarial Attack of Adaptive Neural Networks",
